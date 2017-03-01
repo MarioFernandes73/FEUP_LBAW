@@ -86,23 +86,52 @@
     <!-- MAIN INTERACTION -->
     <div class="jumbotron">
 
+        <!-- fisrt row -->
         <div class="row">
+            <!-- user profile -->
             <div class="col-sm-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">My Profile</div>
                     <div class="panel-body" style="height: 300px">
-                        <!-- List group -->
                         <ul class="list-group">
-                            <li class="list-group-item">Username:</li>
-                            <li class="list-group-item">Name:</li>
-                            <li class="list-group-item">Age:</li>
-                            <li class="list-group-item">Email:</li>
-                            <li class="list-group-item">Phone number:</li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"/>
+                                LBAW
+                            </li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-briefcase" aria-hidden="true"/>
+                                Catarina Inês Lázaro Mário
+                            </li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"/>
+                                21
+                            </li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"/>
+                                lbaw@fe.up.pt
+                            </li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-earphone" aria-hidden="true"/>
+                                901234567
+                            </li>
                         </ul>
                         <button type="button" class="btn btn-default">Edit Profile</button>
                     </div>
                 </div>
             </div>
+            <!-- statistics -->
+            <div class="col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Statistics</div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--second row -->
+        <div class="row">
+            <!-- auctions followed-->
             <div class="col-sm-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Auctions followed</div>
@@ -144,20 +173,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
+            <!-- auctions concluded -->
             <div class="col-sm-6">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Statistics</div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Auctions followed</div>
+                    <div class="panel-heading">Auctions concluded</div>
                     <div class="panel-body pre-scrollable" style="height: 300px">
                         <table class="table">
                             <thead>
@@ -216,10 +235,37 @@
                 </div>
             </div>
         </div>
-
+        <!--third row -->
+        <div class="row">
+            <!-- tickets -->
+            <div class="col-sm-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Tickets</div>
+                    <div class="panel-body pre-scrollable" style="height: 300px">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Identification</th>
+                                <th>State</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1254</td>
+                                <td>Wating response</td>
+                            </tr>
+                            <tr>
+                                <td>9732</td>
+                                <td>Solved</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 </body>
-
 </html>
