@@ -1,6 +1,3 @@
-<php include('header.php');
-?>
-
 <!--login modal-->
 <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
@@ -32,6 +29,4 @@
   </div>
 </div>
 
-<php include('footer.php');
-?>
 
