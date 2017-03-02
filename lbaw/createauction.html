@@ -42,7 +42,6 @@
 <div class="container">
 
     <!-- Static navbar -->
-    <!-- Static navbar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -53,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Home</a>
+                <a class="navbar-brand" href="#">Home</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -61,19 +60,15 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Categories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Antiquities</a></li>
-                            <li><a href="#">Clothes</a></li>
-                            <li><a href="#">Decoration</a></li>
-                            <li><a href="#">Indoor</a></li>
-                            <li><a href="#">Jewelery</a></li>
-                            <li><a href="#">Outside</a></li>
-                            <li><a href="#">Others</a></li>
-                            <li><a href="#">Tools</a></li>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Create New Auction</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="ticket.html">Tickets</a></li>
+                    <li class="active"><a href="#">FAQ</a></li>
+                    <li><a href="#">Tickets</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
@@ -84,11 +79,14 @@
                     <button type="submit" class="btn btn-default">Advanced Search</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="register.html">Sign Up</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Login</a></li>
+
                 </ul>
             </div>
+            <!--/.nav-collapse -->
         </div>
+        <!--/.container-fluid -->
     </nav>
 
     <!-- REGISTER -->
@@ -96,7 +94,7 @@
         <div class="row main">
             <div class="main-login main-center">
 
-                <h2 class="text-center">Sign Up</h2>                                    <!-- Title -->
+                <h2 class="text-center">Create Auction</h2>                                    <!-- Title -->
 
                 <form class="form-horizontal" style="padding: 0% 25%" method="post" action="#">
                     <!-- attributes -->
@@ -104,65 +102,62 @@
                         <label for="username" class="cols-sm-2 control-label">Name</label>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="Enter your name"
+                            <input type="text" class="form-control" placeholder="Enter the auction's name"
                                    aria-describedby="basic-addon1">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Email</label>
+                        <label for="username" class="cols-sm-2 control-label">Category</label>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="Enter your email"
-                                   aria-describedby="basic-addon1">
+                            		<select class="form-control form-control-lg">
+  <option>Category X</option>
+  <option>Category Y</option>
+  <option>Category Z</option>
+</select>
                         </div>
                     </div>
+					
+
+			
+            <div class="form-group">
+			<label for="username" class="cols-sm-2 control-label">Starting time</label>
+<div class="input-group date" data-provide="datepicker">
+    <input type="text" class="form-control">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </div>
+</div>
+            </div>
+
 
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                        <label for="username" class="cols-sm-2 control-label">Time</label>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="Enter your account username"
-                                   aria-describedby="basic-addon1">
+                            		<select class="form-control form-control-lg">
+  <option>12 hours</option>
+  <option>24 hours</option>
+  <option>48 hours</option>
+</select>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="Enter a secure password"
-                                   aria-describedby="basic-addon1">
-                        </div>
-                    </div>
+                            
+							<div class="form-group">
+								<label for="comment">Item description</label>
+								<textarea class="form-control" rows="5" id="comment"></textarea>
+							</div>
 
-                    <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Confirm Password</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="Confirm Password"
-                                   aria-describedby="basic-addon1">
-                        </div>
-                    </div>
+               					  <label class="btn btn-default btn-file">
+						Upload Images <input type="file" style="display: none;">
+						</label>
 
-                    <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Phone Number</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">@</span>
-                            <input type="tel" class="form-control" placeholder="Enter your phone number"
-                                   aria-describedby="basic-addon1">
-                        </div>
-                    </div>
-
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">I am at least 18 years old.</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">I accept the terms and conditions.</label>
-                    </div>
+                 
                     <!-- Submit button Acho que não pode estar dentro de um div!!!!-->
                     <div class="form-group" style="padding:2% 30%">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Create Auction</button>
                     </div>
                 </form>
             </div>
