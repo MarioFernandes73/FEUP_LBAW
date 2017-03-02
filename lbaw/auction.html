@@ -19,11 +19,17 @@
     <![endif]-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+    <!-- Rating -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="js/star-rating.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -96,7 +102,7 @@
                     <img src="http://lorempixel.com/400/400/" alt="...">
                 </a>
 
-                <div class="btn-group btn-group-justified" role="group" aria-label="..."  style="min-height: 60px">
+                <div class="btn-group btn-group-justified" role="group" aria-label="..." style="min-height: 60px">
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-info btn-block">Follow</button>
                     </div>
@@ -111,42 +117,45 @@
             <div class="col-sm-8">
                 <div class="panel panel-primary">
                     <div class="panel-body" style="min-height: 445px">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <td colspan="2" class="text-center"><h3>Cute Little Pony</h3></td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Others</td>
-                                    <td>English</td>
-                                </tr>
-                                <tr>
-                                    <td>02/03/2017</td>
-                                    <td>12:05:41</td>
-                                </tr>
-                                <tr>
-                                    <td>preço base: 15€</td>
-                                    <td>preço atual: 25€</td>
-                                </tr>
-                                <tr>
-                                    <td>4 stars</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div style="max-height: 195px" class="pre-scrollable text-center">
-                                           Cute Toy amazing for kids. Pink and flufy.
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <dl class="row col-sm-12 text-center h3">
+                            <strong>Cute Little Pony</strong>
+                        </dl>
+                        <dl class="row"></dl>
+                        <dl class="row"></dl>
+                        <dl class="row">
+                            <dt class="col-sm-2">Category</dt>
+                            <dd class="col-sm-5">Others</dd>
+                            <dt class="col-sm-2">Type</dt>
+                            <dd class="col-sm-3">English</dd>
+                        </dl>
+                        <dl class="row">
+                            <dt class="col-sm-2">Base Price</dt>
+                            <dd class="col-sm-5">15€</dd>
+                            <dt class="col-sm-2">Last Price</dt>
+                            <dd class="col-sm-3">25€</dd>
+                        </dl>
+                        <dl class="row">
+                            <dt class="col-sm-2">Begin Date</dt>
+                            <dd class="col-sm-5">02/03/2017</dd>
+                            <dt class="col-sm-2">Time Left</dt>
+                            <dd class="col-sm-3">12:05:41</dd>
+                        </dl>
+                        <dl class="row">
+                            <dt class="col-sm-3">Seller Rating</dt>
+                            <dd class="col-sm-9">
+                                <input id="rate" class="rating" data-size="xs" data-disabled="true" >
+                            </dd>
+                        </dl>
+                        <dl class="row">
+                            <dt class="col-sm-2">Description</dt>
+                            <dd class="col-sm-10 pre-scrollable text-center" style="max-height: 230px" >
+                                Cute Toy amazing for kids. Pink and flufy.
+                            </dd>
+                        </dl>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="row">
@@ -156,12 +165,24 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                <tr><td><h4>New bid!! - Actual price 25€</h4></td></tr>
-                                <tr><td><h4>New comment</h4></td></tr>
-                                <tr><td><h4>New bid!! - Actual price 20€</h4></td></tr>
-                                <tr><td><h4>New comment</h4></td></tr>
-                                <tr><td><h4>New bid!! - Actual price 18€</h4></td></tr>
-                                <tr><td><h4>Auction Started!</h4></td></tr>
+                                <tr>
+                                    <td><h4>New bid!! - Actual price 25€</h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>New comment</h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>New bid!! - Actual price 20€</h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>New comment</h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>New bid!! - Actual price 18€</h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Auction Started!</h4></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
