@@ -91,19 +91,26 @@
         <div class="form-group">
             <h2 class="text-center">Ticket</h2>
             <label for="category">Category</label>
-
-            <select class="form-control form-control-lg">
-                <option>Category X</option>
-                <option>Category Y</option>
-                <option>Category Z</option>
+            <select id="category" class="form-control form-control-lg">
+                <option>Report</option>
+                <option>Product</option>
+                <option>Payment</option>
+                <option>Others</option>
             </select>
-            <label for="message">Message</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
 
-            <label class="btn btn-default btn-file">
-                Attachments <input type="file" style="display: none;">
-            </label>
-            <button type="submit" class="btn btn-default">Send Ticket</button>
+            <div class="form-group">
+                <label for="comment">Message</label>
+                <textarea class="form-control" rows="5" id="comment" placeholder="Write your ticket..."></textarea>
+                <label class="btn btn-default btn-file pull-right">
+                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                    <input type="file" style="display: none;">
+                </label>
+            </div>
+
+            <div class="form-group" style="padding:2% 40%">
+                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Send Ticket
+                </button>
+            </div>
         </div>
     </div>
 
