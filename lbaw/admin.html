@@ -88,56 +88,189 @@
     </nav>
 
     <!-- Users -->
-    <h3>Users</h3>
-    <div class="panel panel-primary">
-        <div class="panel panel-default">
-            <ul class="nav nav-pills" role="tablist">
-                <li role="presentation" class="active"><a href="#">Admins<span class="badge">4</span></a></li>
-                <li role="presentation"><a href="#">Users<span class="badge">206</span></a></li>
-                <li role="presentation"><a href="#">Banned Users<span class="badge">2</span></a></li>
-            </ul>
-        </div>
-        <div class="panel-body">
-            <div class="panel-body pre-scrollable">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Cras justo odio</a>
-                    <a href="#" class="list-group-item active">This 1 is active, it will open a space below so that the
-                        admin can respond / close</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+    <div class="row">
+        <div class="col-sm-5">
+            <h3>Users</h3>
+            <div class="panel panel-primary" style="min-height: 400px">
+                <div class="panel panel-default">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation" class="active"><a href="#">Admins<span class="badge">4</span></a></li>
+                        <li role="presentation"><a href="#">Users<span class="badge">206</span></a></li>
+                        <li role="presentation"><a href="#">Banned Users<span class="badge">2</span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="panel-body pre-scrollable">
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Option</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="profile.html"></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Auctions -->
-    <h3>Auctions</h3>
-    <div class="panel panel-primary">
-        <div class="panel panel-default">
-            <ul class="nav nav-pills" role="tablist">
-                <li role="presentation" class="active"><a href="#">Active<span class="badge">86</span></a></li>
-                <li role="presentation"><a href="#">Concluding<span class="badge">10</span></a></li>
-                <li role="presentation"><a href="#">Finished<span class="badge">532</span></a></li>
-                <li role="presentation"><a href="#">Banned<span class="badge">15</span></a></li>
-            </ul>
-        </div>
-        <div class="panel-body">
-            <div class="panel-body pre-scrollable">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Cras justo odio</a>
-                    <a href="#" class="list-group-item">TCras justo odio</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
-                    <a href="#" class="list-group-item">TCras justo odio</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
-                    <a href="#" class="list-group-item">TCras justo odio</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+        <!-- Auctions -->
+        <div class="col-sm-7">
+            <h3>Auctions</h3>
+            <div class="panel panel-primary" style="min-height: 400px">
+                <div class="panel panel-default">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation"><a href="#">Programmed<span class="badge">19</span></a></li>
+                        <li role="presentation" class="active"><a href="#">Active<span class="badge">86</span></a></li>
+                        <li role="presentation"><a href="#">Concluding<span class="badge">10</span></a></li>
+                        <li role="presentation"><a href="#">Finished<span class="badge">532</span></a></li>
+                        <li role="presentation"><a href="#">Banned<span class="badge">15</span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="panel-body pre-scrollable">
+                        <!-- PROGRAMMED --
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Starting Date</th>
+                                <th>Starting Hour</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="auction.html">Dog Toy</a></td>
+                                <td>15/03/2017</td>
+                                <td>22:00:00</td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Chocolate</a></td>
+                                <td>17/03/2017</td></td>
+                                <td>14:00:00</td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Dan Brown Book</a></td>
+                                <td>13/03/2017</td>
+                                <td>00:00:00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- ACTIVE -->
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Time left</th>
+                                <th>Ban</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="auction.html">Amazing Chair!</a></td>
+                                <td>00:30:58</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-xs">
+                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Garden Table</a></td>
+                                <td>01:05:37</td>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-xs">
+                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Toys Collection</a></td>
+                                <td>01:17:21</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-xs">
+                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Red Dress</a></td>
+                                <td>00:02:45</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-xs">
+                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- CONCLUDING --
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>State</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="auction.html">Fireplace</a></td>
+                                <td>Waiting for <a href="profile.html">seller</a> and <a href="profile.html">buyer</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Peach Tree</a></td>
+                                <td>Waiting for <a href="profile.html">buyer</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- Finished --
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Concluding Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="auction.html">Aromatic Pillow</a></td>
+                                <td>18/02/2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Wood Table</a></td>
+                                <td>7/2/2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Miró Painting</a></td>
+                                <td>1/2/2017</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- BANNED --
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Reason</th>
+                                <th>Banning Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="auction.html">Aromatic Pillow</a></td>
+                                <td>Illegal product</td>
+                                <td>18/02/2017</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,20 +298,29 @@
                             <th>Ticket</th>
                             <th>Username</th>
                             <th>Sent Date</th>
+                            <th>Solved</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Report Username</td>
+                            <td><a href="#info">Report Username</a></td>
                             <td>auctionLover</td>
                             <td>27/02/2017</td>
-                            <!-- botao de concluido -->
+                            <td>
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </button>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Report Auction</td>
+                            <td><a href="#info">Report Auction</a></td>
                             <td>liza_bomb</td>
                             <td>05/03/2017</td>
-                            <!-- botao de concluido -->
+                            <td>
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -195,7 +337,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Bug found</td>
+                            <td><a href="#info">Bug found</a></td>
                             <td>Xman99</td>
                             <td>03/03/2017</td>
                         </tr>
@@ -215,19 +357,19 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>My product is broken</td>
+                            <td><a href="#info">My product is broken</a></td>
                             <td>mike</td>
                             <td>14/02/2017</td>
                             <td>21/02/2017</td>
                         </tr>
                         <tr>
-                            <td>Report Username</td>
+                            <td><a href="#info">Report Username</a></td>
                             <td>sisi</td>
                             <td>5/02/2017</td>
                             <td>9/02/2017</td>
                         </tr>
                         <tr>
-                            <td>Stupid Question</td>
+                            <td><a href="#info">Stupid Question</a></td>
                             <td>auctionLover</td>
                             <td>31/01/2017</td>
                             <td>2/02/2017</td>
@@ -238,9 +380,9 @@
                 <!-->
             </div>
         </div>
-
+        <!-- Example 1 -->
         <div class="col-sm-6">
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" id="info">
                 <div class="panel-heading">
                     Bug found
                 </div>
@@ -252,7 +394,6 @@
                         I'm writing to you because I don't know if your section has some problem our just don't exist...
                         Thanks by your time.
                     </div>
-
                     <div class="panel-body pre-scrollable">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -271,8 +412,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- new answer -->
                     <div class="panel-footer" style="min-height: 120px">
                         <form>
                             <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
@@ -288,8 +427,31 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- Example 2 --
+        <div class="col-sm-6">
+            <div class="panel panel-primary" id="info">
+                <div class="panel-heading"></div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body pre-scrollable"></div>
+                    <div class="panel-footer" style="min-height: 120px">
+                        <form>
+                            <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
+                            <button type="submit" class="btn btn-success pull-right">
+                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                            </button>
+                            <label class="btn btn-success btn-file pull-right">
+                                <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                <input type="file" style="display: none;">
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-->
+    </div>
 </div>
 </body>
 </html>
