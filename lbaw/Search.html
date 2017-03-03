@@ -26,197 +26,207 @@
 </head>
 
 <body>
-    <h1></h1>
+<h1></h1>
 
 
-    <div class="container">
+<div class="container">
 
-        <!-- Static navbar -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                    <a class="navbar-brand" href="#">Home</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">FAQ</a></li>
-                        <!--class="active"-->
-                        <li><a href="#">Tickets</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                        <button type="submit" class="btn btn-default">Advanced Search</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Sign Up</a></li>
-                        <li><a href="#">Login</a></li>
-
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
+                <a class="navbar-brand" href="index.html">Home</a>
             </div>
-            <!--/.container-fluid -->
-        </nav>
-
-        <!-- Main component for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div class="container">
-                <div class="row main">
-                    <div class="main-login main-center">
-                        <h2 align="center">Search</h2>
-                        <!-- Title -->
-                        <form class="form-horizontal" style="padding: 3% 25%" method="post" action="#">
-
-                            <!-- Proprietario-->
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Proprietario</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                                                <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- rating-->
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Rating</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-star"></span></span>
-                                                <input type="number" min="1" max="5" class="form-control" placeholder="Rating" aria-describedby="basic-addon1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- tipos-->
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Tipos de leilao</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-default">
-                                                    <input type="radio" name="tipo" id="tipo1" />
-                                                    <label for="radio1">Tipo1</label>
-                                                </div>
-                                                <div class="funkyradio-default">
-                                                    <input type="radio" name="tipo" id="tipo2" />
-                                                    <label for="radio1">Tipo2</label>
-                                                </div>
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="tipo" id="tipo3" />
-                                                    <label for="radio1">Tipo3</label>
-                                                </div>
-                                                <div class="funkyradio-default">
-                                                    <input type="radio" name="tipo" id="tipo4" />
-                                                    <label for="radio1">Tipo4</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- categorias-->
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Categorias</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-default">
-                                                    <input type="radio" name="radio" id="radio1" />
-                                                    <label for="radio2">Categoria1</label>
-                                                </div>
-                                                <div class="funkyradio-default">
-                                                    <input type="radio" name="radio" id="radio2" />
-                                                    <label for="radio2">Categoria2</label>
-                                                </div>
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="radio" id="radio3" />
-                                                    <label for="radio2">Categoria3</label>
-                                                </div>
-                                                <div class="funkyradio-default">
-                                                    <input type="radio" name="radio" id="radio4" />
-                                                    <label for="radio2">Categoria4</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Data-->
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Data</h2>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                <input type="date" class="form-control" placeholder="Date" aria-describedby="basic-addon1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="padding:2% 30%">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Search</button>
-                            </div>
-                        </form>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Categories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Antiquities</a></li>
+                            <li><a href="#">Clothes</a></li>
+                            <li><a href="#">Decoration</a></li>
+                            <li><a href="#">Indoor</a></li>
+                            <li><a href="#">Jewelery</a></li>
+                            <li><a href="#">Outside</a></li>
+                            <li><a href="#">Others</a></li>
+                            <li><a href="#">Tools</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="createauction.html">Create Auction</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="ticket.html">Tickets</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
                     </div>
-                </div>
-                <!-- /container -->
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" onclick="location.href='Search.html'" class="btn btn-default">Advanced Search</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">My Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="admin.html">Administration Options</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row main">
+                <div class="main-login main-center">
+                    <h2 align="center">Search</h2>
+                    <!-- Title -->
+                    <form class="form-horizontal" style="padding: 3% 25%" method="post" action="#">
+
+                        <!-- Proprietario-->
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Proprietario</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="container">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><span
+                                                    class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" class="form-control" placeholder="Name"
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- rating-->
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Rating</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="container">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><span
+                                                    class="glyphicon glyphicon-star"></span></span>
+                                            <input type="number" min="1" max="5" class="form-control"
+                                                   placeholder="Rating" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- tipos-->
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Tipos de leilao</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="container">
+                                    <div class="form-group">
+                                        <div class="funkyradio">
+                                            <div class="funkyradio-default">
+                                                <input type="radio" name="tipo" id="tipo1"/>
+                                                <label for="radio1">Tipo1</label>
+                                            </div>
+                                            <div class="funkyradio-default">
+                                                <input type="radio" name="tipo" id="tipo2"/>
+                                                <label for="radio1">Tipo2</label>
+                                            </div>
+                                            <div class="funkyradio-success">
+                                                <input type="radio" name="tipo" id="tipo3"/>
+                                                <label for="radio1">Tipo3</label>
+                                            </div>
+                                            <div class="funkyradio-default">
+                                                <input type="radio" name="tipo" id="tipo4"/>
+                                                <label for="radio1">Tipo4</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- categorias-->
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Categorias</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="container">
+                                    <div class="form-group">
+                                        <div class="funkyradio">
+                                            <div class="funkyradio-default">
+                                                <input type="radio" name="radio" id="radio1"/>
+                                                <label for="radio2">Categoria1</label>
+                                            </div>
+                                            <div class="funkyradio-default">
+                                                <input type="radio" name="radio" id="radio2"/>
+                                                <label for="radio2">Categoria2</label>
+                                            </div>
+                                            <div class="funkyradio-success">
+                                                <input type="radio" name="radio" id="radio3"/>
+                                                <label for="radio2">Categoria3</label>
+                                            </div>
+                                            <div class="funkyradio-default">
+                                                <input type="radio" name="radio" id="radio4"/>
+                                                <label for="radio2">Categoria4</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data-->
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Data</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="container">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon2"><span
+                                                    class="glyphicon glyphicon-calendar"></span></span>
+                                            <input type="date" class="form-control" placeholder="Date"
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="padding:2% 30%">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /container -->
+        </div>
     </div>
-
-
-
-
-
+</div>
 
 </body>
-
 </html>
