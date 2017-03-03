@@ -14,95 +14,107 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
-
-<body>
-    <h1></h1>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+</head>
 
+<body>
+<h1></h1>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Static navbar -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-                    <a class="navbar-brand" href="#">Home</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                        <li class="active"><a href="#">FAQ</a></li>
-                        <li><a href="#">Tickets</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                        <button type="submit" class="btn btn-default">Advanced Search</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Sign Up</a></li>
-                        <li><a href="#">Login</a></li>
-
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Home</a>
             </div>
-            <!--/.container-fluid -->
-        </nav>
-
-        <!-- Main component for a primary marketing message or call to action -->
-        <div class="jumbotron">
-		<div class="form-group">
-		<h2 class="text-center">Ticket</h2>
-		<label for="category">Category</label>
-		
-		<select class="form-control form-control-lg">
-  <option>Category X</option>
-  <option>Category Y</option>
-  <option>Category Z</option>
-</select>
-<label for="message">Message</label>
-  <textarea class="form-control" rows="5" id="comment"></textarea>
-
-  <label class="btn btn-default btn-file">
-    Attachments <input type="file" style="display: none;">
-</label>
-  <button type="submit" class="btn btn-default">Send Ticket</button>
-</div>
-
-
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Categories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Antiquities</a></li>
+                            <li><a href="#">Clothes</a></li>
+                            <li><a href="#">Decoration</a></li>
+                            <li><a href="#">Indoor</a></li>
+                            <li><a href="#">Jewelery</a></li>
+                            <li><a href="#">Outside</a></li>
+                            <li><a href="#">Others</a></li>
+                            <li><a href="#">Tools</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="createauction.html">Create Auction</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="ticket.html">Tickets</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Advanced Search</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">My Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="admin.html">Administration Options</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!-- /container -->
+    </nav>
 
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="form-group">
+            <h2 class="text-center">Ticket</h2>
+            <label for="category">Category</label>
+            <select id="category" class="form-control form-control-lg">
+                <option>Report</option>
+                <option>Product</option>
+                <option>Payment</option>
+                <option>Others</option>
+            </select>
 
+            <div class="form-group">
+                <label for="comment">Message</label>
+                <textarea class="form-control" rows="5" id="comment" placeholder="Write your ticket..."></textarea>
+                <label class="btn btn-default btn-file pull-right">
+                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                    <input type="file" style="display: none;">
+                </label>
+            </div>
 
+            <div class="form-group" style="padding:2% 40%">
+                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Send Ticket
+                </button>
+            </div>
+        </div>
+    </div>
 
+</div>
 </body>
 
 </html>
