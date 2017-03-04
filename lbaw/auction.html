@@ -148,7 +148,7 @@
             <div class="col-sm-8">
                 <div class="panel panel-primary">
                     <div class="panel-body" style="min-height: 445px">
-                        <dl class="row col-sm-12 text-center h3">
+                          <dl class="row col-sm-12 text-center h3">
                             <strong>Cute Little Pony</strong>
                         </dl>
                         <dl class="row"></dl>
@@ -174,8 +174,13 @@
                         <dl class="row">
                             <dt class="col-sm-3">Seller Rating</dt>
                             <dd class="col-sm-9">
-                                <input id="rate" class="rating" data-size="xs" data-disabled="true">
+                                <input id="rate" value="4" class="rating-loading" data-size="xs" data-disabled="true">
                             </dd>
+                            <script>
+                                $(document).on('ready', function(){
+                                    $('#rate').rating({displayOnly: true, step: 0.5});
+                                });
+                            </script>
                         </dl>
                         <dl class="row">
                             <dt class="col-sm-2">Description</dt>
