@@ -23,8 +23,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
-    <script src="js/notify.js"></script>
-    <script src="js/notify.min.js"></script>
+    <script src="js/bootstrap-notify.js"></script>
+    <script src="js/bootstrap-notify.min.js"></script>
 
 </head>
 
@@ -257,7 +257,12 @@
 
         <!-- notification container-->
         <div class="container">
-            <input name="notif" type="button" value="Shoow notif" onclick="$.notify('notificaçao')" />
+            <input type="button" value="Show notification" onclick="$.notify({
+	message: 'notification'
+},{
+	type: 'info',
+	delay: 1000
+});">
         </div>
         <!-- /notification container-->
     </div>
