@@ -10,6 +10,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- others -->
+    <link href="css/personal.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +29,6 @@
 <body>
 
 <div class="container">
-
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -44,7 +45,8 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
                            aria-expanded="false">Categories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Antiquities</a></li>
@@ -73,7 +75,8 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
                            aria-expanded="false">My Account<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="profile.html">Profile</a></li>
@@ -87,490 +90,529 @@
         </div>
     </nav>
 
-    <!-- Users -->
-    <div class="row">
-        <div class="col-sm-5">
-            <h3>Users</h3>
-            <div class="panel panel-primary" style="min-height: 400px">
-                <div class="panel panel-default">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation"><a href="#">Admins<span class="badge">4</span></a></li>
-                        <li role="presentation" class="active"><a href="#">Users<span class="badge">206</span></a></li>
-                        <li role="presentation"><a href="#">Banned Users<span class="badge">2</span></a></li>
-                    </ul>
+    <div class="jumbotron">
+        <!-- Users -->
+        <div class="row">
+            <div class="col-sm-5">
+                <h3>Users</h3>
+                <div class="panel panel-primary" style="min-height: 400px">
+                    <div class="panel panel-default">
+                        <ul class="nav nav-pills" role="tablist">
+                            <li role="presentation"><a href="#">Admins<span class="badge">4</span></a></li>
+                            <li role="presentation" class="active"><a href="#">Users<span class="badge">206</span></a>
+                            </li>
+                            <li role="presentation"><a href="#">Banned Users<span class="badge">2</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-body pre-scrollable">
+                            <!-- ADMINS --
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Demote</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="profile.html">lbaw</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="profile.html">sisi</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- USERS -->
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Promote</th>
+                                    <th>Ban</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="profile.html">Xman99</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="profile.html">auctionLover</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="profile.html">mike</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="profile.html">liza</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- BANED --
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Unban</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="profile.html">badguy</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs">
+                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-->
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div class="panel-body pre-scrollable">
-                        <!-- ADMINS --
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Demote</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="profile.html">lbaw</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="profile.html">sisi</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- USERS -->
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Promote</th>
-                                <th>Ban</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="profile.html">Xman99</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-success btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="profile.html">auctionLover</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-success btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="profile.html">mike</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-success btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="profile.html">liza</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-success btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- BANED --
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Unban</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="profile.html">badguy</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-success btn-xs">
-                                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-->
+            </div>
+
+            <!-- Auctions -->
+            <div class="col-sm-7">
+                <h3>Auctions</h3>
+                <div class="panel panel-primary" style="min-height: 400px">
+                    <div class="panel panel-default">
+                        <ul class="nav nav-pills" role="tablist">
+                            <li role="presentation"><a href="#">Programmed<span class="badge">19</span></a></li>
+                            <li role="presentation" class="active"><a href="#">Active<span class="badge">86</span></a>
+                            </li>
+                            <li role="presentation"><a href="#">Concluding<span class="badge">10</span></a></li>
+                            <li role="presentation"><a href="#">Finished<span class="badge">532</span></a></li>
+                            <li role="presentation"><a href="#">Banned<span class="badge">15</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-body pre-scrollable">
+                            <!-- PROGRAMMED --
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Seller</th>
+                                    <th>Starting Date</th>
+                                    <th>Starting Hour</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="auction.html">Dog Toy</a></td>
+                                    <td><a href="profile.html">liza</a></td>
+                                    <td>15/03/2017</td>
+                                    <td>22:00:00</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Chocolate</a></td>
+                                    <td><a href="profile.html">mike</a></td>
+                                    <td>17/03/2017</td>
+                                    <td>14:00:00</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Dan Brown Book</a></td>
+                                    <td><a href="profile.html">mike</a></td>
+                                    <td>13/03/2017</td>
+                                    <td>00:00:00</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- ACTIVE --
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Seller</th>
+                                    <th>Ban</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="auction.html">Amazing Chair!</a></td>
+                                    <td><a href="profile.html">sisi</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Garden Table</a></td>
+                                    <td><a href="profile.html">liza</a></td>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Toys Collection</a></td>
+                                    <td><a href="profile.html">auctionLover</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Red Dress</a></td>
+                                    <td><a href="profile.html">auctionLover</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- CONCLUDING -->
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>State</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="auction.html">Bottle for water</a></td>
+                                    <td>Waiting for <a href="profile.html">seller</a> delivery</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Fireplace</a></td>
+                                    <td>Waiting for <a href="profile.html">buyer</a> reception</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Peach Tree</a></td>
+                                    <td>Waiting for <a href="profile.html">buyer</a> payment</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- Finished --
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Seller</th>
+                                    <th>Concluding Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="auction.html">Aromatic Pillow</a></td>
+                                    <td><a href="profile.html">sisi</a></td>
+                                    <td>18/02/2017</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Wood Table</a></td>
+                                    <td><a href="profile.html">auctionLover</a></td>
+                                    <td>7/2/2017</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="auction.html">Miró Painting</a></td>
+                                    <td><a href="profile.html">auctionLover</a></td>
+                                    <td>1/2/2017</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- BANNED --
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Reason</th>
+                                    <th>Banning Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><a href="auction.html">Aromatic Pillow</a></td>
+                                    <td>Illegal product</td>
+                                    <td>18/02/2017</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Auctions -->
-        <div class="col-sm-7">
-            <h3>Auctions</h3>
-            <div class="panel panel-primary" style="min-height: 400px">
-                <div class="panel panel-default">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation"><a href="#">Programmed<span class="badge">19</span></a></li>
-                        <li role="presentation" class="active"><a href="#">Active<span class="badge">86</span></a></li>
-                        <li role="presentation"><a href="#">Concluding<span class="badge">10</span></a></li>
-                        <li role="presentation"><a href="#">Finished<span class="badge">532</span></a></li>
-                        <li role="presentation"><a href="#">Banned<span class="badge">15</span></a></li>
-                    </ul>
-                </div>
-                <div class="panel-body">
-                    <div class="panel-body pre-scrollable">
-                        <!-- PROGRAMMED --
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Seller</th>
-                                <th>Starting Date</th>
-                                <th>Starting Hour</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="auction.html">Dog Toy</a></td>
-                                <td><a href="profile.html">liza</a></td>
-                                <td>15/03/2017</td>
-                                <td>22:00:00</td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Chocolate</a></td>
-                                <td><a href="profile.html">mike</a></td>
-                                <td>17/03/2017</td>
-                                <td>14:00:00</td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Dan Brown Book</a></td>
-                                <td><a href="profile.html">mike</a></td>
-                                <td>13/03/2017</td>
-                                <td>00:00:00</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- ACTIVE --
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Seller</th>
-                                <th>Ban</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="auction.html">Amazing Chair!</a></td>
-                                <td><a href="profile.html">sisi</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Garden Table</a></td>
-                                <td><a href="profile.html">liza</a></td>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Toys Collection</a></td>
-                                <td><a href="profile.html">auctionLover</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Red Dress</a></td>
-                                <td><a href="profile.html">auctionLover</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- CONCLUDING -->
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>State</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="auction.html">Bottle for water</a></td>
-                                <td>Waiting for <a href="profile.html">seller</a> delivery</td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Fireplace</a></td>
-                                <td>Waiting for <a href="profile.html">buyer</a> reception</td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Peach Tree</a></td>
-                                <td>Waiting for <a href="profile.html">buyer</a> payment</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- Finished --
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Seller</th>
-                                <th>Concluding Date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="auction.html">Aromatic Pillow</a></td>
-                                <td><a href="profile.html">sisi</a></td>
-                                <td>18/02/2017</td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Wood Table</a></td>
-                                <td><a href="profile.html">auctionLover</a></td>
-                                <td>7/2/2017</td>
-                            </tr>
-                            <tr>
-                                <td><a href="auction.html">Miró Painting</a></td>
-                                <td><a href="profile.html">auctionLover</a></td>
-                                <td>1/2/2017</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-- BANNED --
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Reason</th>
-                                <th>Banning Date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="auction.html">Aromatic Pillow</a></td>
-                                <td>Illegal product</td>
-                                <td>18/02/2017</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!-->
+        <!-- Tickets -->
+        <h3>Tickets</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-primary" style="min-height: 400px">
+                    <div class="panel panel-default">
+                        <ul class="nav nav-pills" role="tablist">
+                            <li role="presentation"><a href="#">Reports<span class="badge">5</span></a></li>
+                            <li role="presentation"><a href="#">Product<span class="badge">2</span></a></li>
+                            <li role="presentation"><a href="#">Questions<span class="badge">1</span></a></li>
+                            <li role="presentation" class="active"><a href="#">Others<span class="badge">1</span></a>
+                            </li>
+                            <li role="presentation"><a href="#">Resolved<span class="badge">17</span></a></li>
+                        </ul>
                     </div>
+                    <!-- REPORTS DIV --
+                    <div class="panel-body pre-scrollable">
+                        <table class="table table-responsive pre">
+                            <thead>
+                            <tr>
+                                <th>Ticket</th>
+                                <th>Username</th>
+                                <th>Sent Date</th>
+                                <th>Solved</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="#info">Report Username</a></td>
+                                <td><a href="#profile.html">auctionLover</a></td>
+                                <td>27/02/2017</td>
+                                <td>
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="#info">Report Auction</a></td>
+                                <td><a href="#profile.html">liza</a></td>
+                                <td>05/03/2017</td>
+                                <td>
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- OTHERS/QUESTIONS/PRODUCT DIV -->
+                    <div class="panel-body pre-scrollable">
+                        <table class="table table-responsive pre">
+                            <thead>
+                            <tr>
+                                <th>Ticket</th>
+                                <th>Username</th>
+                                <th>Sent Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="#info">Bug found</a></td>
+                                <td><a href="#profile.html">Xman99</a></td>
+                                <td>03/03/2017</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- RESOLVED DIV --
+                    <div class="panel-body pre-scrollable">
+                        <table class="table table-responsive pre">
+                            <thead>
+                            <tr>
+                                <th>Ticket</th>
+                                <th>Username</th>
+                                <th>Sent Date</th>
+                                <th>Resolved Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="#info">My product is broken</a></td>
+                                <td><a href="#profile.html">mike</a></td>
+                                <td>14/02/2017</td>
+                                <td>21/02/2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#info">Report Username</a></td>
+                                <td><a href="#profile.html">sisi</a></td>
+                                <td>5/02/2017</td>
+                                <td>9/02/2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#info">Stupid Question</a></td>
+                                <td><a href="#profile.html">auctionLover</a></td>
+                                <td>31/01/2017</td>
+                                <td>2/02/2017</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-->
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Tickets -->
-    <h3>Tickets</h3>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="panel panel-primary" style="min-height: 400px">
-                <div class="panel panel-default">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation"><a href="#">Reports<span class="badge">5</span></a></li>
-                        <li role="presentation"><a href="#">Product<span class="badge">2</span></a></li>
-                        <li role="presentation"><a href="#">Questions<span class="badge">1</span></a></li>
-                        <li role="presentation" class="active"><a href="#">Others<span class="badge">1</span></a></li>
-                        <li role="presentation"><a href="#">Resolved<span class="badge">17</span></a></li>
-                    </ul>
-                </div>
-                <!-- REPORTS DIV --
-                <div class="panel-body pre-scrollable">
-                    <table class="table table-responsive pre">
-                        <thead>
-                        <tr>
-                            <th>Ticket</th>
-                            <th>Username</th>
-                            <th>Sent Date</th>
-                            <th>Solved</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><a href="#info">Report Username</a></td>
-                            <td><a href="#profile.html">auctionLover</a></td>
-                            <td>27/02/2017</td>
-                            <td>
-                                <button type="submit" class="btn btn-success btn-sm">
-                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#info">Report Auction</a></td>
-                            <td><a href="#profile.html">liza</a></td>
-                            <td>05/03/2017</td>
-                            <td>
-                                <button type="submit" class="btn btn-success btn-sm">
-                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- OTHERS/QUESTIONS/PRODUCT DIV -->
-                <div class="panel-body pre-scrollable">
-                    <table class="table table-responsive pre">
-                        <thead>
-                        <tr>
-                            <th>Ticket</th>
-                            <th>Username</th>
-                            <th>Sent Date</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><a href="#info">Bug found</a></td>
-                            <td><a href="#profile.html">Xman99</a></td>
-                            <td>03/03/2017</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- RESOLVED DIV --
-                <div class="panel-body pre-scrollable">
-                    <table class="table table-responsive pre">
-                        <thead>
-                        <tr>
-                            <th>Ticket</th>
-                            <th>Username</th>
-                            <th>Sent Date</th>
-                            <th>Resolved Date</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><a href="#info">My product is broken</a></td>
-                            <td><a href="#profile.html">mike</a></td>
-                            <td>14/02/2017</td>
-                            <td>21/02/2017</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#info">Report Username</a></td>
-                            <td><a href="#profile.html">sisi</a></td>
-                            <td>5/02/2017</td>
-                            <td>9/02/2017</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#info">Stupid Question</a></td>
-                            <td><a href="#profile.html">auctionLover</a></td>
-                            <td>31/01/2017</td>
-                            <td>2/02/2017</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-->
-            </div>
-        </div>
-        <!-- Example 1 -->
-        <div class="col-sm-6">
-            <div class="panel panel-primary" id="info">
-                <div class="panel-heading">
-                    Bug found
-                </div>
-                <div class="panel panel-default">
+            <!-- Example 1 -->
+            <div class="col-sm-6">
+                <div class="panel panel-primary" id="info">
                     <div class="panel-heading">
-                        <strong>Xman99</strong>
-                        Hi! Today I was navigating by your site and I found out that my "FAQ" section was not
-                        available!!
-                        I'm writing to you because I don't know if your section has some problem our just don't exist...
-                        Thanks by your time.
+                        Bug found
                     </div>
-                    <div class="panel-body pre-scrollable">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <strong>Admin</strong>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Xman99</strong>
+                            Hi! Today I was navigating by your site and I found out that my "FAQ" section was not
+                            available!!
+                            I'm writing to you because I don't know if your section has some problem our just don't
+                            exist...
+                            Thanks by your time.
+                        </div>
+                        <div class="panel-body pre-scrollable">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>Admin</strong>
+                                </div>
+                                <div class="panel-body">
+                                    Hi! Thanks by your time. It was our fault, the problem will be solved soon.
+                                </div>
                             </div>
-                            <div class="panel-body">
-                                Hi! Thanks by your time. It was our fault, the problem will be solved soon.
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>Xman99</strong>
+                                </div>
+                                <div class="panel-body">
+                                    ok :)
+                                </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <strong>Xman99</strong>
-                            </div>
-                            <div class="panel-body">
-                                ok :)
-                            </div>
+                        <div class="panel-footer" style="min-height: 120px">
+                            <form>
+                                <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
+                                <button type="submit" class="btn btn-success pull-right">
+                                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                </button>
+                                <label class="btn btn-success btn-file pull-right">
+                                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                    <input type="file" style="display: none;">
+                                </label>
+                            </form>
                         </div>
-                    </div>
-                    <div class="panel-footer" style="min-height: 120px">
-                        <form>
-                            <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
-                            <button type="submit" class="btn btn-success pull-right">
-                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                            </button>
-                            <label class="btn btn-success btn-file pull-right">
-                                <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                                <input type="file" style="display: none;">
-                            </label>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        
-    </div>
-	
-	<!-- Statistics -->
-	 <h3>Statistics</h3>
-    <div class="row">
-        <div class="col-sm-14">
-            <div class="panel panel-primary" style="min-height: 400px">
-                <div class="panel panel-default">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation" class="active"><a href="#">Auctions<span class="badge"></span></a></li>
-                        <li role="presentation"><a href="#">Users<span class="badge"></span></a></li>
-						<li role="presentation"><a href="#">Tickets<span class="badge"></span></a></li>
-                    </ul>
-                </div>
-				<!-- Auctions -->
-				<div class="thumbnail" style="border: none">
-					<img src="http://canvasjs.com/wp-content/uploads/2013/04/html5_live_chart.jpg" alt="...">
-				</div>
-				<!-- -->
-            </div>
-        </div>
-		
-	
-	<!-- Footer -->
-	<div class="navbar-default" style="min-height: 100%">
-		<div class="container clear-top" style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
-			<label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
-		</div>
-	</div>
-	<footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
-	
 
-	
+        <!-- Statistics -->
+        <h3>Statistics</h3>
+        <!--
+        <div class="row">
+            <div class="col-sm-14">
+                <div class="panel panel-primary" style="min-height: 400px">
+                    <div class="panel panel-default">
+                        <ul class="nav nav-pills" role="tablist">
+                            <li role="presentation" class="active"><a href="#">Auctions<span class="badge"></span></a>
+                            </li>
+                            <li role="presentation"><a href="#">Users<span class="badge"></span></a></li>
+                            <li role="presentation"><a href="#">Tickets<span class="badge"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="thumbnail" style="border: none">
+                        <img src="http://canvasjs.com/wp-content/uploads/2013/04/html5_live_chart.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <!--<div class="panel panel-primary" style="min-height: 400px">-->
+            <div class="row center-block">
+                <div class="col-lg-2 col-sm-6">
+                    <div class="circle-tile ">
+                      <div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div>
+                        <div class="circle-tile-content dark-blue">
+                            <div class="circle-tile-description text-faded">Total Users</div>
+                            <div class="circle-tile-number text-faded ">86</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-6">
+                    <div class="circle-tile ">
+                        <div class="circle-tile-heading red"><i class="fa fa-bullhorn fa-fw fa-3x"></i></div>
+                        <div class="circle-tile-content red">
+                            <div class="circle-tile-description text-faded">Total Auctions</div>
+                            <div class="circle-tile-number text-faded ">163</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-6">
+                    <div class="circle-tile ">
+                        <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                        <div class="circle-tile-content green">
+                            <div class="circle-tile-description text-faded">Money Collected</div>
+                            <div class="circle-tile-number text-faded ">32€</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--</div>-->
+
+        <!-- Footer -->
+        <div class="navbar-default" style="min-height: 100%">
+            <div class="container clear-top"
+                 style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
+                <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
+            </div>
+        </div>
+        <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
+    </div>
+
 </div>
 </body>
 </html>
