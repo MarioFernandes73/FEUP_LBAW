@@ -80,7 +80,9 @@
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="button" class="btn btn-default">Submit</button>
-                    <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced Search</button>
+                    <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
+                        Search
+                    </button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -98,7 +100,6 @@
         </div>
     </nav>
 
-    <!-- REGISTER -->
     <div class="jumbotron">
         <div class="row main">
             <div class="main-login main-center">
@@ -109,7 +110,9 @@
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Name</label>
                         <div class="input-group" id="name">
-                            <span class="input-group-addon">@</span>
+                            <span class="input-group-addon">
+                                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                            </span>
                             <input type="text" class="form-control" placeholder="User's current name"
                                    aria-describedby="basic-addon1">
                         </div>
@@ -118,7 +121,9 @@
                     <div class="form-group">
                         <label for="email" class="cols-sm-2 control-label">Email</label>
                         <div class="input-group" id="email">
-                            <span class="input-group-addon">@</span>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </span>
                             <input type="text" class="form-control" placeholder="User's current email"
                                    aria-describedby="basic-addon1">
                         </div>
@@ -127,7 +132,9 @@
                     <div class="form-group">
                         <label for="pass" class="cols-sm-2 control-label">Password</label>
                         <div class="input-group" id="pass">
-                            <span class="input-group-addon">@</span>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
                             <input type="text" class="form-control" placeholder="User's current password"
                                    aria-describedby="basic-addon1">
                         </div>
@@ -136,7 +143,9 @@
                     <div class="form-group">
                         <label for="pass2" class="cols-sm-2 control-label">Confirm Password</label>
                         <div class="input-group" id="pass2">
-                            <span class="input-group-addon">@</span>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
                             <input type="text" class="form-control" placeholder="User's current Password"
                                    aria-describedby="basic-addon1">
                         </div>
@@ -145,17 +154,28 @@
                     <div class="form-group">
                         <label for="number" class="cols-sm-2 control-label">Phone Number</label>
                         <div class="input-group" id="number">
-                            <span class="input-group-addon">@</span>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-earphone"></span>
+                            </span>
                             <input type="tel" class="form-control" placeholder="User's current number"
                                    aria-describedby="basic-addon1">
                         </div>
                     </div>
 
-                    <div class="form-group" style="padding: 1em 3em">
-						<button type="submit" style="min-height: 10px; font-size: 3vmin" class="btn btn-primary btn-lg btn-block login-button">
-						Edit
-						</button>
-					</div>
+                    <div class="form-group row" style="padding: 1em 3em">
+                        <div class="col-lg-6">
+                            <button type="submit" style="min-height: 10px; font-size: 3vmin"
+                                    class="btn btn-primary btn-lg btn-block">
+                                Edit
+                            </button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="submit" style="min-height: 10px; font-size: 3vmin"
+                                    class="btn btn-danger btn-lg btn-block">
+                                Delete account
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
