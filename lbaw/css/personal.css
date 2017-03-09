@@ -113,3 +113,53 @@
 .text-faded {
     color: rgba(255, 255, 255, 0.7);
 }
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later*/
+.sidebar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+        position: fixed;
+        left: 15px;
+        top: -17px;
+        z-index: 1000;
+        display: block;
+        padding-top: 17px;
+        padding-bottom: 400px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
+}
+
+Sidebar navigation
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+
+
+.sub-header {
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
