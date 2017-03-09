@@ -32,6 +32,10 @@
     <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
     <script src="js/star-rating.js" type="text/javascript"></script>
 
+    <!-- notification -->
+    <script src="js/bootstrap-notify.js"></script>
+    <script src="js/bootstrap-notify.min.js"></script>
+
 </head>
 
 <body>
@@ -386,5 +390,15 @@
     <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
 
 </div>
+<!-- notification container-->
+<div class="container">
+    <input type="button" value="Show notification" onclick="$.notify({
+	message: 'Payment successful!'
+},{
+	type: 'info',
+	delay: 8000
+});">
+</div>
+
 </body>
 </html>
