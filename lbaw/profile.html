@@ -29,153 +29,153 @@
 
     <!-- Rating -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
-    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
     <script src="js/star-rating.js" type="text/javascript"></script>
 
 </head>
 
 <body>
-<h1></h1>
-<div class="container">
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
+    <h1></h1>
+    <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Home</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Categories<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Antiquities</a></li>
-                            <li><a href="#">Clothes</a></li>
-                            <li><a href="#">Decoration</a></li>
-                            <li><a href="#">Indoor</a></li>
-                            <li><a href="#">Jewelery</a></li>
-                            <li><a href="#">Outside</a></li>
-                            <li><a href="#">Others</a></li>
-                            <li><a href="#">Tools</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="createauction.html">Create Auction</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="ticket.html">Tickets</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="button" class="btn btn-default">Submit</button>
-                    <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
+                    <a class="navbar-brand" href="index.html">Home</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Antiquities</a></li>
+                                <li><a href="#">Clothes</a></li>
+                                <li><a href="#">Decoration</a></li>
+                                <li><a href="#">Indoor</a></li>
+                                <li><a href="#">Jewelery</a></li>
+                                <li><a href="#">Outside</a></li>
+                                <li><a href="#">Others</a></li>
+                                <li><a href="#">Tools</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="createauction.html">Create Auction</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="ticket.html">Tickets</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="button" class="btn btn-default">Submit</button>
+                        <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
                         Search
                     </button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">My Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="admin.html">Administration Options</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- MAIN INTERACTION -->
-    <div class="jumbotron">
-
-        <!-- fisrt row -->
-        <div class="row" style="height: auto">
-            <!-- user profile -->
-            <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">My Profile</div>
-                    <div class="panel-body" style="height: 320px">
-                        <table class="table responsive">
-                            <tbody>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-user" aria-hidden="true"/></td>
-                                <td>lbaw</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-briefcase" aria-hidden="true"/></td>
-                                <td>Catarina Inês Lázaro Mário</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-calendar" aria-hidden="true"/></td>
-                                <td>21</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-envelope" aria-hidden="true"/></td>
-                                <td>lbaw@fe.up.pt</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-earphone" aria-hidden="true"/></td>
-                                <td>987654321</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <button type="button" onclick="location.href='editaccount.html'" class="btn btn-default">Edit
-                            Account
-                        </button>
-                    </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="admin.html">Administration Options</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </nav>
 
-            <!-- statistics -->
-            <div class="col-sm-8">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Statistics</div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-9">
-                            <div class="thumbnail" style="border: none">
-                                <img src="assets/userStats.PNG" alt="statistics">
-                            </div>
-                            </div>
-                            <div class="col-sm-3">
-                            <div class="circle-tile">
-                                <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
-                                <div class="circle-tile-content green">
-                                    <div class="circle-tile-description text-faded">Balance</div>
-                                    <div class="circle-tile-number text-faded ">-229€</div>
+        <!-- MAIN INTERACTION -->
+        <div class="jumbotron">
+
+            <!-- fisrt row -->
+            <div class="row" style="height: auto">
+
+                <!-- statistics -->
+                <div class="col-sm-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Statistics</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="thumbnail" style="border: none">
+                                        <img src="assets/userStats.PNG" alt="statistics">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="col-sm-3">
+                                    <div class="circle-tile">
+                                        <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                                        <div class="circle-tile-content blue">
+                                            <div class="circle-tile-description text-faded">Balance Earned</div>
+                                            <div class="circle-tile-number text-faded ">129€</div>
+                                        </div>
+                                    </div>
+                                    <div class="circle-tile">
+                                        <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                                        <div class="circle-tile-content blue">
+                                            <div class="circle-tile-description text-faded">Balance spented</div>
+                                            <div class="circle-tile-number text-faded ">350€</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- navs -->
-
-        <div class="panel panel-primary" style="min-height: 400px">
-            <div class="panel panel-default">
-                <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" ><a href="#">Auctions Followed<span class="badge">4</span></a></li>
-                    <li role="presentation" ><a href="#">Auctions Concluded<span
+            <!-- navs -->
+            <div class="panel panel-primary" style="min-height: 400px">
+                <div class="panel panel-default">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation" class="active"><a href="#">My Profile</a></li>
+                        <li role="presentation"><a href="#">Auctions Followed<span class="badge">4</span></a></li>
+                        <li role="presentation"><a href="#">Auctions Concluded<span
                             class="badge">99</span></a></li>
-                    <li role="presentation" ><a href="#">Auctions Won<span class="badge">0</span></a></li>
-                    <li role="presentation" class="active"><a href="#">Tickets<span class="badge">2</span></a></li>
-                </ul>
-            </div>
-            <!-- AUCTIONS FOLLOWED --
+                        <li role="presentation"><a href="#">Auctions Won<span class="badge">0</span></a></li>
+                        <li role="presentation"><a href="#">Tickets<span class="badge">2</span></a></li>
+                    </ul>
+                </div>
+                <!-- Profile -->
+                <div class="panel-body pre-scrollable" style="min-height: 400px">
+                    <table class="table responsive">
+                        <thead>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-user" aria-hidden="true" /></td>
+                                <td>lbaw</td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-briefcase" aria-hidden="true" /></td>
+                                <td>Catarina Inês Lázaro Mário</td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-calendar" aria-hidden="true" /></td>
+                                <td>21</td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-envelope" aria-hidden="true" /></td>
+                                <td>lbaw@fe.up.pt</td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-earphone" aria-hidden="true" /></td>
+                                <td>987654321</td>
+                            </tr>
+                            </tbody>
+                    </table>
+                    <button type="button" onclick="location.href='editaccount.html'" class="btn btn-default">Edit
+                            Account
+                        </button>
+                </div>
+
+                <!-- AUCTIONS FOLLOWED --
             <div class="panel-body pre-scrollable" style="min-height: 400px">
                 <table class="table">
                     <thead>
@@ -204,6 +204,7 @@
                     </tbody>
                 </table>
             </div>
+            
             <!-- AUCTIONS CONCLUDED --
             <div class="panel-body pre-scrollable" style="min-height: 400px">
                 <table class="table">
@@ -283,6 +284,7 @@
                     });
                 </script>
             </div>
+            
             <!-- AUCTIONS WON --
             <div class="panel-body pre-scrollable"  style="min-height: 400px">
                 <table class="table">
@@ -307,84 +309,83 @@
                     </tbody>
                 </table>
             </div>
-            <!-- TICKETS -->
-            <div class="panel-body pre-scrollable"  style="min-height: 400px">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Identification</th>
-                        <th>State</th>
-                        <th>My ticket is solved</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><a href="#info">Product Broken</a></td>
-                        <td>Wating response</td>
-                        <td>
-                        <button type="submit" class="btn btn-success btn-xs center-block">
+            
+            <!-- TICKETS --
+                <div class="panel-body pre-scrollable" style="min-height: 400px">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Identification</th>
+                                <th>State</th>
+                                <th>My ticket is solved</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#info">Product Broken</a></td>
+                                <td>Wating response</td>
+                                <td>
+                                    <button type="submit" class="btn btn-success btn-xs center-block">
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#info">Can I have 2 e-mail adresses?</a></td>
-                        <td colspan="2">Solved</td>
-                    </tr>
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="#info">Can I have 2 e-mail adresses?</a></td>
+                                <td colspan="2">Solved</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                -->
+            </div>
+
+            <!-- Um ticket : so abre quando clicamos no seu titulo -->
+            <div class="panel panel-primary" id="info">
+                <div class="panel-heading">
+                    Product Broken
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>lbaw</strong> My delivery came broken but the seller says that the product was not broken before he sent it. What can I do know? May I have my money back?
+                    </div>
+                    <div class="panel-body pre-scrollable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Admin</strong>
+                            </div>
+                            <div class="panel-body">
+                                Hi! Can you take a picture to the product?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="min-height: 120px;">
+                        <form>
+                            <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
+                            <button style="margin-top: 5px;" type="submit" class="btn btn-success pull-right">
+                            <span class="glyphicon glyphicon-send" aria-hidden="true" ></span>
+                        </button>
+                            <label style="margin: 5px;" class="btn btn-success btn-file pull-right">
+                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                            <input type="file" style="display: none;">
+                        </label>
+                        </form>
+                    </div>
+                </div>
             </div>
             <!-->
         </div>
 
-        <!-- Um ticket : so abre quando clicamos no seu titulo -->
-        <div class="panel panel-primary" id="info">
-            <div class="panel-heading">
-                Product Broken
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>lbaw</strong>
-                    My delivery came broken but the seller says that the product was not broken before he sent it.
-                    What can I do know? May I have my money back?
-                </div>
-                <div class="panel-body pre-scrollable">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <strong>Admin</strong>
-                        </div>
-                        <div class="panel-body">
-                            Hi! Can you take a picture to the product?
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer" style="min-height: 120px">
-                    <form>
-                        <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
-                        <button type="submit" class="btn btn-success pull-right">
-                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                        </button>
-                        <label class="btn btn-success btn-file pull-right">
-                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                            <input type="file" style="display: none;">
-                        </label>
-                    </form>
-                </div>
+
+        <!-- Footer -->
+        <div class="navbar-default" style="min-height: 100%">
+            <div class="container clear-top" style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
+                <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
             </div>
         </div>
-        <!-->
+        <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
+
     </div>
-
-
-    <!-- Footer -->
-    <div class="navbar-default" style="min-height: 100%">
-        <div class="container clear-top"
-             style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
-            <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
-        </div>
-    </div>
-    <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
-
-</div>
 </body>
+
 </html>
