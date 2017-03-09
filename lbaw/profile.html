@@ -99,52 +99,22 @@
             <!-- fisrt row -->
             <div class="row" style="height: auto">
 
-                <!-- statistics -->
-                <div class="col-sm-8">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Statistics</div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-9">
-                                    <div class="thumbnail" style="border: none">
-                                        <img src="assets/userStats.PNG" alt="statistics">
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="circle-tile">
-                                        <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
-                                        <div class="circle-tile-content blue">
-                                            <div class="circle-tile-description text-faded">Balance Earned</div>
-                                            <div class="circle-tile-number text-faded ">129€</div>
-                                        </div>
-                                    </div>
-                                    <div class="circle-tile">
-                                        <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
-                                        <div class="circle-tile-content blue">
-                                            <div class="circle-tile-description text-faded">Balance spented</div>
-                                            <div class="circle-tile-number text-faded ">350€</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- navs -->
             <div class="panel panel-primary" style="min-height: 400px">
                 <div class="panel panel-default">
                     <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation" class="active"><a href="#">My Profile</a></li>
+                        <li role="presentation"><a href="#">My Profile</a></li>
                         <li role="presentation"><a href="#">Auctions Followed<span class="badge">4</span></a></li>
                         <li role="presentation"><a href="#">Auctions Concluded<span
                             class="badge">99</span></a></li>
                         <li role="presentation"><a href="#">Auctions Won<span class="badge">0</span></a></li>
                         <li role="presentation"><a href="#">Tickets<span class="badge">2</span></a></li>
+                        <li role="presentation" class="active"><a href="#">Statistics</a></li>
                     </ul>
                 </div>
-                <!-- Profile -->
+                <!-- Profile --
                 <div class="panel-body pre-scrollable" style="min-height: 400px">
                     <table class="table responsive">
                         <thead>
@@ -173,7 +143,7 @@
                     <button type="button" onclick="location.href='editaccount.html'" class="btn btn-default">Edit
                             Account
                         </button>
-                </div>
+                </div>-->
 
                 <!-- AUCTIONS FOLLOWED --
             <div class="panel-body pre-scrollable" style="min-height: 400px">
@@ -203,9 +173,9 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
-            
-            <!-- AUCTIONS CONCLUDED --
+            </div>-->
+
+                <!-- AUCTIONS CONCLUDED --
             <div class="panel-body pre-scrollable" style="min-height: 400px">
                 <table class="table">
                     <thead>
@@ -283,9 +253,9 @@
                         $('.rate').rating({showCaption: false, showClear: false});
                     });
                 </script>
-            </div>
-            
-            <!-- AUCTIONS WON --
+            </div>-->
+
+                <!-- AUCTIONS WON --
             <div class="panel-body pre-scrollable"  style="min-height: 400px">
                 <table class="table">
                     <thead>
@@ -308,9 +278,9 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
-            
-            <!-- TICKETS --
+            </div>-->
+
+                <!-- TICKETS --
                 <div class="panel-body pre-scrollable" style="min-height: 400px">
                     <table class="table">
                         <thead>
@@ -336,56 +306,85 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>-->
+
+
+                <!-- Statistics -->
+                <div class="panel-body pre-scrollable" style="min-height: 400px">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="thumbnail" style="border: none">
+                                    <img src="assets/userStats.PNG" alt="statistics">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="circle-tile">
+                                    <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                                    <div class="circle-tile-content blue">
+                                        <div class="circle-tile-description text-faded">Balance Earn</div>
+                                        <div class="circle-tile-number text-faded ">129€</div>
+                                    </div>
+                                </div>
+                                <div class="circle-tile">
+                                    <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                                    <div class="circle-tile-content blue">
+                                        <div class="circle-tile-description text-faded">Balance spent</div>
+                                        <div class="circle-tile-number text-faded ">350€</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Um ticket : so abre quando clicamos no seu titulo --
+                <div class="panel panel-primary" id="info">
+                    <div class="panel-heading">
+                        Product Broken
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>lbaw</strong> My delivery came broken but the seller says that the product was not broken before he sent it. What can I do know? May I have my money back?
+                        </div>
+                        <div class="panel-body pre-scrollable">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>Admin</strong>
+                                </div>
+                                <div class="panel-body">
+                                    Hi! Can you take a picture to the product?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer" style="min-height: 120px;">
+                            <form>
+                                <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
+                                <button style="margin-top: 5px;" type="submit" class="btn btn-success pull-right">
+                            <span class="glyphicon glyphicon-send" aria-hidden="true" ></span>
+                        </button>
+                                <label style="margin: 5px;" class="btn btn-success btn-file pull-right">
+                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                            <input type="file" style="display: none;">
+                        </label>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 -->
             </div>
 
-            <!-- Um ticket : so abre quando clicamos no seu titulo -->
-            <div class="panel panel-primary" id="info">
-                <div class="panel-heading">
-                    Product Broken
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>lbaw</strong> My delivery came broken but the seller says that the product was not broken before he sent it. What can I do know? May I have my money back?
-                    </div>
-                    <div class="panel-body pre-scrollable">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <strong>Admin</strong>
-                            </div>
-                            <div class="panel-body">
-                                Hi! Can you take a picture to the product?
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-footer" style="min-height: 120px;">
-                        <form>
-                            <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
-                            <button style="margin-top: 5px;" type="submit" class="btn btn-success pull-right">
-                            <span class="glyphicon glyphicon-send" aria-hidden="true" ></span>
-                        </button>
-                            <label style="margin: 5px;" class="btn btn-success btn-file pull-right">
-                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                            <input type="file" style="display: none;">
-                        </label>
-                        </form>
-                    </div>
+
+            <!-- Footer -->
+            <div class="navbar-default" style="min-height: 100%">
+                <div class="container clear-top" style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
+                    <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
                 </div>
             </div>
-            <!-->
+            <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
+
         </div>
-
-
-        <!-- Footer -->
-        <div class="navbar-default" style="min-height: 100%">
-            <div class="container clear-top" style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
-                <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
-            </div>
-        </div>
-        <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
-
-    </div>
 </body>
 
 </html>
