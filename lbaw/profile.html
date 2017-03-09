@@ -13,7 +13,8 @@
     <!-- others -->
     <link href="css/personal.css" rel="stylesheet">
     <!-- font awesome -->
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,10 +33,12 @@
     <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
     <script src="js/star-rating.js" type="text/javascript"></script>
 
+    <script src="js/bootstrap-notify.js"></script>
+    <script src="js/bootstrap-notify.min.js"></script>
+
 </head>
 
 <body>
-<h1></h1>
 <div class="container">
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
@@ -99,81 +102,48 @@
     <!-- MAIN INTERACTION -->
     <div class="jumbotron">
 
-        <!-- fisrt row -->
-        <div class="row" style="height: auto">
-            <!-- user profile -->
-            <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">My Profile</div>
-                    <div class="panel-body" style="height: 320px">
-                        <table class="table responsive">
-                            <tbody>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-user" aria-hidden="true"/></td>
-                                <td>lbaw</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-briefcase" aria-hidden="true"/></td>
-                                <td>Catarina Inês Lázaro Mário</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-calendar" aria-hidden="true"/></td>
-                                <td>21</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-envelope" aria-hidden="true"/></td>
-                                <td>lbaw@fe.up.pt</td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-earphone" aria-hidden="true"/></td>
-                                <td>987654321</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <button type="button" onclick="location.href='editaccount.html'" class="btn btn-default">Edit
-                            Account
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- statistics -->
-            <div class="col-sm-8">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Statistics</div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-9">
-                            <div class="thumbnail" style="border: none">
-                                <img src="assets/userStats.PNG" alt="statistics">
-                            </div>
-                            </div>
-                            <div class="col-sm-3">
-                            <div class="circle-tile">
-                                <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
-                                <div class="circle-tile-content green">
-                                    <div class="circle-tile-description text-faded">Balance</div>
-                                    <div class="circle-tile-number text-faded ">-229€</div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- navs -->
-
         <div class="panel panel-primary" style="min-height: 400px">
             <div class="panel panel-default">
                 <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" ><a href="#">Auctions Followed<span class="badge">4</span></a></li>
-                    <li role="presentation" ><a href="#">Auctions Concluded<span
+                    <li role="presentation"><a href="#">My Profile</a></li>
+                    <li role="presentation"><a href="#">Auctions Followed<span class="badge">4</span></a></li>
+                    <li role="presentation" class="active"><a href="#">In conclusion<span
                             class="badge">99</span></a></li>
-                    <li role="presentation" ><a href="#">Auctions Won<span class="badge">0</span></a></li>
-                    <li role="presentation" class="active"><a href="#">Tickets<span class="badge">2</span></a></li>
+                    <li role="presentation"><a href="#">History<span class="badge">0</span></a></li>
+                    <li role="presentation"><a href="#">Tickets<span class="badge">2</span></a></li>
+                    <li role="presentation"><a href="#">Statistics</a></li>
                 </ul>
+            </div>
+            <!-- Profile --
+            <div class="panel-body pre-scrollable" style="min-height: 400px">
+                <table class="table responsive">
+                    <thead>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-user" aria-hidden="true" /></td>
+                            <td>lbaw</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-briefcase" aria-hidden="true" /></td>
+                            <td>Catarina Inês Lázaro Mário</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-calendar" aria-hidden="true" /></td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-envelope" aria-hidden="true" /></td>
+                            <td>lbaw@fe.up.pt</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-earphone" aria-hidden="true" /></td>
+                            <td>987654321</td>
+                        </tr>
+                        </tbody>
+                </table>
+                <button type="button" onclick="location.href='editaccount.html'" class="btn btn-default">Edit
+                        Account
+                    </button>
             </div>
             <!-- AUCTIONS FOLLOWED --
             <div class="panel-body pre-scrollable" style="min-height: 400px">
@@ -204,7 +174,7 @@
                     </tbody>
                 </table>
             </div>
-            <!-- AUCTIONS CONCLUDED --
+            <!-- AUCTIONS CONCLUDED -->
             <div class="panel-body pre-scrollable" style="min-height: 400px">
                 <table class="table">
                     <thead>
@@ -284,7 +254,7 @@
                 </script>
             </div>
             <!-- AUCTIONS WON --
-            <div class="panel-body pre-scrollable"  style="min-height: 400px">
+            <div class="panel-body pre-scrollable" style="min-height: 400px">
                 <table class="table">
                     <thead>
                     <tr>
@@ -307,8 +277,8 @@
                     </tbody>
                 </table>
             </div>
-            <!-- TICKETS -->
-            <div class="panel-body pre-scrollable"  style="min-height: 400px">
+            <!-- TICKETS --
+            <div class="panel-body pre-scrollable" style="min-height: 400px">
                 <table class="table">
                     <thead>
                     <tr>
@@ -322,9 +292,9 @@
                         <td><a href="#info">Product Broken</a></td>
                         <td>Wating response</td>
                         <td>
-                        <button type="submit" class="btn btn-success btn-xs center-block">
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                        </button>
+                            <button type="submit" class="btn btn-success btn-xs center-block">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </button>
                         </td>
                     </tr>
                     <tr>
@@ -334,57 +304,90 @@
                     </tbody>
                 </table>
             </div>
-            <!-->
-        </div>
-
-        <!-- Um ticket : so abre quando clicamos no seu titulo -->
-        <div class="panel panel-primary" id="info">
-            <div class="panel-heading">
-                Product Broken
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>lbaw</strong>
-                    My delivery came broken but the seller says that the product was not broken before he sent it.
-                    What can I do know? May I have my money back?
-                </div>
-                <div class="panel-body pre-scrollable">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <strong>Admin</strong>
+            <!-- Statistics --
+            <div class="panel-body pre-scrollable" style="min-height: 400px">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="thumbnail" style="border: none">
+                                <img src="assets/userStats.PNG" alt="statistics">
+                            </div>
                         </div>
-                        <div class="panel-body">
-                            Hi! Can you take a picture to the product?
+                        <div class="col-sm-3">
+                            <div class="circle-tile">
+                                <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                                <div class="circle-tile-content blue">
+                                    <div class="circle-tile-description text-faded">Balance Earn</div>
+                                    <div class="circle-tile-number text-faded ">129€</div>
+                                </div>
+                            </div>
+                            <div class="circle-tile">
+                                <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                                <div class="circle-tile-content blue">
+                                    <div class="circle-tile-description text-faded">Balance spent</div>
+                                    <div class="circle-tile-number text-faded ">350€</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer" style="min-height: 120px">
-                    <form>
-                        <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
-                        <button type="submit" class="btn btn-success pull-right">
-                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                        </button>
-                        <label class="btn btn-success btn-file pull-right">
-                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                            <input type="file" style="display: none;">
-                        </label>
-                    </form>
+            </div>
+            <!-- Um ticket : so abre quando clicamos no seu titulo --
+            <div class="panel panel-primary" id="info">
+                <div class="panel-heading">
+                    Product Broken
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>lbaw</strong> My delivery came broken but the seller says that the product was not
+                        broken before he sent it. What can I do know? May I have my money back?
+                    </div>
+                    <div class="panel-body pre-scrollable">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Admin</strong>
+                            </div>
+                            <div class="panel-body">
+                                Hi! Can you take a picture to the product?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="min-height: 120px;">
+                        <form>
+                            <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
+                            <button style="margin-top: 5px;" type="submit" class="btn btn-success pull-right">
+                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                            </button>
+                            <label style="margin: 5px;" class="btn btn-success btn-file pull-right">
+                                <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                <input type="file" style="display: none;">
+                            </label>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <!-->
         </div>
-        <!-->
+
+        <!-- Footer -->
+        <div class="navbar-default" style="min-height: 100%">
+            <div class="container clear-top"
+                 style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
+                <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
+            </div>
+        </div>
+        <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
     </div>
 
-
-    <!-- Footer -->
-    <div class="navbar-default" style="min-height: 100%">
-        <div class="container clear-top"
-             style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
-            <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
-        </div>
+    <!-- notification container-->
+    <div class="container">
+        <input type="button" value="Show notification" onclick="$.notify({
+	message: 'Payment successful!'
+},{
+	type: 'info',
+	delay: 8000
+});">
     </div>
-    <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
-
 </div>
 </body>
 </html>

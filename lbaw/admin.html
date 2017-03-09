@@ -31,85 +31,80 @@
 
 <body>
 
-<div class="container">
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
+    <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Home</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true"
-                           aria-expanded="false">Categories<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Antiquities</a></li>
-                            <li><a href="#">Clothes</a></li>
-                            <li><a href="#">Decoration</a></li>
-                            <li><a href="#">Indoor</a></li>
-                            <li><a href="#">Jewelery</a></li>
-                            <li><a href="#">Outside</a></li>
-                            <li><a href="#">Others</a></li>
-                            <li><a href="#">Tools</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="createauction.html">Create Auction</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="ticket.html">Tickets</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="button" class="btn btn-default">Submit</button>
-                    <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
+                    <a class="navbar-brand" href="index.html">Home</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Antiquities</a></li>
+                                <li><a href="#">Clothes</a></li>
+                                <li><a href="#">Decoration</a></li>
+                                <li><a href="#">Indoor</a></li>
+                                <li><a href="#">Jewelery</a></li>
+                                <li><a href="#">Outside</a></li>
+                                <li><a href="#">Others</a></li>
+                                <li><a href="#">Tools</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="createauction.html">Create Auction</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="ticket.html">Tickets</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="button" class="btn btn-default">Submit</button>
+                        <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
                         Search
                     </button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true"
-                           aria-expanded="false">My Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="admin.html">Administration Options</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="admin.html">Administration Options</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="jumbotron">
-        <!-- Users -->
-        <div class="row">
-            <div class="col-sm-4">
-                <h3>Users</h3>
-                <div class="panel panel-primary" style="min-height: 400px">
-                    <div class="panel panel-default">
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" ><a href="#">Admins<span class="badge">4</span></a></li>
-                            <li role="presentation" ><a href="#">Active<span class="badge">206</span></a>
-                            </li>
-                            <li role="presentation" class="active"><a href="#">Banned<span class="badge">2</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="panel-body">
-                        <div class="panel-body pre-scrollable">
-                            <!-- ADMINS --
+        <div class="jumbotron">
+            <!-- Users -->
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Users</h3>
+                    <div class="panel panel-primary" style="min-height: 400px">
+                        <div class="panel panel-default">
+                            <ul class="nav nav-pills" role="tablist">
+                                <li role="presentation"><a href="#">Admins<span class="badge">4</span></a></li>
+                                <li role="presentation"><a href="#">Active<span class="badge">206</span></a>
+                                </li>
+                                <li role="presentation" class="active"><a href="#">Banned<span class="badge">2</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-body pre-scrollable">
+                                <!-- ADMINS --
                             <table class="table table-responsive">
                                 <thead>
                                 <tr>
@@ -201,47 +196,47 @@
                                 </tbody>
                             </table>
                             <!-- BANED -->
-                            <table class="table table-responsive">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Unban</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><a href="profile.html">badguy</a></td>
-                                    <td>
-                                        <button type="button" class="btn btn-success btn-xs">
+                                <table class="table table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Unban</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="profile.html">badguy</a></td>
+                                            <td>
+                                                <button type="button" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
                                         </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <!-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-->
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Auctions -->
-            <div class="col-sm-8">
-                <h3>Auctions</h3>
-                <div class="panel panel-primary" style="min-height: 400px">
-                    <div class="panel panel-default">
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" ><a href="#">Programmed<span class="badge">19</span></a></li>
-                            <li role="presentation" ><a href="#">Active<span class="badge">86</span></a>
-                            </li>
-                            <li role="presentation" ><a href="#">Concluding<span class="badge">10</span></a></li>
-                            <li role="presentation" ><a href="#">Finished<span class="badge">532</span></a></li>
-                            <li role="presentation" class="active" ><a href="#">Banned<span class="badge">15</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="panel-body">
-                        <div class="panel-body pre-scrollable">
-                            <!-- PROGRAMMED --
+                <!-- Auctions -->
+                <div class="col-sm-8">
+                    <h3>Auctions</h3>
+                    <div class="panel panel-primary" style="min-height: 400px">
+                        <div class="panel panel-default">
+                            <ul class="nav nav-pills" role="tablist">
+                                <li role="presentation"><a href="#">Scheduled<span class="badge">19</span></a></li>
+                                <li role="presentation"><a href="#">Active<span class="badge">86</span></a>
+                                </li>
+                                <li role="presentation"><a href="#">In Conclusion<span class="badge">10</span></a></li>
+                                <li role="presentation"><a href="#">History<span class="badge">532</span></a></li>
+                                <li role="presentation" class="active"><a href="#">Banned<span class="badge">15</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-body pre-scrollable">
+                                <!-- PROGRAMMED --
                             <table class="table table-responsive">
                                 <thead>
                                 <tr>
@@ -372,45 +367,45 @@
                                 </tbody>
                             </table>
                             <!-- BANNED -->
-                            <table class="table table-responsive">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Reason</th>
-                                    <th>Banning Date</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><a href="auction.html">Aromatic Pillow</a></td>
-                                    <td>Illegal product</td>
-                                    <td>18/02/2017</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <!-->
+                                <table class="table table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Reason</th>
+                                            <th>Banning Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="auction.html">Aromatic Pillow</a></td>
+                                            <td>Illegal product</td>
+                                            <td>18/02/2017</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Tickets -->
-        <h3>Tickets</h3>
-        <div class="row">
-            <div class="col-sm-7">
-                <div class="panel panel-primary" style="min-height: 625px">
-                    <div class="panel panel-default">
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" ><a href="#">Reports<span class="badge">5</span></a></li>
-                            <li role="presentation" ><a href="#">Product<span class="badge">2</span></a></li>
-                            <li role="presentation"><a href="#">Questions<span class="badge">1</span></a></li>
-                            <li role="presentation" ><a href="#">Others<span class="badge">1</span></a>
-                            </li>
-                            <li role="presentation" class="active"><a href="#">Solved<span class="badge">17</span></a></li>
-                        </ul>
-                    </div>
-                    <!-- REPORTS DIV --
+            <!-- Tickets -->
+            <h3>Tickets</h3>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="panel panel-primary" style="min-height: 625px">
+                        <div class="panel panel-default">
+                            <ul class="nav nav-pills" role="tablist">
+                                <li role="presentation"><a href="#">Reports<span class="badge">5</span></a></li>
+                                <li role="presentation"><a href="#">Product<span class="badge">2</span></a></li>
+                                <li role="presentation"><a href="#">Questions<span class="badge">1</span></a></li>
+                                <li role="presentation"><a href="#">Others<span class="badge">1</span></a>
+                                </li>
+                                <li role="presentation" class="active"><a href="#">Solved<span class="badge">17</span></a></li>
+                            </ul>
+                        </div>
+                        <!-- REPORTS DIV --
                     <div class="panel-body pre-scrollable">
                         <table class="table table-responsive pre">
                             <thead>
@@ -465,42 +460,42 @@
                         </table>
                     </div>
                     <!-- RESOLVED DIV -->
-                    <div class="panel-body pre-scrollable">
-                        <table class="table table-responsive pre">
-                            <thead>
-                            <tr>
-                                <th>Ticket</th>
-                                <th>Username</th>
-                                <th>Sent Date</th>
-                                <th>Resolved Date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="#info">My product is broken</a></td>
-                                <td><a href="#profile.html">mike</a></td>
-                                <td>14/02/2017</td>
-                                <td>21/02/2017</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#info">Report Username</a></td>
-                                <td><a href="#profile.html">sisi</a></td>
-                                <td>5/02/2017</td>
-                                <td>9/02/2017</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#info">Stupid Question</a></td>
-                                <td><a href="#profile.html">auctionLover</a></td>
-                                <td>31/01/2017</td>
-                                <td>2/02/2017</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="panel-body pre-scrollable">
+                            <table class="table table-responsive pre">
+                                <thead>
+                                    <tr>
+                                        <th>Ticket</th>
+                                        <th>Username</th>
+                                        <th>Sent Date</th>
+                                        <th>Resolved Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#info">My product is broken</a></td>
+                                        <td><a href="#profile.html">mike</a></td>
+                                        <td>14/02/2017</td>
+                                        <td>21/02/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#info">Report Username</a></td>
+                                        <td><a href="#profile.html">sisi</a></td>
+                                        <td>5/02/2017</td>
+                                        <td>9/02/2017</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#info">Stupid Question</a></td>
+                                        <td><a href="#profile.html">auctionLover</a></td>
+                                        <td>31/01/2017</td>
+                                        <td>2/02/2017</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-->
                     </div>
-                    <!-->
                 </div>
-            </div>
-            <!-- Example 1 --
+                <!-- Example 1 --
             <div class="col-sm-5">
                 <div class="panel panel-primary" id="info" style="min-height: 625px">
                     <div class="panel-heading">
@@ -550,83 +545,83 @@
             </div>
 
             <!-- Example 2 -->
-            <div class="col-sm-5">
-                <div class="panel panel-primary" id="info2" style="min-height: 625px">
-                    <div class="panel-heading">
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="min-height: 120px">
+                <div class="col-sm-5">
+                    <div class="panel panel-primary" id="info2" style="min-height: 625px">
+                        <div class="panel-heading">
                         </div>
-                        <div class="panel-body pre-scrollable" style="min-height: 340px">
-                        </div>
-                        <div class="panel-footer" style="min-height: 120px">
-                            <form>
-                                <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
-                                <button type="submit" class="btn btn-success pull-right">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="min-height: 120px">
+                            </div>
+                            <div class="panel-body pre-scrollable" style="min-height: 340px">
+                            </div>
+                            <div class="panel-footer" style="min-height: 120px">
+                                <form>
+                                    <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
+                                    <button style="margin: 5px" type="submit" class="btn btn-success pull-right">
                                     <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
                                 </button>
-                                <label class="btn btn-success btn-file pull-right">
+                                    <label style="margin-top: 5px;" class="btn btn-success btn-file pull-right">
                                     <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                                    <input type="file" style="display: none;">
+                                    <input  type="file" style="display: none;">
                                 </label>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
 
+            <!-- Statistics -->
+            <h3>Statistics</h3>
+            <div class="panel panel-primary" style="min-height: 450px">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="circle-tile ">
+                            <div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div>
+                            <div class="circle-tile-content dark-blue">
+                                <div class="circle-tile-description text-faded">Total Users</div>
+                                <div class="circle-tile-number text-faded ">86</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="circle-tile ">
+                            <div class="circle-tile-heading red"><i class="fa fa-bullhorn fa-fw fa-3x"></i></div>
+                            <div class="circle-tile-content red">
+                                <div class="circle-tile-description text-faded">Total Auctions</div>
+                                <div class="circle-tile-number text-faded ">163</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="circle-tile ">
+                            <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
+                            <div class="circle-tile-content green">
+                                <div class="circle-tile-description text-faded">Money Collected</div>
+                                <div class="circle-tile-number text-faded ">480€</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumbnail" style="border: none;">
+                    <img src="assets/adminStats.PNG" alt="statistics">
+                </div>
+            </div>
 
         </div>
 
-        <!-- Statistics -->
-        <h3>Statistics</h3>
-        <div class="panel panel-primary" style="min-height: 450px">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="circle-tile ">
-                        <div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div>
-                        <div class="circle-tile-content dark-blue">
-                            <div class="circle-tile-description text-faded">Total Users</div>
-                            <div class="circle-tile-number text-faded ">86</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="circle-tile ">
-                        <div class="circle-tile-heading red"><i class="fa fa-bullhorn fa-fw fa-3x"></i></div>
-                        <div class="circle-tile-content red">
-                            <div class="circle-tile-description text-faded">Total Auctions</div>
-                            <div class="circle-tile-number text-faded ">163</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="circle-tile ">
-                        <div class="circle-tile-heading green"><i class="fa fa-eur fa-fw fa-3x"></i></div>
-                        <div class="circle-tile-content green">
-                            <div class="circle-tile-description text-faded">Money Collected</div>
-                            <div class="circle-tile-number text-faded ">480€</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="thumbnail" style="border: none;">
-                <img src="assets/adminStats.PNG" alt="statistics">
+        <!-- Footer -->
+        <div class="navbar-default" style="min-height: 100%">
+            <div class="container clear-top" style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
+                <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
             </div>
         </div>
-
+        <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
     </div>
-
-    <!-- Footer -->
-    <div class="navbar-default" style="min-height: 100%">
-        <div class="container clear-top"
-             style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
-            <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
-        </div>
-    </div>
-    <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
-</div>
 </body>
+
 </html>
