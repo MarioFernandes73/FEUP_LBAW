@@ -1,11 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
-
--- Started on 2017-03-21 12:35:03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,10 +10,6 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
---
--- TOC entry 583 (class 1247 OID 24668)
--- Name: AuctionCategory; Type: TYPE; Schema: public; Owner: postgres
---
 
 CREATE TYPE "AuctionCategory" AS ENUM (
     'Antiquities',
@@ -37,10 +25,6 @@ CREATE TYPE "AuctionCategory" AS ENUM (
 
 ALTER TYPE "AuctionCategory" OWNER TO postgres;
 
---
--- TOC entry 586 (class 1247 OID 24686)
--- Name: AuctionState; Type: TYPE; Schema: public; Owner: postgres
---
 
 CREATE TYPE "AuctionState" AS ENUM (
     'Scheduled',
@@ -54,10 +38,6 @@ CREATE TYPE "AuctionState" AS ENUM (
 
 ALTER TYPE "AuctionState" OWNER TO postgres;
 
---
--- TOC entry 589 (class 1247 OID 24700)
--- Name: AuctionType; Type: TYPE; Schema: public; Owner: postgres
---
 
 CREATE TYPE "AuctionType" AS ENUM (
     'Blind',
@@ -68,10 +48,6 @@ CREATE TYPE "AuctionType" AS ENUM (
 
 ALTER TYPE "AuctionType" OWNER TO postgres;
 
---
--- TOC entry 600 (class 1247 OID 24724)
--- Name: TicketCategory; Type: TYPE; Schema: public; Owner: postgres
---
 
 CREATE TYPE "TicketCategory" AS ENUM (
     'Report',
@@ -83,10 +59,6 @@ CREATE TYPE "TicketCategory" AS ENUM (
 
 ALTER TYPE "TicketCategory" OWNER TO postgres;
 
---
--- TOC entry 580 (class 1247 OID 24656)
--- Name: UserState; Type: TYPE; Schema: public; Owner: postgres
---
 
 CREATE TYPE "UserState" AS ENUM (
     'Administrator',
@@ -103,10 +75,6 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
---
--- TOC entry 186 (class 1259 OID 24604)
--- Name: Auction; Type: TABLE; Schema: public; Owner: Mário
---
 
 CREATE TABLE "Auction" (
     "basePrice" double precision NOT NULL,
@@ -114,68 +82,166 @@ CREATE TABLE "Auction" (
     "durationHours" integer NOT NULL,
     name "char"[] NOT NULL,
     "startingDate" timestamp with time zone NOT NULL,
-    "idAuction" integer NOT NULL,
     category "AuctionCategory" NOT NULL,
     state "AuctionState" NOT NULL,
     type "AuctionType" NOT NULL,
-    owner "char"[] NOT NULL,
-    "currentPrice" double precision,
-    CONSTRAINT "basePrice" CHECK (("basePrice" > (0)::double precision))
+    "currentPrice" double precision NOT NULL,
+    "idAuction" integer NOT NULL,
+    "idOwner" integer NOT NULL,
+    CONSTRAINT "basePrice" CHECK (("basePrice" > (0)::double precision)),
+    CONSTRAINT "positiveDuration" CHECK (("durationHours" > 0))
 );
 
 
 ALTER TABLE "Auction" OWNER TO "Mário";
 
---
--- TOC entry 187 (class 1259 OID 24615)
--- Name: Bid; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "Auction_idAuction_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Auction_idAuction_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Auction_idAuction_seq" OWNED BY "Auction"."idAuction";
+
+
+CREATE SEQUENCE "Auction_idOwner_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Auction_idOwner_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Auction_idOwner_seq" OWNED BY "Auction"."idOwner";
+
 
 CREATE TABLE "Bid" (
-    "idBid" integer NOT NULL,
     ammount double precision NOT NULL,
-    bidder "char"[] NOT NULL,
+    date timestamp without time zone NOT NULL,
+    "idBid" integer NOT NULL,
+    "idBidder" integer NOT NULL,
     "idAuction" integer NOT NULL,
-    date timestamp without time zone NOT NULL
+    CONSTRAINT "positiveAmmount" CHECK ((ammount > (0)::double precision))
 );
 
 
 ALTER TABLE "Bid" OWNER TO "Mário";
 
---
--- TOC entry 189 (class 1259 OID 24715)
--- Name: Comment; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "Bid_idAuction_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Bid_idAuction_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Bid_idAuction_seq" OWNED BY "Bid"."idAuction";
+
+
+CREATE SEQUENCE "Bid_idBid_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Bid_idBid_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Bid_idBid_seq" OWNED BY "Bid"."idBid";
+
+
+CREATE SEQUENCE "Bid_idBidder_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Bid_idBidder_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Bid_idBidder_seq" OWNED BY "Bid"."idBidder";
+
 
 CREATE TABLE "Comment" (
-    "idComment" integer NOT NULL,
     date timestamp without time zone NOT NULL,
     message "char"[] NOT NULL,
-    "idAuction" integer NOT NULL,
-    username "char"[] NOT NULL
+    "idComment" integer NOT NULL,
+    "idUser" integer NOT NULL,
+    "idAuction" integer NOT NULL
 );
 
 
 ALTER TABLE "Comment" OWNER TO "Mário";
 
---
--- TOC entry 188 (class 1259 OID 24707)
--- Name: File; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "Comment_idAuction_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Comment_idAuction_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Comment_idAuction_seq" OWNED BY "Comment"."idAuction";
+
+
+CREATE SEQUENCE "Comment_idComment_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Comment_idComment_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Comment_idComment_seq" OWNED BY "Comment"."idComment";
+
+
+CREATE SEQUENCE "Comment_idUser_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Comment_idUser_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Comment_idUser_seq" OWNED BY "Comment"."idUser";
+
 
 CREATE TABLE "File" (
-    "idFile" integer NOT NULL,
     name "char"[] NOT NULL,
-    path "char"[] NOT NULL
+    path "char"[] NOT NULL,
+    "idFile" integer NOT NULL
 );
 
 
 ALTER TABLE "File" OWNER TO "Mário";
 
---
--- TOC entry 198 (class 1259 OID 24816)
--- Name: FileAuction; Type: TABLE; Schema: public; Owner: Mário
---
 
 CREATE TABLE "FileAuction" (
     "idAuction" integer NOT NULL,
@@ -185,23 +251,71 @@ CREATE TABLE "FileAuction" (
 
 ALTER TABLE "FileAuction" OWNER TO "Mário";
 
---
--- TOC entry 196 (class 1259 OID 24809)
--- Name: FileAuctionComment; Type: TABLE; Schema: public; Owner: Mário
---
 
-CREATE TABLE "FileAuctionComment" (
+CREATE TABLE "FileComment" (
     "idComment" integer NOT NULL,
     "idFile" integer NOT NULL
 );
 
 
-ALTER TABLE "FileAuctionComment" OWNER TO "Mário";
+ALTER TABLE "FileComment" OWNER TO "Mário";
 
---
--- TOC entry 197 (class 1259 OID 24813)
--- Name: FileTicketComment; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "FileAuctionComment_idComment_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "FileAuctionComment_idComment_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "FileAuctionComment_idComment_seq" OWNED BY "FileComment"."idComment";
+
+
+CREATE SEQUENCE "FileAuctionComment_idFile_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "FileAuctionComment_idFile_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "FileAuctionComment_idFile_seq" OWNED BY "FileComment"."idFile";
+
+
+CREATE SEQUENCE "FileAuction_idAuction_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "FileAuction_idAuction_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "FileAuction_idAuction_seq" OWNED BY "FileAuction"."idAuction";
+
+
+CREATE SEQUENCE "FileAuction_idFile_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "FileAuction_idFile_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "FileAuction_idFile_seq" OWNED BY "FileAuction"."idFile";
+
 
 CREATE TABLE "FileTicketComment" (
     "idTicketComment" integer NOT NULL,
@@ -211,520 +325,763 @@ CREATE TABLE "FileTicketComment" (
 
 ALTER TABLE "FileTicketComment" OWNER TO "Mário";
 
---
--- TOC entry 193 (class 1259 OID 24786)
--- Name: Follow; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "FileTicketComment_idFileComment_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "FileTicketComment_idFileComment_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "FileTicketComment_idFileComment_seq" OWNED BY "FileTicketComment"."idTicketComment";
+
+
+CREATE SEQUENCE "FileTicketComment_idFile_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "FileTicketComment_idFile_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "FileTicketComment_idFile_seq" OWNED BY "FileTicketComment"."idFile";
+
+
+CREATE SEQUENCE "File_idFile_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "File_idFile_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "File_idFile_seq" OWNED BY "File"."idFile";
+
 
 CREATE TABLE "Follow" (
     "idFollow" integer NOT NULL,
-    username "char"[] NOT NULL,
+    "idUser" integer NOT NULL,
     "idAuction" integer NOT NULL
 );
 
 
 ALTER TABLE "Follow" OWNER TO "Mário";
 
---
--- TOC entry 192 (class 1259 OID 24781)
--- Name: Notification; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "Follow_idAuction_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Follow_idAuction_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Follow_idAuction_seq" OWNED BY "Follow"."idAuction";
+
+
+CREATE SEQUENCE "Follow_idFollow_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Follow_idFollow_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Follow_idFollow_seq" OWNED BY "Follow"."idFollow";
+
+
+CREATE SEQUENCE "Follow_idUser_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Follow_idUser_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Follow_idUser_seq" OWNED BY "Follow"."idUser";
+
 
 CREATE TABLE "Notification" (
-    "idNotification" integer NOT NULL,
-    "idAuction" integer
+    "idComment" integer NOT NULL,
+    "idAuction" integer NOT NULL,
+    "idBid" integer NOT NULL,
+    "idNotifcation" integer NOT NULL,
+    CONSTRAINT "oneNull" CHECK (((("idAuction" IS NULL) AND ("idBid" IS NOT NULL)) OR (("idAuction" IS NOT NULL) AND ("idBid" IS NULL))))
 );
 
 
 ALTER TABLE "Notification" OWNER TO "Mário";
 
---
--- TOC entry 195 (class 1259 OID 24802)
--- Name: Rating; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "Notification_idAuction_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Notification_idAuction_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Notification_idAuction_seq" OWNED BY "Notification"."idAuction";
+
+
+CREATE SEQUENCE "Notification_idBid_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Notification_idBid_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Notification_idBid_seq" OWNED BY "Notification"."idBid";
+
+
+CREATE SEQUENCE "Notification_idComment_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Notification_idComment_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Notification_idComment_seq" OWNED BY "Notification"."idComment";
+
+
+CREATE SEQUENCE "Notification_idNotifcation_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Notification_idNotifcation_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Notification_idNotifcation_seq" OWNED BY "Notification"."idNotifcation";
+
 
 CREATE TABLE "Rating" (
-    "winnerUser" "char"[] NOT NULL,
-    "idAuction" integer NOT NULL,
     "sellerRating" double precision,
     "buyerRating" double precision,
+    "idAuction" integer NOT NULL,
+    "winnerUser" integer NOT NULL,
+    CONSTRAINT "buyingRatingPositive" CHECK ((("buyerRating" >= (0)::double precision) AND ("buyerRating" <= (5)::double precision))),
     CONSTRAINT "sellerRatingPositive" CHECK ((("sellerRating" >= (0)::double precision) AND ("sellerRating" <= (5)::double precision)))
 );
 
 
 ALTER TABLE "Rating" OWNER TO "Mário";
 
---
--- TOC entry 190 (class 1259 OID 24733)
--- Name: Ticket; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "Rating_idAuction_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Rating_idAuction_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Rating_idAuction_seq" OWNED BY "Rating"."idAuction";
+
+
+CREATE SEQUENCE "Rating_winnerUser_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Rating_winnerUser_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Rating_winnerUser_seq" OWNED BY "Rating"."winnerUser";
+
 
 CREATE TABLE "Ticket" (
-    "idTicket" integer NOT NULL,
     category "TicketCategory" NOT NULL,
     "resolvedDate" timestamp without time zone,
     solved boolean DEFAULT false,
     title "char"[] NOT NULL,
-    date timestamp without time zone,
+    date timestamp without time zone NOT NULL,
     message "char"[] NOT NULL,
-    username "char"[] NOT NULL
+    "idTicket" integer NOT NULL,
+    "idUser" integer,
+    "idCommentReported" integer,
+    "idUserReported" integer,
+    "idAuctionReported" integer,
+    CONSTRAINT "onlyOneNotNull" CHECK (((("idCommentReported" IS NULL) AND ("idUserReported" IS NULL) AND ("idAuctionReported" IS NULL)) OR (("idCommentReported" IS NOT NULL) AND ("idUserReported" IS NULL) AND ("idAuctionReported" IS NULL)) OR (("idCommentReported" IS NULL) AND ("idUserReported" IS NOT NULL) AND ("idAuctionReported" IS NULL)) OR (("idCommentReported" IS NULL) AND ("idUserReported" IS NULL) AND ("idAuctionReported" IS NOT NULL))))
 );
 
 
 ALTER TABLE "Ticket" OWNER TO "Mário";
 
---
--- TOC entry 191 (class 1259 OID 24773)
--- Name: TicketComment; Type: TABLE; Schema: public; Owner: Mário
---
 
 CREATE TABLE "TicketComment" (
-    "idTicketComment" integer NOT NULL,
-    username "char"[] NOT NULL,
-    "idTicket" integer NOT NULL,
     date timestamp without time zone NOT NULL,
-    message "char"[] NOT NULL
+    message "char"[] NOT NULL,
+    "idTicketComment" integer NOT NULL,
+    "idTicket" integer NOT NULL,
+    "idUser" integer NOT NULL
 );
 
 
 ALTER TABLE "TicketComment" OWNER TO "Mário";
 
---
--- TOC entry 185 (class 1259 OID 24587)
--- Name: User; Type: TABLE; Schema: public; Owner: Mário
---
+
+CREATE SEQUENCE "TicketComment_idTicketComment_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "TicketComment_idTicketComment_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "TicketComment_idTicketComment_seq" OWNED BY "TicketComment"."idTicketComment";
+
+
+CREATE SEQUENCE "TicketComment_idTicket_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "TicketComment_idTicket_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "TicketComment_idTicket_seq" OWNED BY "TicketComment"."idTicket";
+
+
+CREATE SEQUENCE "TicketComment_idUser_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "TicketComment_idUser_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "TicketComment_idUser_seq" OWNED BY "TicketComment"."idUser";
+
+
+CREATE SEQUENCE "Ticket_idAuctionReported_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Ticket_idAuctionReported_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Ticket_idAuctionReported_seq" OWNED BY "Ticket"."idAuctionReported";
+
+
+CREATE SEQUENCE "Ticket_idCommentReported_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Ticket_idCommentReported_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Ticket_idCommentReported_seq" OWNED BY "Ticket"."idCommentReported";
+
+
+CREATE SEQUENCE "Ticket_idTicket_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Ticket_idTicket_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Ticket_idTicket_seq" OWNED BY "Ticket"."idTicket";
+
+
+CREATE SEQUENCE "Ticket_idUserReported_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Ticket_idUserReported_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Ticket_idUserReported_seq" OWNED BY "Ticket"."idUserReported";
+
+
+CREATE SEQUENCE "Ticket_idUser_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Ticket_idUser_seq" OWNER TO "Mário";
+
+
+ALTER SEQUENCE "Ticket_idUser_seq" OWNED BY "Ticket"."idUser";
+
 
 CREATE TABLE "User" (
-    username "char"[] NOT NULL,
     password "char"[] NOT NULL,
     "birthDate" date NOT NULL,
     rating integer DEFAULT 0 NOT NULL,
     name "char"[] NOT NULL,
-    address "char"[] NOT NULL,
-    state "UserState" DEFAULT 'Registered'::"UserState" NOT NULL
+    address "char"[],
+    state "UserState" DEFAULT 'Registered'::"UserState" NOT NULL,
+    "idUser" integer NOT NULL,
+    username "char"[] NOT NULL,
+    CONSTRAINT over18 CHECK (((('now'::text)::date - "birthDate") >= 18)),
+    CONSTRAINT "ratingBounds" CHECK (((rating >= 0) AND (rating <= 5)))
 );
 
 
 ALTER TABLE "User" OWNER TO "Mário";
 
---
--- TOC entry 194 (class 1259 OID 24794)
--- Name: Winner; Type: TABLE; Schema: public; Owner: postgres
---
 
-CREATE TABLE "Winner" (
-    "idWinner" integer NOT NULL,
-    username "char"[] NOT NULL,
-    "idAuction" integer NOT NULL
-);
+CREATE SEQUENCE "User_idUser_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
-ALTER TABLE "Winner" OWNER TO postgres;
+ALTER TABLE "User_idUser_seq" OWNER TO "Mário";
 
---
--- TOC entry 2238 (class 0 OID 24604)
--- Dependencies: 186
--- Data for Name: Auction; Type: TABLE DATA; Schema: public; Owner: Mário
---
 
-COPY "Auction" ("basePrice", description, "durationHours", name, "startingDate", "idAuction", category, state, type, owner, "currentPrice") FROM stdin;
+ALTER SEQUENCE "User_idUser_seq" OWNED BY "User"."idUser";
+
+
+ALTER TABLE ONLY "Auction" ALTER COLUMN "idAuction" SET DEFAULT nextval('"Auction_idAuction_seq"'::regclass);
+
+ALTER TABLE ONLY "Auction" ALTER COLUMN "idOwner" SET DEFAULT nextval('"Auction_idOwner_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Bid" ALTER COLUMN "idBid" SET DEFAULT nextval('"Bid_idBid_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Bid" ALTER COLUMN "idBidder" SET DEFAULT nextval('"Bid_idBidder_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Bid" ALTER COLUMN "idAuction" SET DEFAULT nextval('"Bid_idAuction_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Comment" ALTER COLUMN "idComment" SET DEFAULT nextval('"Comment_idComment_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Comment" ALTER COLUMN "idUser" SET DEFAULT nextval('"Comment_idUser_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Comment" ALTER COLUMN "idAuction" SET DEFAULT nextval('"Comment_idAuction_seq"'::regclass);
+
+
+ALTER TABLE ONLY "File" ALTER COLUMN "idFile" SET DEFAULT nextval('"File_idFile_seq"'::regclass);
+
+
+ALTER TABLE ONLY "FileAuction" ALTER COLUMN "idAuction" SET DEFAULT nextval('"FileAuction_idAuction_seq"'::regclass);
+
+
+ALTER TABLE ONLY "FileAuction" ALTER COLUMN "idFile" SET DEFAULT nextval('"FileAuction_idFile_seq"'::regclass);
+
+
+ALTER TABLE ONLY "FileComment" ALTER COLUMN "idComment" SET DEFAULT nextval('"FileAuctionComment_idComment_seq"'::regclass);
+
+
+ALTER TABLE ONLY "FileComment" ALTER COLUMN "idFile" SET DEFAULT nextval('"FileAuctionComment_idFile_seq"'::regclass);
+
+ALTER TABLE ONLY "FileTicketComment" ALTER COLUMN "idTicketComment" SET DEFAULT nextval('"FileTicketComment_idFileComment_seq"'::regclass);
+
+
+ALTER TABLE ONLY "FileTicketComment" ALTER COLUMN "idFile" SET DEFAULT nextval('"FileTicketComment_idFile_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Follow" ALTER COLUMN "idFollow" SET DEFAULT nextval('"Follow_idFollow_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Follow" ALTER COLUMN "idUser" SET DEFAULT nextval('"Follow_idUser_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Follow" ALTER COLUMN "idAuction" SET DEFAULT nextval('"Follow_idAuction_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Notification" ALTER COLUMN "idComment" SET DEFAULT nextval('"Notification_idComment_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Notification" ALTER COLUMN "idAuction" SET DEFAULT nextval('"Notification_idAuction_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Notification" ALTER COLUMN "idBid" SET DEFAULT nextval('"Notification_idBid_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Notification" ALTER COLUMN "idNotifcation" SET DEFAULT nextval('"Notification_idNotifcation_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Rating" ALTER COLUMN "idAuction" SET DEFAULT nextval('"Rating_idAuction_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Rating" ALTER COLUMN "winnerUser" SET DEFAULT nextval('"Rating_winnerUser_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Ticket" ALTER COLUMN "idTicket" SET DEFAULT nextval('"Ticket_idTicket_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Ticket" ALTER COLUMN "idUser" SET DEFAULT nextval('"Ticket_idUser_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Ticket" ALTER COLUMN "idCommentReported" SET DEFAULT nextval('"Ticket_idCommentReported_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Ticket" ALTER COLUMN "idUserReported" SET DEFAULT nextval('"Ticket_idUserReported_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Ticket" ALTER COLUMN "idAuctionReported" SET DEFAULT nextval('"Ticket_idAuctionReported_seq"'::regclass);
+
+
+ALTER TABLE ONLY "TicketComment" ALTER COLUMN "idTicketComment" SET DEFAULT nextval('"TicketComment_idTicketComment_seq"'::regclass);
+
+
+ALTER TABLE ONLY "TicketComment" ALTER COLUMN "idTicket" SET DEFAULT nextval('"TicketComment_idTicket_seq"'::regclass);
+
+
+ALTER TABLE ONLY "TicketComment" ALTER COLUMN "idUser" SET DEFAULT nextval('"TicketComment_idUser_seq"'::regclass);
+
+
+ALTER TABLE ONLY "User" ALTER COLUMN "idUser" SET DEFAULT nextval('"User_idUser_seq"'::regclass);
+
+
+COPY "Auction" ("basePrice", description, "durationHours", name, "startingDate", category, state, type, "currentPrice", "idAuction", "idOwner") FROM stdin;
 \.
 
 
---
--- TOC entry 2239 (class 0 OID 24615)
--- Dependencies: 187
--- Data for Name: Bid; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"Auction_idAuction_seq"', 1, false);
 
-COPY "Bid" ("idBid", ammount, bidder, "idAuction", date) FROM stdin;
+
+SELECT pg_catalog.setval('"Auction_idOwner_seq"', 1, false);
+
+
+COPY "Bid" (ammount, date, "idBid", "idBidder", "idAuction") FROM stdin;
 \.
 
 
---
--- TOC entry 2241 (class 0 OID 24715)
--- Dependencies: 189
--- Data for Name: Comment; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"Bid_idAuction_seq"', 1, false);
 
-COPY "Comment" ("idComment", date, message, "idAuction", username) FROM stdin;
+
+SELECT pg_catalog.setval('"Bid_idBid_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Bid_idBidder_seq"', 1, false);
+
+
+COPY "Comment" (date, message, "idComment", "idUser", "idAuction") FROM stdin;
 \.
 
 
---
--- TOC entry 2240 (class 0 OID 24707)
--- Dependencies: 188
--- Data for Name: File; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"Comment_idAuction_seq"', 1, false);
 
-COPY "File" ("idFile", name, path) FROM stdin;
+
+SELECT pg_catalog.setval('"Comment_idComment_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Comment_idUser_seq"', 1, false);
+
+
+COPY "File" (name, path, "idFile") FROM stdin;
 \.
 
-
---
--- TOC entry 2250 (class 0 OID 24816)
--- Dependencies: 198
--- Data for Name: FileAuction; Type: TABLE DATA; Schema: public; Owner: Mário
---
 
 COPY "FileAuction" ("idAuction", "idFile") FROM stdin;
 \.
 
 
---
--- TOC entry 2248 (class 0 OID 24809)
--- Dependencies: 196
--- Data for Name: FileAuctionComment; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"FileAuctionComment_idComment_seq"', 1, false);
 
-COPY "FileAuctionComment" ("idComment", "idFile") FROM stdin;
+
+SELECT pg_catalog.setval('"FileAuctionComment_idFile_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"FileAuction_idAuction_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"FileAuction_idFile_seq"', 1, false);
+
+
+COPY "FileComment" ("idComment", "idFile") FROM stdin;
 \.
 
-
---
--- TOC entry 2249 (class 0 OID 24813)
--- Dependencies: 197
--- Data for Name: FileTicketComment; Type: TABLE DATA; Schema: public; Owner: Mário
---
 
 COPY "FileTicketComment" ("idTicketComment", "idFile") FROM stdin;
 \.
 
 
---
--- TOC entry 2245 (class 0 OID 24786)
--- Dependencies: 193
--- Data for Name: Follow; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"FileTicketComment_idFileComment_seq"', 1, false);
 
-COPY "Follow" ("idFollow", username, "idAuction") FROM stdin;
+
+SELECT pg_catalog.setval('"FileTicketComment_idFile_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"File_idFile_seq"', 1, false);
+
+
+COPY "Follow" ("idFollow", "idUser", "idAuction") FROM stdin;
 \.
 
 
---
--- TOC entry 2244 (class 0 OID 24781)
--- Dependencies: 192
--- Data for Name: Notification; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"Follow_idAuction_seq"', 1, false);
 
-COPY "Notification" ("idNotification", "idAuction") FROM stdin;
+
+SELECT pg_catalog.setval('"Follow_idFollow_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Follow_idUser_seq"', 1, false);
+
+
+COPY "Notification" ("idComment", "idAuction", "idBid", "idNotifcation") FROM stdin;
 \.
 
 
---
--- TOC entry 2247 (class 0 OID 24802)
--- Dependencies: 195
--- Data for Name: Rating; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"Notification_idAuction_seq"', 1, false);
 
-COPY "Rating" ("winnerUser", "idAuction", "sellerRating", "buyerRating") FROM stdin;
+
+SELECT pg_catalog.setval('"Notification_idBid_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Notification_idComment_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Notification_idNotifcation_seq"', 1, false);
+
+
+COPY "Rating" ("sellerRating", "buyerRating", "idAuction", "winnerUser") FROM stdin;
 \.
 
 
---
--- TOC entry 2242 (class 0 OID 24733)
--- Dependencies: 190
--- Data for Name: Ticket; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"Rating_idAuction_seq"', 1, false);
 
-COPY "Ticket" ("idTicket", category, "resolvedDate", solved, title, date, message, username) FROM stdin;
+
+SELECT pg_catalog.setval('"Rating_winnerUser_seq"', 1, false);
+
+
+COPY "Ticket" (category, "resolvedDate", solved, title, date, message, "idTicket", "idUser", "idCommentReported", "idUserReported", "idAuctionReported") FROM stdin;
 \.
 
 
---
--- TOC entry 2243 (class 0 OID 24773)
--- Dependencies: 191
--- Data for Name: TicketComment; Type: TABLE DATA; Schema: public; Owner: Mário
---
-
-COPY "TicketComment" ("idTicketComment", username, "idTicket", date, message) FROM stdin;
+COPY "TicketComment" (date, message, "idTicketComment", "idTicket", "idUser") FROM stdin;
 \.
 
 
---
--- TOC entry 2237 (class 0 OID 24587)
--- Dependencies: 185
--- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: Mário
---
+SELECT pg_catalog.setval('"TicketComment_idTicketComment_seq"', 1, false);
 
-COPY "User" (username, password, "birthDate", rating, name, address, state) FROM stdin;
+
+SELECT pg_catalog.setval('"TicketComment_idTicket_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"TicketComment_idUser_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Ticket_idAuctionReported_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Ticket_idCommentReported_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Ticket_idTicket_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Ticket_idUserReported_seq"', 1, false);
+
+
+SELECT pg_catalog.setval('"Ticket_idUser_seq"', 1, false);
+
+
+COPY "User" (password, "birthDate", rating, name, address, state, "idUser", username) FROM stdin;
 \.
 
 
---
--- TOC entry 2246 (class 0 OID 24794)
--- Dependencies: 194
--- Data for Name: Winner; Type: TABLE DATA; Schema: public; Owner: postgres
---
+SELECT pg_catalog.setval('"User_idUser_seq"', 1, false);
 
-COPY "Winner" ("idWinner", username, "idAuction") FROM stdin;
-\.
-
-
---
--- TOC entry 2084 (class 2606 OID 24611)
--- Name: Auction Auction_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Auction"
     ADD CONSTRAINT "Auction_pkey" PRIMARY KEY ("idAuction");
 
 
---
--- TOC entry 2086 (class 2606 OID 24619)
--- Name: Bid Bid_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
-
 ALTER TABLE ONLY "Bid"
     ADD CONSTRAINT "Bid_pkey" PRIMARY KEY ("idBid");
 
-
---
--- TOC entry 2090 (class 2606 OID 24722)
--- Name: Comment Comment_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Comment"
     ADD CONSTRAINT "Comment_pkey" PRIMARY KEY ("idComment");
 
 
---
--- TOC entry 2088 (class 2606 OID 24714)
--- Name: File File_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
-
 ALTER TABLE ONLY "File"
     ADD CONSTRAINT "File_pkey" PRIMARY KEY ("idFile");
 
-
---
--- TOC entry 2098 (class 2606 OID 24793)
--- Name: Follow Follow_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Follow"
     ADD CONSTRAINT "Follow_pkey" PRIMARY KEY ("idFollow");
 
 
---
--- TOC entry 2096 (class 2606 OID 24785)
--- Name: Notification Notification_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
-
 ALTER TABLE ONLY "Notification"
-    ADD CONSTRAINT "Notification_pkey" PRIMARY KEY ("idNotification");
+    ADD CONSTRAINT "Notification_pkey" PRIMARY KEY ("idNotifcation");
 
-
---
--- TOC entry 2094 (class 2606 OID 24780)
--- Name: TicketComment TicketComment_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "TicketComment"
     ADD CONSTRAINT "TicketComment_pkey" PRIMARY KEY ("idTicketComment");
 
 
---
--- TOC entry 2092 (class 2606 OID 24740)
--- Name: Ticket Ticket_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
-
 ALTER TABLE ONLY "Ticket"
     ADD CONSTRAINT "Ticket_pkey" PRIMARY KEY ("idTicket");
 
 
---
--- TOC entry 2100 (class 2606 OID 24801)
--- Name: Winner Winner_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
+ALTER TABLE ONLY "User"
+    ADD CONSTRAINT "User_pkey" PRIMARY KEY ("idUser");
 
-ALTER TABLE ONLY "Winner"
-    ADD CONSTRAINT "Winner_pkey" PRIMARY KEY ("idWinner");
-
-
---
--- TOC entry 2082 (class 2606 OID 24594)
--- Name: User user_pkey; Type: CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "User"
-    ADD CONSTRAINT user_pkey PRIMARY KEY (username);
+    ADD CONSTRAINT "usernameUnique" UNIQUE (username);
 
-
---
--- TOC entry 2103 (class 2606 OID 24829)
--- Name: Bid Auction; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Bid"
-    ADD CONSTRAINT "Auction" FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
+    ADD CONSTRAINT auction FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
 
-
---
--- TOC entry 2104 (class 2606 OID 24849)
--- Name: Comment Auction; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Comment"
-    ADD CONSTRAINT "Auction" FOREIGN KEY ("idComment") REFERENCES "Auction"("idAuction");
+    ADD CONSTRAINT auction FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
 
-
---
--- TOC entry 2109 (class 2606 OID 24859)
--- Name: Notification Auction; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Notification"
-    ADD CONSTRAINT "Auction" FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
+    ADD CONSTRAINT auction FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
 
-
---
--- TOC entry 2111 (class 2606 OID 24869)
--- Name: Follow Auction; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Follow"
-    ADD CONSTRAINT "Auction" FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
+    ADD CONSTRAINT auction FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
 
-
---
--- TOC entry 2118 (class 2606 OID 24894)
--- Name: FileAuction Auction; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "FileAuction"
-    ADD CONSTRAINT "Auction" FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
+    ADD CONSTRAINT auction FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
 
-
---
--- TOC entry 2113 (class 2606 OID 24909)
--- Name: Rating Auction; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Rating"
-    ADD CONSTRAINT "Auction" FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
+    ADD CONSTRAINT auction FOREIGN KEY ("idAuction") REFERENCES "Auction"("idAuction");
 
-
---
--- TOC entry 2102 (class 2606 OID 24824)
--- Name: Bid Bidder; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "Bid"
-    ADD CONSTRAINT "Bidder" FOREIGN KEY (bidder) REFERENCES "User"(username);
-
-
---
--- TOC entry 2114 (class 2606 OID 24874)
--- Name: FileAuctionComment Comment; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "FileAuctionComment"
-    ADD CONSTRAINT "Comment" FOREIGN KEY ("idComment") REFERENCES "Comment"("idComment");
-
-
---
--- TOC entry 2115 (class 2606 OID 24879)
--- Name: FileAuctionComment File; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "FileAuctionComment"
-    ADD CONSTRAINT "File" FOREIGN KEY ("idFile") REFERENCES "File"("idFile");
-
-
---
--- TOC entry 2117 (class 2606 OID 24889)
--- Name: FileTicketComment File; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "FileTicketComment"
-    ADD CONSTRAINT "File" FOREIGN KEY ("idFile") REFERENCES "File"("idFile");
-
-
---
--- TOC entry 2119 (class 2606 OID 24899)
--- Name: FileAuction File; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "FileAuction"
-    ADD CONSTRAINT "File" FOREIGN KEY ("idFile") REFERENCES "File"("idFile");
-
-
---
--- TOC entry 2101 (class 2606 OID 24819)
--- Name: Auction Owner; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "Auction"
-    ADD CONSTRAINT "Owner" FOREIGN KEY (owner) REFERENCES "User"(username);
-
-
---
--- TOC entry 2108 (class 2606 OID 24844)
--- Name: TicketComment Ticket; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "TicketComment"
-    ADD CONSTRAINT "Ticket" FOREIGN KEY ("idTicket") REFERENCES "Ticket"("idTicket");
-
-
---
--- TOC entry 2116 (class 2606 OID 24884)
--- Name: FileTicketComment TicketComment; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
-
-ALTER TABLE ONLY "FileTicketComment"
-    ADD CONSTRAINT "TicketComment" FOREIGN KEY ("idTicketComment") REFERENCES "TicketComment"("idTicketComment");
-
-
---
--- TOC entry 2106 (class 2606 OID 24834)
--- Name: Ticket Username; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Ticket"
-    ADD CONSTRAINT "Username" FOREIGN KEY (username) REFERENCES "User"(username);
+    ADD CONSTRAINT "auctionReported" FOREIGN KEY ("idAuctionReported") REFERENCES "Auction"("idAuction");
 
 
---
--- TOC entry 2107 (class 2606 OID 24839)
--- Name: TicketComment Username; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
+ALTER TABLE ONLY "Notification"
+    ADD CONSTRAINT bid FOREIGN KEY ("idBid") REFERENCES "Bid"("idBid");
+
+
+ALTER TABLE ONLY "Bid"
+    ADD CONSTRAINT bidder FOREIGN KEY ("idBidder") REFERENCES "User"("idUser");
+
+
+ALTER TABLE ONLY "Notification"
+    ADD CONSTRAINT comment FOREIGN KEY ("idComment") REFERENCES "Comment"("idComment");
+
+
+ALTER TABLE ONLY "FileComment"
+    ADD CONSTRAINT comment FOREIGN KEY ("idComment") REFERENCES "Comment"("idComment");
+
+
+ALTER TABLE ONLY "Ticket"
+    ADD CONSTRAINT "commentReported" FOREIGN KEY ("idCommentReported") REFERENCES "Comment"("idComment");
+
+	
+ALTER TABLE ONLY "FileComment"
+    ADD CONSTRAINT file FOREIGN KEY ("idFile") REFERENCES "File"("idFile");
+
+
+ALTER TABLE ONLY "FileTicketComment"
+    ADD CONSTRAINT file FOREIGN KEY ("idFile") REFERENCES "File"("idFile");
+
+
+ALTER TABLE ONLY "FileAuction"
+    ADD CONSTRAINT file FOREIGN KEY ("idFile") REFERENCES "File"("idFile");
+
+
+ALTER TABLE ONLY "Auction"
+    ADD CONSTRAINT owner FOREIGN KEY ("idOwner") REFERENCES "User"("idUser");
+
 
 ALTER TABLE ONLY "TicketComment"
-    ADD CONSTRAINT "Username" FOREIGN KEY (username) REFERENCES "User"(username);
+    ADD CONSTRAINT ticket FOREIGN KEY ("idTicket") REFERENCES "Ticket"("idTicket");
 
 
---
--- TOC entry 2105 (class 2606 OID 24854)
--- Name: Comment Username; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
+ALTER TABLE ONLY "FileTicketComment"
+    ADD CONSTRAINT "ticketComment" FOREIGN KEY ("idTicketComment") REFERENCES "Ticket"("idTicket");
+
+
+ALTER TABLE ONLY "Ticket"
+    ADD CONSTRAINT "user" FOREIGN KEY ("idUser") REFERENCES "User"("idUser");
+
+
+ALTER TABLE ONLY "TicketComment"
+    ADD CONSTRAINT "user" FOREIGN KEY ("idUser") REFERENCES "User"("idUser");
+
 
 ALTER TABLE ONLY "Comment"
-    ADD CONSTRAINT "Username" FOREIGN KEY (username) REFERENCES "User"(username);
+    ADD CONSTRAINT "user" FOREIGN KEY ("idUser") REFERENCES "User"("idUser");
 
-
---
--- TOC entry 2110 (class 2606 OID 24864)
--- Name: Follow Username; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
 
 ALTER TABLE ONLY "Follow"
-    ADD CONSTRAINT "Username" FOREIGN KEY (username) REFERENCES "User"(username);
+    ADD CONSTRAINT "user" FOREIGN KEY ("idUser") REFERENCES "User"("idUser");
 
 
---
--- TOC entry 2112 (class 2606 OID 24904)
--- Name: Rating Winner; Type: FK CONSTRAINT; Schema: public; Owner: Mário
---
+ALTER TABLE ONLY "Ticket"
+    ADD CONSTRAINT "userReported" FOREIGN KEY ("idUserReported") REFERENCES "User"("idUser");
+
 
 ALTER TABLE ONLY "Rating"
-    ADD CONSTRAINT "Winner" FOREIGN KEY ("winnerUser") REFERENCES "User"(username);
-
-
--- Completed on 2017-03-21 12:35:04
-
---
--- PostgreSQL database dump complete
---
-
+    ADD CONSTRAINT winner FOREIGN KEY ("winnerUser") REFERENCES "User"("idUser");
