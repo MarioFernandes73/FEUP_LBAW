@@ -41,10 +41,25 @@
                         Search
                     </button>
                 </form>
-                <form class="navbar-form navbar-right">
-                    <a href="register.html">Sign Up</a>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login_form">Login</button>
-                </form>
+
+                    {if !$username}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="admin.html">Administration Options</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        {else}
+                        <form class="navbar-form navbar-right">
+                            <a href="register.html">Sign Up</a>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginDialog">Login</button>
+                        </form>
+                    {/if}
             </div>
         </div>
     </nav>
@@ -115,17 +130,17 @@
     </div>
 
     <!-- Login Form -->
-    <div class="modal fade" id="login_form" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade" id="loginDialog" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form role="form">
+                    <form role="form" method="post" action="../../actions/authentication/login.php">
                         <div class="form-group">
-                            <input id="username_form" class="form-control input-lg" placeholder="Username" type="text">
+                            <input name="user" class="form-control input-lg" placeholder="Username" type="text" required="required">
                         </div>
                         <div class="form-group">
-                            <input id="password_form" class="form-control input-lg" placeholder="Password" type="password">
+                            <input name="pass" class="form-control input-lg" placeholder="Password" type="password" required="required">
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
                     </form>
