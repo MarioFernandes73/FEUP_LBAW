@@ -82,6 +82,7 @@ if(isset($_SESSION['idUser'])){
         addAuctionPhotos($idauction,$photos);
 
         header('Location: ../../pages/auctions/viewAuction.php?id=' . $idauction);
+
     }
 }
 
