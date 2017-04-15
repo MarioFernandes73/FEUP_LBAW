@@ -4,7 +4,7 @@ include_once('../../database/auctions.php');
 
 
 if(isset($_SESSION['idUser'])){
-    if($_SESSION['state'] != 'Banned' && $_SESSION['state'] != 'Inactive'){
+    if($_SESSION['state'] != 'Banned' && $_SESSION['state'] != 'Inactive' && $_SESSION['state'] != 'Registered'){
 
         /*Creates the Auction*/
 
