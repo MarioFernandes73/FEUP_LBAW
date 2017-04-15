@@ -4,8 +4,8 @@
 
   error_reporting(E_ERROR | E_WARNING); // E_NOTICE by default
 
-  $BASE_DIR = '../../'; //FIXME
-  $BASE_URL = '../../'; //FIXME
+  $BASE_DIR =  dirname(__DIR__) . '/'; //FIXME
+  $BASE_URL = dirname(dirname(dirname($_SERVER['PHP_SELF']))) . '/'; //FIXME
 
   $conn = new PDO('pgsql:host=dbm.fe.up.pt;dbname=lbaw1655', 'lbaw1655', 'vo66gl49'); //FIXME
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
