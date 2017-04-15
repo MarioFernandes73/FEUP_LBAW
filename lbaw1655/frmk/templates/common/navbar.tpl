@@ -42,7 +42,7 @@
                     </button>
                 </form>
                 <form class="navbar-form navbar-right">
-                    <a href="register.html">Sign Up</a>
+                    <a href="signup.php">Sign Up</a>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login_form">Login</button>
                 </form>
             </div>

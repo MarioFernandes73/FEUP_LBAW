@@ -8,9 +8,15 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Online auctions</title>
 
-    <!-- Bootstrap -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/personal.css" rel="stylesheet">
+    <!-- css -->
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../css/star-rating.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <link href="../../css/personal.css" type="text/css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,13 +25,19 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../../javascript/bootstrap.min.js"></script>
 
     <script src="../../javascript/bootstrap-notify.js"></script>
-    <script src="../../javascript/bootstrap-notify.min.js"></script>
+    <script src="../../javascript/bootstrap.js"></script>
+    <script src="../../javascript/star-rating.js"></script>
+    <script src="../../javascript/npm.js"></script>
 
 </head>
 <body>
