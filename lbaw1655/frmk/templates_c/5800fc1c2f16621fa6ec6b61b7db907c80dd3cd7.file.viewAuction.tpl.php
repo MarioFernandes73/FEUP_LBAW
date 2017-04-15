@@ -1,4 +1,25 @@
-<div class="jumbotron">
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 16:46:55
+         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\auctions\viewAuction.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:93795327258f2325f090e39-73017734%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '5800fc1c2f16621fa6ec6b61b7db907c80dd3cd7' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\auctions\\viewAuction.tpl',
+      1 => 1492267610,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '93795327258f2325f090e39-73017734',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f2325f0fcce0_92237108',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_58f2325f0fcce0_92237108')) {function content_58f2325f0fcce0_92237108($_smarty_tpl) {?><div class="jumbotron">
 
     <div class="row">
         <div class="col-sm-4">
@@ -213,4 +234,4 @@
             </div>
         </div>
     </div>
-</div>
+</div><?php }} ?>
