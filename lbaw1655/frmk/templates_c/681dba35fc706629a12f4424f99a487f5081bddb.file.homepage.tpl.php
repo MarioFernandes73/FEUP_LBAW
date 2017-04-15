@@ -1,25 +1,25 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 16:42:50
-         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\authentication\homepage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:173050888458f2316abc5264-51899414%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 14:45:41
+         compiled from "../../templates/authentication/homepage.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:111105638058f22405be25e1-83786490%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '9d01252cf1f8b2c4ae2b890d6b3347c2b868d1d5' => 
+    '681dba35fc706629a12f4424f99a487f5081bddb' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\authentication\\homepage.tpl',
-      1 => 1492003280,
+      0 => '../../templates/authentication/homepage.tpl',
+      1 => 1492196425,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '173050888458f2316abc5264-51899414',
+  'nocache_hash' => '111105638058f22405be25e1-83786490',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f2316ac14c33_50242444',
+  'unifunc' => 'content_58f22405bf30a3_90697002',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58f2316ac14c33_50242444')) {function content_58f2316ac14c33_50242444($_smarty_tpl) {?><!-- Main component for a primary marketing message or call to action -->
+<?php if ($_valid && !is_callable('content_58f22405bf30a3_90697002')) {function content_58f22405bf30a3_90697002($_smarty_tpl) {?><!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
 
         <div class="panel panel-primary">

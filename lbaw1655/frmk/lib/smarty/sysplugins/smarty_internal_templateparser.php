@@ -1640,7 +1640,7 @@ static public $yy_action = array(
 
         /* if ($this->yyidx < 0) return self::YY_NO_ACTION;  */
         if (!isset(self::$yy_shift_ofst[$stateno])) {
-            // no shift auctions
+            // no shift actions
             return self::$yy_default[$stateno];
         }
         $i = self::$yy_shift_ofst[$stateno];

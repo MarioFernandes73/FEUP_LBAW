@@ -1,29 +1,37 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 16:33:21
-         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\common\navbar.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:69740033058f22f312b0d10-05386984%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 16:24:34
+         compiled from "/opt/lbaw/lbaw1655/public_html/frmk/templates/common/navbar.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:107138910458f236280995e0-50609795%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'be04167e99539c484022cbf0c08f0e7daa397416' => 
+    'e54163152becc528a5399bb39f1cf1740c649c56' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\common\\navbar.tpl',
-      1 => 1492193912,
+      0 => '/opt/lbaw/lbaw1655/public_html/frmk/templates/common/navbar.tpl',
+      1 => 1492269863,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '69740033058f22f312b0d10-05386984',
+  'nocache_hash' => '107138910458f236280995e0-50609795',
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f22f312b2b84_53429776',
+  'unifunc' => 'content_58f236280b8ed5_93442624',
+  'variables' => 
+  array (
+    'BASE_URL' => 0,
+    'username' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58f22f312b2b84_53429776')) {function content_58f22f312b2b84_53429776($_smarty_tpl) {?><div class="container">
+<?php if ($_valid && !is_callable('content_58f236280b8ed5_93442624')) {function content_58f236280b8ed5_93442624($_smarty_tpl) {?><div class="container">
 
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
+
+            <!-- Home Button -->
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                         aria-expanded="false" aria-controls="navbar">
@@ -32,8 +40,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Home</a>
+                <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/authentication/homepage.php">Home</a>
             </div>
+
+            <!-- Categories -->
+
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
@@ -53,6 +65,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
+
+                <!-- Search -->
+
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -62,10 +77,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         Search
                     </button>
                 </form>
-                <form class="navbar-form navbar-right">
-                    <a href="signup.php">Sign Up</a>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login_form">Login</button>
-                </form>
+
+                <!-- Account -->
+
+                    <?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="admin.html">Administration Options</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <!-- Login e SignUp -->
+
+                        <?php } else { ?>
+                        <form class="navbar-form navbar-right">
+                            <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/authentication/signup.php">Sign Up</a>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginDialog">Login</button>
+                        </form>
+                    <?php }?>
             </div>
         </div>
     </nav>
@@ -136,17 +172,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
 
     <!-- Login Form -->
-    <div class="modal fade" id="login_form" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade" id="loginDialog" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form role="form">
+                    <form role="form" method="post" action="../../actions/authentication/login.php">
                         <div class="form-group">
-                            <input id="username_form" class="form-control input-lg" placeholder="Username" type="text">
+                            <input name="user" class="form-control input-lg" placeholder="Username" type="text" required="required">
                         </div>
                         <div class="form-group">
-                            <input id="password_form" class="form-control input-lg" placeholder="Password" type="password">
+                            <input name="pass" class="form-control input-lg" placeholder="Password" type="password" required="required">
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
                     </form>

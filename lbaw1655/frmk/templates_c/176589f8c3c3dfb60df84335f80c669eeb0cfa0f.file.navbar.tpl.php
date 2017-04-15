@@ -1,11 +1,33 @@
-<div class="container">
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 16:00:50
+         compiled from "../../templates/common/navbar.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:211510149358f22405bd3fe0-10326185%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '176589f8c3c3dfb60df84335f80c669eeb0cfa0f' => 
+    array (
+      0 => '../../templates/common/navbar.tpl',
+      1 => 1492268448,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '211510149358f22405bd3fe0-10326185',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f22405bde5e7_88775259',
+  'variables' => 
+  array (
+    'username' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_58f22405bde5e7_88775259')) {function content_58f22405bde5e7_88775259($_smarty_tpl) {?><div class="container">
 
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-
-            <!-- Home Button -->
-
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                         aria-expanded="false" aria-controls="navbar">
@@ -14,11 +36,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{$BASE_URL}pages/authentication/homepage.php">Home</a>
+                <a class="navbar-brand" href="index.html">Home</a>
             </div>
-
-            <!-- Categories -->
-
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
@@ -38,9 +57,6 @@
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-
-                <!-- Search -->
-
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -51,9 +67,7 @@
                     </button>
                 </form>
 
-                <!-- Account -->
-
-                    {if $username}
+                    <?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
@@ -65,15 +79,12 @@
                                 </ul>
                             </li>
                         </ul>
-
-                        <!-- Login e SignUp -->
-
-                        {else}
+                        <?php } else { ?>
                         <form class="navbar-form navbar-right">
-                            <a href="{$BASE_URL}pages/authentication/signup.php">Sign Up</a>
+                            <a href="register.html">Sign Up</a>
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginDialog">Login</button>
                         </form>
-                    {/if}
+                    <?php }?>
             </div>
         </div>
     </nav>
@@ -169,3 +180,4 @@
 
 
 
+<?php }} ?>
