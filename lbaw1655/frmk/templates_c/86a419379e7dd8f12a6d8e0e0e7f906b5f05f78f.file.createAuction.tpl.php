@@ -1,9 +1,36 @@
-<div class="jumbotron">
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 16:33:21
+         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\auctions\createAuction.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:130830438658f22f312c5af8-81460811%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '86a419379e7dd8f12a6d8e0e0e7f906b5f05f78f' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\auctions\\createAuction.tpl',
+      1 => 1492266709,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '130830438658f22f312c5af8-81460811',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'BASE_URL' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f22f312f9c12_40340163',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_58f22f312f9c12_40340163')) {function content_58f22f312f9c12_40340163($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\lib\\smarty\\plugins\\modifier.date_format.php';
+?><div class="jumbotron">
             <div class="row main">
                 <div class="main-login main-center">
                     <h2 class="text-center">Create Auction</h2>
                     <form class="form-horizontal" style="padding: 0% 25%" method="POST" enctype="multipart/form-data"
-                          action="{$BASE_URL}actions/auctions/createAuction.php">
+                          action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+actions/auctions/createAuction.php">
 
                         <!-- Name -->
 
@@ -78,8 +105,10 @@
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
                                 <input type="text"  name="startingdate" required="required" class="form-control"
-                                       value="{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}"
-                                       min="{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}"/>
+                                       value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d %H:%M:%S");?>
+"
+                                       min="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d %H:%M:%S");?>
+"/>
                             </div>
                         </div>
 
@@ -122,3 +151,4 @@
             </div>
         </div>
 
+<?php }} ?>

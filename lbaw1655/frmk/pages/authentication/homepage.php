@@ -1,7 +1,7 @@
 <?php
     include_once('../../config/init.php');
-    include_once($BASE_DIR . 'templates/common/header.tpl');
-    include_once($BASE_DIR . 'templates/common/navbar.tpl');
-    include_once($BASE_DIR . 'templates/authentication/homepage.tpl');
-    include_once($BASE_DIR . 'templates/common/footer.tpl');
+    $smarty->display('common/header.tpl');
+    $smarty->display('common/navbar.tpl');
+    $smarty->display('authentication/homepage.tpl');
+    $smarty->display('common/footer.tpl');
 ?>
