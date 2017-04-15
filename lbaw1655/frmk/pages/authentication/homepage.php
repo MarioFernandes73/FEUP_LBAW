@@ -1,7 +1,9 @@
 <?php
     include_once('../../config/init.php');
-    $smarty->display('common/header.tpl');
-    $smarty->display('common/navbar.tpl');
-    $smarty->display('authentication/homepage.tpl');
-    $smarty->display('common/footer.tpl');
-?>
+    include_once($BASE_DIR .'templates/common/header.tpl');
+    if(isset($_SESSION['username'])) {
+        $smarty->assign('username',$_SESSION['username']);
+    }
+    $smarty->display($BASE_DIR .'templates/common/navbar.tpl');
+    $smarty->display($BASE_DIR .'templates/authentication/homepage.tpl');
+    $smarty->display($BASE_DIR .'templates/common/footer.tpl');
