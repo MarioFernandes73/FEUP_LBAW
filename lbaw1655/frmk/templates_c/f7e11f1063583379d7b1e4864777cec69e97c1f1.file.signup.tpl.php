@@ -1,4 +1,25 @@
-<!-- REGISTER -->
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 16:32:29
+         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\authentication\signup.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:177231329058f35ec8954713-21507134%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'f7e11f1063583379d7b1e4864777cec69e97c1f1' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\authentication\\signup.tpl',
+      1 => 1492353104,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '177231329058f35ec8954713-21507134',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f35ec89d4e82_69947786',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_58f35ec89d4e82_69947786')) {function content_58f35ec89d4e82_69947786($_smarty_tpl) {?><!-- REGISTER -->
 <div class="jumbotron">
     <div class="row main">
         <div class="main-login main-center">
@@ -52,7 +73,7 @@
                     <div class="input-group" id="pass2">
                                 <span class="input-group-addon"><span
                                             class=" glyphicon glyphicon-lock"></span></span>
-                        <input name="password" type="password" class="form-control" pattern=".{literal}{5,}{/literal}" title="Password must be at least 5 characters long!" placeholder="Enter a secure password" required="required" aria-describedby="basic-addon1">
+                        <input name="password" type="password" class="form-control" pattern=".{5,}" title="Password must be at least 5 characters long!" placeholder="Enter a secure password" required="required" aria-describedby="basic-addon1">
                     </div>
                 </div>
 
@@ -70,7 +91,7 @@
                     <div class="input-group" id="number">
                                 <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-earphone"></span></span>
-                        <input name="phoneNumber" type="tel" class="form-control" pattern="[0-9]{literal}{9}{/literal}" placeholder="Enter your phone number" title="insert number phone valid!!" required="required" aria-describedby="basic-addon1">
+                        <input name="phoneNumber" type="tel" class="form-control" pattern="[0-9]{9}" placeholder="Enter your phone number" title="insert number phone valid!!" required="required" aria-describedby="basic-addon1">
                     </div>
                 </div>
 
@@ -89,3 +110,4 @@
 
 </div>
 
+<?php }} ?>

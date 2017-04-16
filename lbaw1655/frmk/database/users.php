@@ -14,5 +14,21 @@ function isLoginCorrect($user,$pass){
     	 $hashPass = password_hash($password, PASSWORD_DEFAULT, $options);
 		$stmt = $conn->prepare("INSERT INTO \"User\" (username, password, birthdate, name, address) 
 									 VALUES ( ?, ?, ?, ?, ?)");
-		$stmt->execute(array($username,$hashPass, $datebirth, $name, $address));
+		$stmt->execute(array($username,$hashPass, $birthDate, $name, $address));
+}
+
+function hasUsername($usermame){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"User\" Where username=?");
+    $stmt->execute(array($usermame));
+    echo $stmt->fetch()."<br>";
+    return $stmt->fetch();
+}
+
+function hasAddress($address){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"User\" Where address=?");
+    $stmt->execute(array($address));
+    echo $stmt->fetch()."<br>";
+    return $stmt->fetch();
 }
