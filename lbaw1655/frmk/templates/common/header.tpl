@@ -38,6 +38,7 @@
     <script src="{$BASE_URL}javascript/bootstrap.js"></script>
     <script src="{$BASE_URL}javascript/star-rating.js"></script>
     <script src="{$BASE_URL}javascript/npm.js"></script>
+    <script src="{$BASE_URL}javascript/validations/validate.js"></script>
 
 </head>
 <body>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 16:32:29
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 17:03:54
          compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\authentication\signup.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:177231329058f35ec8954713-21507134%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f7e11f1063583379d7b1e4864777cec69e97c1f1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\authentication\\signup.tpl',
-      1 => 1492353104,
+      1 => 1492355010,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <!-- Title -->
             <h2 align="center">Sign Up</h2>
 
-            <form class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" method="post">
+            <form name="signup" class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" onsubmit="return validateSignup()" method="post">
                 <!-- attributes -->
                 <div class="form-group">
                     <label for="username" class="cols-sm-2 control-label">Username</label>

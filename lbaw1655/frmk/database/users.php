@@ -21,7 +21,7 @@ function hasUsername($usermame){
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM \"User\" Where username=?");
     $stmt->execute(array($usermame));
-    echo $stmt->fetch()."<br>";
+    var_dump($stmt->fetch());   
     return $stmt->fetch();
 }
 

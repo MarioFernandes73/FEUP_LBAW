@@ -6,7 +6,7 @@
             <!-- Title -->
             <h2 align="center">Sign Up</h2>
 
-            <form class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" method="post">
+            <form name="signup" class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" onsubmit="return validateSignup()" method="post">
                 <!-- attributes -->
                 <div class="form-group">
                     <label for="username" class="cols-sm-2 control-label">Username</label>

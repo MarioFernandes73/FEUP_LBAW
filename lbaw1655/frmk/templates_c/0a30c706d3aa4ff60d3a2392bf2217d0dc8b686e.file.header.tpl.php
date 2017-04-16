@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 14:04:43
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 17:23:08
          compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\common\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:87809098958f35ddaebac58-57768573%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0a30c706d3aa4ff60d3a2392bf2217d0dc8b686e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\common\\header.tpl',
-      1 => 1492293779,
+      1 => 1492355871,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f35ddb2277f3_52738646',
   'variables' => 
   array (
     'BASE_URL' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f35ddb2277f3_52738646',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_58f35ddb2277f3_52738646')) {function content_58f35ddb2277f3_52738646($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -72,6 +72,8 @@ javascript/bootstrap.js"></script>
 javascript/star-rating.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/npm.js"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/validations/validate.js"></script>
 
 </head>
 <body><?php }} ?>
