@@ -8,6 +8,7 @@ baseprice=? AND type=? AND startingdate=? AND durationhours=? AND idowner=?");
     $stmt->execute(array($name,$category,$baseprice,$type,$startingdate,$durationhours,$idowner));
     return $stmt->fetch()['idauction'];
 }
+
 function createAuction($name, $category, $baseprice, $type, $startdate, $time, $description,$state,$idowner){
     global  $conn;
     $stmt =  $conn->prepare("INSERT INTO \"Auction\" (name,category,baseprice,currentprice,type,startingdate,

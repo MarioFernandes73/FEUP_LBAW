@@ -26,7 +26,7 @@
                                         <a href="auction.html">Garden Table<br></a>
                                         <label>Outdoor<br>
                                             01:05:37<br>
-                                            Last Price - 63.5€</label>
+                                            Last Price - 63.5ï¿½</label>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                         <a href="auction.html">Red Dress<br></a>
                                         <label>Clothes<br>
                                             00:02:45<br>
-                                            Last Price - 12.1€</label>
+                                            Last Price - 12.1ï¿½</label>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                                         <a href="auction.html">Chainsaw<br></a>
                                         <label>Tools<br>
                                             1 day 22:05:12<br>
-                                            Last Price - 150€</label>
+                                            Last Price - 150ï¿½</label>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                         <a href="auction.html">Swimming Pool<br></a>
                                         <label>Outside<br>
                                             2 days 12:57:02<br>
-                                            Last Price - 378€</label>
+                                            Last Price - 378ï¿½</label>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                         <a href="auction.html">Big Old Clock<br></a>
                                         <label>Antiquities<br>
                                             19:00:19<br>
-                                            Last Price - 7036€</label>
+                                            Last Price - 7036ï¿½</label>
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                                         <a href="auction.html">Silver necklace from Queen Elizabeth II<br></a>
                                         <label>Jewelery<br>
                                             3 days 03:22:15<br>
-                                            Last Price - 1579€</label>
+                                            Last Price - 1579ï¿½</label>
                                     </div>
                                 </div>
                             </div>
