@@ -1,3 +1,5 @@
+{include file='common/header.tpl'}
+{include file='common/navbar.tpl'}
 <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
 
@@ -173,3 +175,4 @@
             <div class="panel-footer"><a href="searchresult.html">See More</a></div>
         </div>
     </div>
+{include file='common/footer.tpl'}

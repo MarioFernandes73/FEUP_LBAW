@@ -9,10 +9,7 @@ if (!$_POST['user'] || !$_POST['pass']) {
     exit;
 }
 
-$user = $_POST['user'];
-$pass = $_POST['pass'];
-$res = isLoginCorrect($user,$pass);
-
+$res = isLoginCorrect($_POST['user'],$_POST['pass']);
 
 if($res == true) {
     foreach ($res as $key => $value) {
@@ -22,6 +19,5 @@ if($res == true) {
 }
 else {
     $_SESSION['error_messages'][] = 'Login failed';
-    echo "FAIL";
 }
 header('Location: ' . $_SERVER['HTTP_REFERER']);
