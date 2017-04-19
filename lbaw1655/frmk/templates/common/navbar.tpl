@@ -76,7 +76,7 @@
 
                         {else}
                         <form class="navbar-form navbar-right">
-                            <a href="{$BASE_URL}pages/authentication/signup.php">Sign Up</a>
+                            <a href="{$BASE_URL}pages/authentication/signup.php" class="btn btn-default">Sign Up</a>
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginDialog">Login</button>
                         </form>
                     {/if}
@@ -91,6 +91,11 @@
     {foreach $SUCCESS_MESSAGES as $success}
         <div class="panel panel-success">
             <div class="panel-heading">{$success}</div>
+        </div>
+    {/foreach}
+    {foreach $FIELD_ERRORS as $field_errors}
+        <div class="panel panel-danger">
+            <div class="panel-heading">{$field_errors}</div>
         </div>
     {/foreach}
     <!-- Login Form -->

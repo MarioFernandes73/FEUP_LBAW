@@ -12,7 +12,7 @@
     <link href="{$BASE_URL}css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="{$BASE_URL}css/star-rating.css" type="text/css" rel="stylesheet">
     <link href="{$BASE_URL}css/bootstrap-theme.css" type="text/css" rel="stylesheet">
-    <link href="{$BASE_URL}ss/personal.css" type="text/css" rel="stylesheet">
+    <link href="{$BASE_URL}css/personal.css" type="text/css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -30,15 +30,14 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
-
     <script src="{$BASE_URL}javascript/bootstrap-notify.js"></script>
     <script src="{$BASE_URL}javascript/bootstrap.js"></script>
     <script src="{$BASE_URL}javascript/star-rating.js"></script>
-    <script src="{$BASE_URL}javascript/npm.js"></script>
-    <script src="{$BASE_URL}javascript/validations/validate.js"></script>
+    <!--<script src="{$BASE_URL}javascript/npm.js"></script>-->
+	<script src="{$BASE_URL}javascript/validations/validate.js"></script>
 
 </head>
 <body>

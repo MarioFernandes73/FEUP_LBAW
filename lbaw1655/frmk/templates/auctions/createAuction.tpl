@@ -13,7 +13,7 @@
                                 <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-lamp"></span>
                                 </span>
-                                <input type="text" name="name" required="required" class="form-control" placeholder="Enter auction's name" aria-describedby="basic-addon1">
+                                <input type="text" name="name" pattern="([\w\_\?\.\,\!\+\-\s\n\\])*" required="required" class="form-control" placeholder="Enter auction's name" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
@@ -45,7 +45,8 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-euro"></span>
                                 </div>
-                                <input type="text"  name="baseprice" required="required" class="form-control">
+                                <input type="number"  min="1"
+                                       name="baseprice" required="required" class="form-control">
 
                             </div>
                         </div>
@@ -77,9 +78,9 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
-                                <input type="text"  name="startingdate" required="required" class="form-control"
-                                       value="{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}"
-                                       min="{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}"/>
+                                <input type="datetime-local"  name="startingdate" required="required" class="form-control"
+                                       value="{$smarty.now|date_format:"%Y-%m-%d"}T{$smarty.now|date_format: "%H:%M"}"
+                                       min="{$smarty.now|date_format:"%Y-%m-%d"}T{$smarty.now|date_format: "%H:%M"}"/>
                             </div>
                         </div>
 
@@ -103,10 +104,10 @@
 
                         <div class="form-group">
                             <label for="comment">Item description</label>
-                            <textarea name="description" class="form-control" rows="5" id="comment" placeholder="Write your description..."></textarea>
+                            <textarea name="description" pattern="([\w\_\?\.\,\!\+\-\s\n\\])*" class="form-control" rows="5" id="comment" placeholder="Write your description..."></textarea>
                             <label class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
                             <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                            <input type="file" name="upload[]" style="display: none; " multiple>
+                            <input type="file" name="upload[]" style="display: none; "/>
                         </label>
                         </div>
 

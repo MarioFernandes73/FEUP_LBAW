@@ -13,7 +13,9 @@ $res = isLoginCorrect($_POST['user'],$_POST['pass']);
 
 if($res == true) {
     foreach ($res as $key => $value) {
-        $_SESSION[$key] = $value;
+        if($key!="password"){
+            $_SESSION[$key] = $value;
+        }
     }
     $_SESSION['success_messages'][] = 'Login successful';
 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-15 16:03:04
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-17 00:16:19
          compiled from "/opt/lbaw/lbaw1655/public_html/frmk/templates/auctions/createAuction.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:135963349058f236280bd275-18042641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '23e46793fb15226a0e51f8acf934a41ed459e75c' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/frmk/templates/auctions/createAuction.tpl',
-      1 => 1492268549,
+      1 => 1492384575,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f236280f1965_93523133',
   'variables' => 
   array (
     'BASE_URL' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f236280f1965_93523133',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_58f236280f1965_93523133')) {function content_58f236280f1965_93523133($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/opt/lbaw/lbaw1655/public_html/frmk/lib/smarty/plugins/modifier.date_format.php';
 ?><div class="jumbotron">
@@ -40,7 +40,7 @@ actions/auctions/createAuction.php">
                                 <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-lamp"></span>
                                 </span>
-                                <input type="text" name="name" required="required" class="form-control" placeholder="Enter auction's name" aria-describedby="basic-addon1">
+                                <input type="text" name="name" pattern="([\w\_\?\.\,\!\+\-\s\n\\])*" required="required" class="form-control" placeholder="Enter auction's name" aria-describedby="basic-addon1">
                             </div>
                         </div>
 
@@ -72,7 +72,8 @@ actions/auctions/createAuction.php">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-euro"></span>
                                 </div>
-                                <input type="text"  name="baseprice" required="required" class="form-control">
+                                <input type="number"  min="1"
+                                       name="baseprice" required="required" class="form-control">
 
                             </div>
                         </div>
@@ -104,10 +105,12 @@ actions/auctions/createAuction.php">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
-                                <input type="text"  name="startingdate" required="required" class="form-control"
-                                       value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d %H:%M:%S");?>
+                                <input type="datetime-local"  name="startingdate" required="required" class="form-control"
+                                       value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+T<?php echo smarty_modifier_date_format(time(),"%H:%M");?>
 "
-                                       min="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d %H:%M:%S");?>
+                                       min="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+T<?php echo smarty_modifier_date_format(time(),"%H:%M");?>
 "/>
                             </div>
                         </div>
@@ -132,10 +135,10 @@ actions/auctions/createAuction.php">
 
                         <div class="form-group">
                             <label for="comment">Item description</label>
-                            <textarea name="description" class="form-control" rows="5" id="comment" placeholder="Write your description..."></textarea>
+                            <textarea name="description" pattern="([\w\_\?\.\,\!\+\-\s\n\\])*" class="form-control" rows="5" id="comment" placeholder="Write your description..."></textarea>
                             <label class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
                             <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                            <input type="file" name="upload[]" style="display: none; " multiple>
+                            <input type="file" name="upload[]" style="display: none; "/>
                         </label>
                         </div>
 

@@ -1,30 +1,36 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 14:04:43
-         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\common\navbar.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:151988594858f35ddb3a2f46-66656223%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-19 13:42:14
+         compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/common/navbar.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:187426155858f75b26bc6115-85522859%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'be04167e99539c484022cbf0c08f0e7daa397416' => 
+    'db1f66c2f6b862e49897b10b3c44952f80177adf' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\common\\navbar.tpl',
-      1 => 1492339837,
+      0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/common/navbar.tpl',
+      1 => 1492554099,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '151988594858f35ddb3a2f46-66656223',
+  'nocache_hash' => '187426155858f75b26bc6115-85522859',
   'function' => 
   array (
   ),
   'variables' => 
   array (
     'BASE_URL' => 0,
-    'username' => 0,
+    'USERNAME' => 0,
+    'ERROR_MESSAGES' => 0,
+    'error' => 0,
+    'SUCCESS_MESSAGES' => 0,
+    'success' => 0,
+    'FIELD_ERRORS' => 0,
+    'field_errors' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f35ddb3fda53_91120869',
+  'unifunc' => 'content_58f75b26c35863_24358401',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58f35ddb3fda53_91120869')) {function content_58f35ddb3fda53_91120869($_smarty_tpl) {?><div class="container">
+<?php if ($_valid && !is_callable('content_58f75b26c35863_24358401')) {function content_58f75b26c35863_24358401($_smarty_tpl) {?><div class="container">
 
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
@@ -62,7 +68,14 @@ pages/authentication/homepage.php">Home</a>
                             <li><a href="#">Tools</a></li>
                         </ul>
                     </li>
+                    <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value) {?>
+                        <li><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/auctions/createAuction.php">Create Auction</a></li>
+                    <?php }?>
                     <li><a href="#">FAQ</a></li>
+                    <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value) {?>
+                        <li><a href="#">Tickets</a></li>
+                    <?php }?>
                     <li><a href="#">Contact</a></li>
                 </ul>
 
@@ -80,7 +93,7 @@ pages/authentication/homepage.php">Home</a>
 
                 <!-- Account -->
 
-                    <?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
+                    <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value) {?>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
@@ -88,7 +101,8 @@ pages/authentication/homepage.php">Home</a>
                                     <li><a href="profile.html">Profile</a></li>
                                     <li><a href="admin.html">Administration Options</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+actions/authentication/logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -98,79 +112,43 @@ pages/authentication/homepage.php">Home</a>
                         <?php } else { ?>
                         <form class="navbar-form navbar-right">
                             <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/authentication/signup.php">Sign Up</a>
+pages/authentication/signup.php" class="btn btn-default">Sign Up</a>
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginDialog">Login</button>
                         </form>
                     <?php }?>
             </div>
         </div>
     </nav>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <button type="button" class="close"
-                            data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        Modal title
-                    </h4>
-                </div>
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label  class="col-sm-2 control-label"
-                                    for="inputEmail3">Email</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control"
-                                       id="inputEmail3" placeholder="Email"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"
-                                   for="inputPassword3" >Password</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control"
-                                       id="inputPassword3" placeholder="Password"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"/> Remember me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Sign in</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        Save changes
-                    </button>
-                </div>
-            </div>
-        </div>
+    <?php  $_smarty_tpl->tpl_vars['error'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['error']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['ERROR_MESSAGES']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['error']->key => $_smarty_tpl->tpl_vars['error']->value) {
+$_smarty_tpl->tpl_vars['error']->_loop = true;
+?>
+    <div class="panel panel-danger">
+        <div class="panel-heading"><?php echo $_smarty_tpl->tpl_vars['error']->value;?>
+</div>
     </div>
-
+    <?php } ?>
+    <?php  $_smarty_tpl->tpl_vars['success'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['success']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['SUCCESS_MESSAGES']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['success']->key => $_smarty_tpl->tpl_vars['success']->value) {
+$_smarty_tpl->tpl_vars['success']->_loop = true;
+?>
+        <div class="panel panel-success">
+            <div class="panel-heading"><?php echo $_smarty_tpl->tpl_vars['success']->value;?>
+</div>
+        </div>
+    <?php } ?>
+    <?php  $_smarty_tpl->tpl_vars['field_errors'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['field_errors']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['FIELD_ERRORS']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['field_errors']->key => $_smarty_tpl->tpl_vars['field_errors']->value) {
+$_smarty_tpl->tpl_vars['field_errors']->_loop = true;
+?>
+        <div class="panel panel-danger">
+            <div class="panel-heading"><?php echo $_smarty_tpl->tpl_vars['field_errors']->value;?>
+</div>
+        </div>
+    <?php } ?>
     <!-- Login Form -->
     <div class="modal fade" id="loginDialog" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog">

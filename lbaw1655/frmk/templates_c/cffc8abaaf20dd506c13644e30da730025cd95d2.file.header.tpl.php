@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 17:23:08
-         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\common\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:87809098958f35ddaebac58-57768573%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-19 13:42:14
+         compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/common/header.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:171870274758f75b26b95ce0-54633222%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '0a30c706d3aa4ff60d3a2392bf2217d0dc8b686e' => 
+    'cffc8abaaf20dd506c13644e30da730025cd95d2' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\common\\header.tpl',
-      1 => 1492355871,
+      0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/common/header.tpl',
+      1 => 1492541233,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '87809098958f35ddaebac58-57768573',
+  'nocache_hash' => '171870274758f75b26b95ce0-54633222',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f35ddb2277f3_52738646',
   'variables' => 
   array (
     'BASE_URL' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f75b26bc2541_16816041',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58f35ddb2277f3_52738646')) {function content_58f35ddb2277f3_52738646($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_58f75b26bc2541_16816041')) {function content_58f75b26bc2541_16816041($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -41,7 +41,7 @@ css/star-rating.css" type="text/css" rel="stylesheet">
     <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 css/bootstrap-theme.css" type="text/css" rel="stylesheet">
     <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-ss/personal.css" type="text/css" rel="stylesheet">
+css/personal.css" type="text/css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -59,20 +59,18 @@ ss/personal.css" type="text/css" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-javascript/bootstrap.min.js"></script>
-
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/bootstrap-notify.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/bootstrap.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/star-rating.js"></script>
-    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-javascript/npm.js"></script>
-    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+    <!--<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/npm.js"></script>-->
+	<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/validations/validate.js"></script>
 
 </head>

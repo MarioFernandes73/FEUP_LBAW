@@ -1,25 +1,29 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-16 17:03:54
-         compiled from "C:\xampp\htdocs\FEUP_LBAW\lbaw1655\frmk\templates\authentication\signup.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:177231329058f35ec8954713-21507134%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-19 17:57:47
+         compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/authentication/signup.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:18426492858f7970bae7e16-31010362%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'f7e11f1063583379d7b1e4864777cec69e97c1f1' => 
+    'fd442da916fd316e607bbe5c88fec50e903e6c53' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\FEUP_LBAW\\lbaw1655\\frmk\\templates\\authentication\\signup.tpl',
-      1 => 1492355010,
+      0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/authentication/signup.tpl',
+      1 => 1492534072,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '177231329058f35ec8954713-21507134',
+  'nocache_hash' => '18426492858f7970bae7e16-31010362',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f35ec89d4e82_69947786',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f7970bc3a7f6_11473668',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58f35ec89d4e82_69947786')) {function content_58f35ec89d4e82_69947786($_smarty_tpl) {?><!-- REGISTER -->
+<?php if ($_valid && !is_callable('content_58f7970bc3a7f6_11473668')) {function content_58f7970bc3a7f6_11473668($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate ('common/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+<!-- REGISTER -->
 <div class="jumbotron">
     <div class="row main">
         <div class="main-login main-center">
@@ -27,16 +31,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <!-- Title -->
             <h2 align="center">Sign Up</h2>
 
-            <form name="signup" class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" onsubmit="return validateSignup()" method="post">
+            <form  name="signup" class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" onsubmit="return validatePassword()" method="post">
                 <!-- attributes -->
-                <div class="form-group">
+                <div id="form-group-Username" class="form-group">
                     <label for="username" class="cols-sm-2 control-label">Username</label>
                     <div class="input-group" id="username">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 </span>
-                        <input name="username" type="text" class="form-control" placeholder="Enter your account username" aria-describedby="basic-addon1">
+                            <input name="username" type="text" class="form-control" placeholder="Enter your account username" aria-describedby="basic-addon1">
                     </div>
+
                 </div>
 
                 <div class="form-group">
@@ -59,8 +64,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="address" class="cols-sm-2 control-label">Email</label>
+                <div id="form-group-Address" class="form-group">
+                    <label for="address" class="cols-sm-2 control-label">Address</label>
                     <div class="input-group" id="address">
                                 <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-envelope"></span></span>
@@ -100,14 +105,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </div>
 
                 <div class="form-group" style="padding: 1em 3em">
-                    <button type="submit" style="min-height: 10px; font-size: 3vmin" class="btn btn-primary btn-lg btn-block login-button">
+                    <button name="submit" type="submit" style="min-height: 10px; font-size: 3vmin" class="btn btn-primary btn-lg btn-block login-button">
                         Register
                     </button>
                 </div>
+
             </form>
         </div>
     </div>
 
 </div>
 
+<?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 <?php }} ?>

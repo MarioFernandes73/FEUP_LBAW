@@ -1,3 +1,5 @@
+{include file='common/header.tpl'}
+{include file='common/navbar.tpl'}
 <!-- REGISTER -->
 <div class="jumbotron">
     <div class="row main">
@@ -6,16 +8,17 @@
             <!-- Title -->
             <h2 align="center">Sign Up</h2>
 
-            <form name="signup" class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" onsubmit="return validateSignup()" method="post">
+            <form  name="signup" class="form-horizontal" style="padding: 0% 25%"  action="../../actions/authentication/signup.php" onsubmit="return validatePassword()" method="post">
                 <!-- attributes -->
-                <div class="form-group">
+                <div id="form-group-Username" class="form-group">
                     <label for="username" class="cols-sm-2 control-label">Username</label>
                     <div class="input-group" id="username">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 </span>
-                        <input name="username" type="text" class="form-control" placeholder="Enter your account username" aria-describedby="basic-addon1">
+                            <input name="username" type="text" class="form-control" placeholder="Enter your account username" aria-describedby="basic-addon1">
                     </div>
+
                 </div>
 
                 <div class="form-group">
@@ -38,8 +41,8 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="address" class="cols-sm-2 control-label">Email</label>
+                <div id="form-group-Address" class="form-group">
+                    <label for="address" class="cols-sm-2 control-label">Address</label>
                     <div class="input-group" id="address">
                                 <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-envelope"></span></span>
@@ -79,13 +82,15 @@
                 </div>
 
                 <div class="form-group" style="padding: 1em 3em">
-                    <button type="submit" style="min-height: 10px; font-size: 3vmin" class="btn btn-primary btn-lg btn-block login-button">
+                    <button name="submit" type="submit" style="min-height: 10px; font-size: 3vmin" class="btn btn-primary btn-lg btn-block login-button">
                         Register
                     </button>
                 </div>
+
             </form>
         </div>
     </div>
 
 </div>
 
+{include file='common/footer.tpl'}

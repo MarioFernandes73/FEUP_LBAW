@@ -3,32 +3,46 @@ include_once('../../config/init.php');
 
 function isLoginCorrect($user,$pass){
     global $conn;
-    $stmt = $conn->prepare("SELECT * FROM \"User\" where username=? AND password=?");
-    $stmt->execute(array($user,$pass));
-    return $stmt->fetch();
+    $stmt = $conn->prepare("SELECT * FROM \"User\" where username=?");
+    $stmt->execute(array($user));
+    $res = $stmt->fetch();
+    if($user != false && password_verify($pass, $res['password']))
+    	return $res;
+    else
+        return false;
 }
 
-	function addUser($username, $name, $birthDate, $address, $password, $phoneNumber){//nao estou a usar o phoneNumber
+	function addUser($username, $name, $birthDate, $address, $password, $phoneNumber){
 		global $conn;
 		 $options = ['cost' => 12];
+         echo($phoneNumber);
     	 $hashPass = password_hash($password, PASSWORD_DEFAULT, $options);
-		$stmt = $conn->prepare("INSERT INTO \"User\" (username, password, birthdate, name, address) 
-									 VALUES ( ?, ?, ?, ?, ?)");
-		$stmt->execute(array($username,$hashPass, $birthDate, $name, $address));
+		$stmt = $conn->prepare("INSERT INTO \"User\" (username, password, birthdate, name, address, phonenumber) 
+									 VALUES ( ?, ?, ?, ?, ?,?)");
+		$stmt->execute(array($username,$hashPass, $birthDate, $name, $address, $phoneNumber));
 }
 
 function hasUsername($usermame){
-    global $conn;
+    global $conn;   
     $stmt = $conn->prepare("SELECT * FROM \"User\" Where username=?");
     $stmt->execute(array($usermame));
-    var_dump($stmt->fetch());   
-    return $stmt->fetch();
+    if($stmt->fetch()==false)
+        return false;
+    else return true;
 }
 
 function hasAddress($address){
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM \"User\" Where address=?");
     $stmt->execute(array($address));
-    echo $stmt->fetch()."<br>";
+    if($stmt->fetch()==false)
+        return false;
+    else return true;
+}
+
+function getUser($iduser){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"User\" WHERE iduser=?");
+    $stmt->execute(array($iduser));
     return $stmt->fetch();
 }

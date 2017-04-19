@@ -8,7 +8,6 @@ baseprice=? AND type=? AND startingdate=? AND durationhours=? AND idowner=?");
     $stmt->execute(array($name,$category,$baseprice,$type,$startingdate,$durationhours,$idowner));
     return $stmt->fetch()['idauction'];
 }
-
 function createAuction($name, $category, $baseprice, $type, $startdate, $time, $description,$state,$idowner){
     global  $conn;
     $stmt =  $conn->prepare("INSERT INTO \"Auction\" (name,category,baseprice,currentprice,type,startingdate,
@@ -33,4 +32,65 @@ function addAuctionPhotos($idauction,$photos){
             addAImagesAuction($idfile,$idauction);
         }
     }
+}
+
+function getAuction($idauction){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"Auction\" WHERE idauction=?");
+    $stmt->execute(array($idauction));
+    return $stmt->fetch();
+}
+
+function getAuctionComments($idauction){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"Comment\" WHERE idauction=?");
+    $stmt->execute(array($idauction));
+    return $stmt->fetchAll();
+}
+
+function getAuctionBids($idauction){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"Bid\" WHERE idauction=?");
+    $stmt->execute(array($idauction));
+    return $stmt->fetchAll();
+}
+
+function getAuctionPhotosIDs($idauction){
+    global $conn;
+    $stmt = $conn->prepare("SELECT idfile FROM \"ImagesAuction\" WHERE idauction=?");
+    $stmt->execute(array($idauction));
+    return $stmt->fetchAll();
+}
+
+function getAuctionPhoto($idFile){
+    global $conn;
+    $stmt = $conn->prepare("SELECT path FROM \"File\" WHERE idfile=?");
+    $stmt->execute(array($idFile));
+    return $stmt->fetch();
+}
+
+function auctionsLMO(){
+    global  $conn;
+    $stmt =  $conn->prepare("
+        SELECT * FROM \"Auction\" A
+        WHERE A.state = 'Opened'::auctionstate
+        ORDER BY (A.startingdate + A.durationhours * '1 hour'::interval - current_timestamp) DESC
+        LIMIT 12;");
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
+function auctionsHot(){
+    global  $conn;
+    $stmt =  $conn->prepare("
+        SELECT *
+        FROM \"Auction\" A
+        WHERE  A.state = 'Opened'::auctionstate
+        ORDER BY (	SELECT COUNT(*)
+        FROM \"Bid\" B 
+        WHERE B.idAuction = A.idAuction) 
+        DESC, A.name ASC
+        LIMIT 12;");
+    $stmt->execute(array());
+    return $stmt->fetchAll();
 }
