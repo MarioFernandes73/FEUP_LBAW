@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 {include file='common/header.tpl'}
 {include file='common/navbar.tpl'}
+=======
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 <div class="jumbotron">
             <div class="row main">
                 <div class="main-login main-center">
@@ -27,9 +30,20 @@
                                 <span class="input-group-addon"><span
                                         class="glyphicon glyphicon-list-alt"></span></span>
                                 <select name="category" class="form-control form-control-lg">
+<<<<<<< HEAD
                                     {foreach $categories as $category}
                                         <option>{$category["unnest"]}</option>
                                     {/foreach}
+=======
+                                    <option>Antiquities</option>
+                                    <option>Clothes</option>
+                                    <option>Decoration</option>
+                                    <option>Indoor</option>
+                                    <option>Jewelery</option>
+                                    <option>Outside</option>
+                                    <option>Others</option>
+                                    <option>Tools</option>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                                  </select>
                             </div>
                         </div>
@@ -42,8 +56,13 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-euro"></span>
                                 </div>
+<<<<<<< HEAD
                                 <input type="number"  min="1" max="2 100 000 000"
                                        name="baseprice" required="required" step="0.01" class="form-control" value ="0.00">
+=======
+                                <input type="number"  min="1"
+                                       name="baseprice" required="required" class="form-control">
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 
                             </div>
                         </div>
@@ -61,9 +80,15 @@
                                 <span class="input-group-addon"><span
                                         class="glyphicon glyphicon-glass"></span></span>
                                 <select name="type" class="form-control form-control-lg">
+<<<<<<< HEAD
                                     {foreach $types as $type}
                                         <option>{$type["unnest"]}</option>
                                     {/foreach}
+=======
+                                    <option>English</option>
+                                    <option>Dutch</option>
+                                    <option>Blind</option>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                             </select>
                             </div>
                         </div>
@@ -84,7 +109,11 @@
                         <!-- Time of the Auction -->
 
                         <div class="form-group">
+<<<<<<< HEAD
                             <label for="time" class="cols-sm-2 control-label">Time in Hours</label>
+=======
+                            <label for="time" class="cols-sm-2 control-label">Time</label>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                             <div class="input-group" id="time">
                                 <span class="input-group-addon"><span
                                         class="glyphicon glyphicon-time"></span></span>
@@ -119,5 +148,8 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 {include file='common/footer.tpl'}
+=======
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 

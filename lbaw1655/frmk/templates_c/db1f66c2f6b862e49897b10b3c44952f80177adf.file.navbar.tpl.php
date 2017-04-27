@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.15, created on 2017-04-26 15:58:21
+=======
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-19 13:42:14
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
          compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/common/navbar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187426155858f75b26bc6115-85522859%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +11,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db1f66c2f6b862e49897b10b3c44952f80177adf' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/common/navbar.tpl',
+<<<<<<< HEAD
       1 => 1493218698,
+=======
+      1 => 1492554099,
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
       2 => 'file',
     ),
   ),
@@ -15,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+<<<<<<< HEAD
   'version' => 'Smarty-3.1.15',
   'unifunc' => 'content_58f75b26c35863_24358401',
   'variables' => 
@@ -22,6 +31,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'BASE_URL' => 0,
     'categories' => 0,
     'category' => 0,
+=======
+  'variables' => 
+  array (
+    'BASE_URL' => 0,
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
     'USERNAME' => 0,
     'ERROR_MESSAGES' => 0,
     'error' => 0,
@@ -31,6 +45,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'field_errors' => 0,
   ),
   'has_nocache_code' => false,
+<<<<<<< HEAD
+=======
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_58f75b26c35863_24358401',
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_58f75b26c35863_24358401')) {function content_58f75b26c35863_24358401($_smarty_tpl) {?><div class="container">
 
@@ -60,6 +79,7 @@ pages/authentication/homepage.php">Home</a>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Categories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
+<<<<<<< HEAD
                             <?php  $_smarty_tpl->tpl_vars['category'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['category']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['categories']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['category']->key => $_smarty_tpl->tpl_vars['category']->value) {
@@ -68,6 +88,16 @@ $_smarty_tpl->tpl_vars['category']->_loop = true;
                                 <li><a href="#"><?php echo $_smarty_tpl->tpl_vars['category']->value["unnest"];?>
 </a></li>
                             <?php } ?>
+=======
+                            <li><a href="#">Antiquities</a></li>
+                            <li><a href="#">Clothes</a></li>
+                            <li><a href="#">Decoration</a></li>
+                            <li><a href="#">Indoor</a></li>
+                            <li><a href="#">Jewelery</a></li>
+                            <li><a href="#">Outside</a></li>
+                            <li><a href="#">Others</a></li>
+                            <li><a href="#">Tools</a></li>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                         </ul>
                     </li>
                     <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value) {?>
@@ -100,7 +130,11 @@ pages/auctions/createAuction.php">Create Auction</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
+<<<<<<< HEAD
                                     <li><a href="../users/profile.php">Profile</a></li>
+=======
+                                    <li><a href="profile.html">Profile</a></li>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                                     <li><a href="admin.html">Administration Options</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>

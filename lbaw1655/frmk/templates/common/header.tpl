@@ -31,6 +31,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     
+<<<<<<< HEAD
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{$BASE_URL}javascript/bootstrap-notify.js"></script>
@@ -38,6 +39,15 @@
     <script src="{$BASE_URL}javascript/star-rating.js"></script>
     <!--<script src="{$BASE_URL}javascript/npm.js"></script>-->
 
+=======
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{$BASE_URL}javascript/bootstrap-notify.js"></script>
+    <script src="{$BASE_URL}javascript/bootstrap.js"></script>
+    <script src="{$BASE_URL}javascript/star-rating.js"></script>
+    <!--<script src="{$BASE_URL}javascript/npm.js"></script>-->
+	<script src="{$BASE_URL}javascript/validations/validate.js"></script>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 
 </head>
 <body>

@@ -1,11 +1,16 @@
 {include file='common/header.tpl'}
 {include file='common/navbar.tpl'}
+<<<<<<< HEAD
 <script src="{$BASE_URL}javascript/timeleft.js"></script>
 <div class="jumbotron">
     <div class="row">
 
         <!-- Left Section: FOLLOW BID REPORT -->
 
+=======
+<div class="jumbotron">
+    <div class="row">
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
         <div class="col-sm-4">
             <div class="panel-body">
                 <div class="carousel slide" id="myCarousel">
@@ -31,6 +36,7 @@
                                 class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div class="btn-group btn-group-justified" role="group" aria-label="..." style="min-height: 60px">
 
@@ -40,10 +46,17 @@
                 </div>
 
                 <!-- Report -->
+=======
+            <div class="btn-group btn-group-justified" role="group" aria-label="..." style="min-height: 60px">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-info btn-block">Follow</button>
+                </div>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-danger btn-block">Report</button>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <!-- Bid -->
             <div class='well col-sm-12'>
@@ -66,6 +79,20 @@
 
         <!-- Right Section: Auction Info -->
 
+=======
+            <button type="button" class="btn btn-primary btn-block btn-lg">Bid</button>
+            <div class='well col-sm-12'>
+                <form>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Your price</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" ng-pattern="/^[0-9]+(\.[0-9][0-9]?)?$/" step="0.01" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
         <div class="col-sm-8">
             <div class="panel panel-primary">
                 <div class="panel-body" style="min-height: 515px">
@@ -80,6 +107,7 @@
                         <dt class="col-sm-2">Type</dt>
                         <dd class="col-sm-3">{$currentAuction.type}</dd>
                     </dl>
+<<<<<<< HEAD
 
                     <!--type-->
 
@@ -89,32 +117,57 @@
                             <dd class="col-sm-5">{$currentAuction.baseprice/100}€</dd>
                             <dt class="col-sm-2">Current Bid</dt>
                             <dd class="col-sm-3">{$currentAuction.currentprice/100}€</dd>
+=======
+                    {if $currentAuction.type == "English"}
+                        <dl class="row">
+                            <dt class="col-sm-2">Base Price</dt>
+                            <dd class="col-sm-5">{$currentAuction.baseprice}€</dd>
+                            <dt class="col-sm-2">Current Bid</dt>
+                            <dd class="col-sm-3">{$currentAuction.currentprice}€</dd>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                         </dl>
                     {elseif $currentAuction.type == "Dutch"}
                         <dl class="row">
                             <dt class="col-sm-2">Base Price</dt>
+<<<<<<< HEAD
                             <dd class="col-sm-5">{$currentAuction.baseprice/100}€</dd>
                             <dt class="col-sm-2">Current Price</dt>
                             <dd class="col-sm-3">{$currentAuction.currentprice/100}€</dd>
+=======
+                            <dd class="col-sm-5">{$currentAuction.baseprice}€</dd>
+                            <dt class="col-sm-2">Current Price</dt>
+                            <dd class="col-sm-3">{$currentAuction.currentprice}€</dd>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                         </dl>
                     {elseif $currentAuction.type == "Blind"}
                         <dl class="row col-sm-12 text-center">
                             <dt>Minimum Price</dt>
+<<<<<<< HEAD
                             <dd>{$currentAuction.baseprice/100}€</dd>
                         </dl>
                     {/if}
 
                     <!-- dates --->
 
+=======
+                            <dd>{$currentAuction.baseprice}€</dd>
+                        </dl>
+                    {/if}
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                     <dl class="row">
                         <dt class="col-sm-2">Begin Date</dt>
                         <dd class="col-sm-5">{$currentAuction.startingdate}</dd>
                         <dt class="col-sm-2">Time Left</dt>
+<<<<<<< HEAD
                         <dd class="col-sm-3 timeleft">{$timeLeft}</dd>
                     </dl>
 
                     <!-- rating -->
 
+=======
+                        <dd class="col-sm-3" id="timeleft">{$timeLeft}</dd>
+                    </dl>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                     <dl class="row">
                         <dt class="col-sm-3">Seller Rating</dt>
                         <dd class="col-sm-9">
@@ -129,9 +182,12 @@
                             });
                         </script>
                     </dl>
+<<<<<<< HEAD
 
                     <!-- description -->
 
+=======
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                     <dl class="row">
                         <dt class="col-sm-2">Description</dt>
                         <dd class="col-sm-10 pre-scrollable text-center" style="max-height: 230px">
@@ -146,9 +202,12 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
     <!-- notifications -->
 
+=======
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
     <div class="row">
         <div class="col-sm-4">
             <div class="panel panel-primary ">
@@ -158,7 +217,11 @@
                             {foreach $notifications as $notification}
                                 {if $notification['idbidder'] == true}
                                     <li class="list-group-item">
+<<<<<<< HEAD
                                         <h4>New bid!! - Current price {$notification['ammount']/100}€</h4>
+=======
+                                        <h4>New bid!! - Current price {$notification['ammount']}€</h4>
+>>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                                     </li>
                                 {else}
                                     <li class="list-group-item">
