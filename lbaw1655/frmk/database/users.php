@@ -1,17 +1,12 @@
 <?php
 include_once('../../config/init.php');
 
-<<<<<<< HEAD
 function isLoginCorrect($user, $pass)
 {
-=======
-function isLoginCorrect($user,$pass){
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM \"User\" where username=?");
     $stmt->execute(array($user));
     $res = $stmt->fetch();
-<<<<<<< HEAD
     if($res == false) {
         $_SESSION['error_messages'][] = "Invalid login, username not found.";
         return false;
@@ -39,52 +34,20 @@ function hasUsername($user)
     $stmt = $conn->prepare("SELECT * FROM \"User\" Where username=?");
     $stmt->execute(array($user));
     if ($stmt->fetch() == false)
-=======
-    if($user != false && password_verify($pass, $res['password']))
-    	return $res;
-    else
-        return false;
-}
-
-	function addUser($username, $name, $birthDate, $address, $password, $phoneNumber){
-		global $conn;
-		 $options = ['cost' => 12];
-         echo($phoneNumber);
-    	 $hashPass = password_hash($password, PASSWORD_DEFAULT, $options);
-		$stmt = $conn->prepare("INSERT INTO \"User\" (username, password, birthdate, name, address, phonenumber) 
-									 VALUES ( ?, ?, ?, ?, ?,?)");
-		$stmt->execute(array($username,$hashPass, $birthDate, $name, $address, $phoneNumber));
-}
-
-function hasUsername($usermame){
-    global $conn;   
-    $stmt = $conn->prepare("SELECT * FROM \"User\" Where username=?");
-    $stmt->execute(array($usermame));
-    if($stmt->fetch()==false)
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
         return false;
     else return true;
 }
 
-<<<<<<< HEAD
 function hasAddress($address)
 {
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM \"User\" Where address=?");
     $stmt->execute(array($address));
     if ($stmt->fetch() == false)
-=======
-function hasAddress($address){
-    global $conn;
-    $stmt = $conn->prepare("SELECT * FROM \"User\" Where address=?");
-    $stmt->execute(array($address));
-    if($stmt->fetch()==false)
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
         return false;
     else return true;
 }
 
-<<<<<<< HEAD
 function getUser($idUser)
 {
     global $conn;
@@ -147,11 +110,3 @@ WHERE \"User\".iduser = ?");
 }
 
 
-=======
-function getUser($iduser){
-    global $conn;
-    $stmt = $conn->prepare("SELECT * FROM \"User\" WHERE iduser=?");
-    $stmt->execute(array($iduser));
-    return $stmt->fetch();
-}
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692

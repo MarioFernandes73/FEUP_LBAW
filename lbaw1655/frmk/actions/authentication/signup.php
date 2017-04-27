@@ -2,7 +2,6 @@
 include_once('../../config/init.php');
 include_once('../../database/users.php');
 
-<<<<<<< HEAD
 $username = trim(strip_tags($_POST['username']));
 $password= trim(strip_tags($_POST['password']));
 $phoneNumber = trim(strip_tags($_POST['phoneNumber']));
@@ -35,30 +34,5 @@ if(!hasUsername($usermame)){
      header('Location: ' . $_SERVER['HTTP_REFERER']);
      exit;
  }
-=======
-
-$username = $_POST['username'];
-$password= $_POST['password'];
-$phoneNumber = $_POST['phoneNumber'];
-$address = $_POST['address'];
-$birthDate = $_POST['birthDate'];
-$name = $_POST['name'];
-
-
-if(!hasUsername($usermame)){
-    echo 'unique Username' . "<br>";
-
-    if(!hasAddress($address)){
-        echo 'unique email' . "<br>";
-        addUser($username, $name, $birthDate, $address, $password, $phoneNumber);
-        echo 'insert username' . $username . "<br>";
-        header('Location: ../../pages/authentication/homepage.php');
-    }
-    else
-     header('Location: ' . $_SERVER['HTTP_REFERER']);
-}
- else
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 
 

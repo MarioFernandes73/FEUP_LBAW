@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $(document).ready(function () {
     VerifyUser();
     VerifyAddress();
@@ -67,40 +66,17 @@ function validatePasswordEditAccount() {
             $(":input[name='acao']").prop("disabled", false);
         }
     });
-=======
-$(document).ready(function() {
-    VerifyUser();
-    VerifyAddress();
-});
-
-
-function validatePassword() {
-    var password = document.forms["signup"]["password"].value;
-    var confirmPassword = document.forms["signup"]["confirPassword"].value;
-    if (password == confirmPassword) {
-        return true;
-    } else {
-        alert("Confirm the password again");
-        return false;
-    }
-
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 }
 
 function VerifyUser() {
 
-<<<<<<< HEAD
     $("form[name='signup'] input[name ='username']").focusout(function () {
-=======
-    $("form[name='signup'] input[name ='username']").focusout(function() {
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 
         var username = $("form[name='signup'] input[name ='username']").val();
 
         $.ajax({
             type: 'get',
             url: '../../api/authentication/verifyUser.php',
-<<<<<<< HEAD
             data: {"username": username},
             success: function (data) {
                 data = JSON.parse(data);
@@ -120,28 +96,6 @@ function VerifyUser() {
                     $("#username_used").remove();
                     $(":button[name='submit']").prop("disabled", false);
                 }
-=======
-            data: { "username": username },
-            success: function(data) {
-                    if(data=="true") {//hasUser=true
-                       if ($("#username_used").length==0) {
-                            $("form[name='signup'] #form-group-Username").append(function () {
-                                return $("<div>")
-                                .attr("id", "username_used")
-                                .attr("role", "alert")
-                                .addClass("alert alert-danger")
-                                .append($("<strong>").html("Username used"))
-                            });
-                        }
-                        $(":button[name='submit']").prop("disabled",true);
-
-                   }
-                    else{//hasUser=false
-                        $("#username_used").remove();
-                        $(":submit").attr("disabled", false);
-
-                    }
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
             }
         });
     });
@@ -149,17 +103,12 @@ function VerifyUser() {
 
 function VerifyAddress() {
 
-<<<<<<< HEAD
     $("form[name='signup'] input[name ='address']").focusout(function () {
-=======
-    $("form[name='signup'] input[name ='address']").focusout(function() {
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
         var address = $("form[name='signup'] input[name ='address']").val();
 
         $.ajax({
             type: 'get',
             url: '../../api/authentication/verifyAddress.php',
-<<<<<<< HEAD
             data: {"address": address},
             success: function (data) {
                 data = JSON.parse(data);
@@ -171,25 +120,10 @@ function VerifyAddress() {
                                 .append('<div class="row"><p></p></div><div class="panel panel-danger">' +
                                     '<div class="panel-heading">Address already used</div>' +
                                     '</div>')
-=======
-            data: { "address": address },
-            success: function(data) {
-
-                if (data == "true") {//hasUser=true
-
-                    if ($("#address_used").length == 0) {
-                        $("form[name='signup'] #form-group-Address").append(function () {
-                            return $("<div>")
-                                .attr("id", "address_used")
-                                .attr("role", "alert")
-                                .addClass("alert alert-danger")
-                                .append($("<strong>").html("Address used"))
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                         });
                     }
                     $(":button[name='submit']").prop("disabled", true);
                 }
-<<<<<<< HEAD
                 else {
                     $("#address_used").remove();
                     $(":button[name='submit']").prop("disabled", false);
@@ -197,16 +131,5 @@ function VerifyAddress() {
                 }
             }
         });
-=======
-                else {//hasUser=false
-
-                    $("#address_used").remove();
-                    $(":submit").attr("disabled", false);
-
-                }
-            }
-
-             });
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
     });
 };

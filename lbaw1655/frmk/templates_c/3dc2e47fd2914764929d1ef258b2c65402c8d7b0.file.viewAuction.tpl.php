@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.15, created on 2017-04-26 15:58:44
-=======
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-19 13:46:32
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
          compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/auctions/viewAuction.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:207712711558f75c2805b102-44529296%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -11,11 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3dc2e47fd2914764929d1ef258b2c65402c8d7b0' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/auctions/viewAuction.tpl',
-<<<<<<< HEAD
       1 => 1493218705,
-=======
-      1 => 1492553900,
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
       2 => 'file',
     ),
   ),
@@ -23,16 +15,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-<<<<<<< HEAD
   'version' => 'Smarty-3.1.15',
   'unifunc' => 'content_58f75c2828df26_26168790',
   'variables' => 
   array (
     'BASE_URL' => 0,
-=======
-  'variables' => 
-  array (
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
     'currentAuction' => 0,
     'timeLeft' => 0,
     'currentAuctionOwner' => 0,
@@ -43,17 +30,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'STATE' => 0,
   ),
   'has_nocache_code' => false,
-<<<<<<< HEAD
-=======
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_58f75c2828df26_26168790',
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_58f75c2828df26_26168790')) {function content_58f75c2828df26_26168790($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate ('common/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-<<<<<<< HEAD
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/timeleft.js"></script>
 <div class="jumbotron">
@@ -61,10 +42,6 @@ javascript/timeleft.js"></script>
 
         <!-- Left Section: FOLLOW BID REPORT -->
 
-=======
-<div class="jumbotron">
-    <div class="row">
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
         <div class="col-sm-4">
             <div class="panel-body">
                 <div class="carousel slide" id="myCarousel">
@@ -90,7 +67,6 @@ javascript/timeleft.js"></script>
                                 class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
-<<<<<<< HEAD
 
             <div class="btn-group btn-group-justified" role="group" aria-label="..." style="min-height: 60px">
 
@@ -100,17 +76,10 @@ javascript/timeleft.js"></script>
                 </div>
 
                 <!-- Report -->
-=======
-            <div class="btn-group btn-group-justified" role="group" aria-label="..." style="min-height: 60px">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-info btn-block">Follow</button>
-                </div>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-danger btn-block">Report</button>
                 </div>
             </div>
-<<<<<<< HEAD
 
             <!-- Bid -->
             <div class='well col-sm-12'>
@@ -137,20 +106,6 @@ actions/auctions/makeBid.php">
 
         <!-- Right Section: Auction Info -->
 
-=======
-            <button type="button" class="btn btn-primary btn-block btn-lg">Bid</button>
-            <div class='well col-sm-12'>
-                <form>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Your price</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" ng-pattern="/^[0-9]+(\.[0-9][0-9]?)?$/" step="0.01" />
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
         <div class="col-sm-8">
             <div class="panel panel-primary">
                 <div class="panel-body" style="min-height: 515px">
@@ -168,7 +123,6 @@ actions/auctions/makeBid.php">
                         <dd class="col-sm-3"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['type'];?>
 </dd>
                     </dl>
-<<<<<<< HEAD
 
                     <!--type-->
 
@@ -179,37 +133,20 @@ actions/auctions/makeBid.php">
 €</dd>
                             <dt class="col-sm-2">Current Bid</dt>
                             <dd class="col-sm-3"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['currentprice']/100;?>
-=======
-                    <?php if ($_smarty_tpl->tpl_vars['currentAuction']->value['type']=="English") {?>
-                        <dl class="row">
-                            <dt class="col-sm-2">Base Price</dt>
-                            <dd class="col-sm-5"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['baseprice'];?>
-€</dd>
-                            <dt class="col-sm-2">Current Bid</dt>
-                            <dd class="col-sm-3"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['currentprice'];?>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 €</dd>
                         </dl>
                     <?php } elseif ($_smarty_tpl->tpl_vars['currentAuction']->value['type']=="Dutch") {?>
                         <dl class="row">
                             <dt class="col-sm-2">Base Price</dt>
-<<<<<<< HEAD
                             <dd class="col-sm-5"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['baseprice']/100;?>
 €</dd>
                             <dt class="col-sm-2">Current Price</dt>
                             <dd class="col-sm-3"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['currentprice']/100;?>
-=======
-                            <dd class="col-sm-5"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['baseprice'];?>
-€</dd>
-                            <dt class="col-sm-2">Current Price</dt>
-                            <dd class="col-sm-3"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['currentprice'];?>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 €</dd>
                         </dl>
                     <?php } elseif ($_smarty_tpl->tpl_vars['currentAuction']->value['type']=="Blind") {?>
                         <dl class="row col-sm-12 text-center">
                             <dt>Minimum Price</dt>
-<<<<<<< HEAD
                             <dd><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['baseprice']/100;?>
 €</dd>
                         </dl>
@@ -217,29 +154,17 @@ actions/auctions/makeBid.php">
 
                     <!-- dates --->
 
-=======
-                            <dd><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['baseprice'];?>
-€</dd>
-                        </dl>
-                    <?php }?>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                     <dl class="row">
                         <dt class="col-sm-2">Begin Date</dt>
                         <dd class="col-sm-5"><?php echo $_smarty_tpl->tpl_vars['currentAuction']->value['startingdate'];?>
 </dd>
                         <dt class="col-sm-2">Time Left</dt>
-<<<<<<< HEAD
                         <dd class="col-sm-3 timeleft"><?php echo $_smarty_tpl->tpl_vars['timeLeft']->value;?>
 </dd>
                     </dl>
 
                     <!-- rating -->
 
-=======
-                        <dd class="col-sm-3" id="timeleft"><?php echo $_smarty_tpl->tpl_vars['timeLeft']->value;?>
-</dd>
-                    </dl>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                     <dl class="row">
                         <dt class="col-sm-3">Seller Rating</dt>
                         <dd class="col-sm-9">
@@ -255,12 +180,9 @@ actions/auctions/makeBid.php">
                             });
                         </script>
                     </dl>
-<<<<<<< HEAD
 
                     <!-- description -->
 
-=======
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                     <dl class="row">
                         <dt class="col-sm-2">Description</dt>
                         <dd class="col-sm-10 pre-scrollable text-center" style="max-height: 230px">
@@ -276,12 +198,9 @@ actions/auctions/makeBid.php">
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 
     <!-- notifications -->
 
-=======
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
     <div class="row">
         <div class="col-sm-4">
             <div class="panel panel-primary ">
@@ -295,11 +214,7 @@ $_smarty_tpl->tpl_vars['notification']->_loop = true;
 ?>
                                 <?php if ($_smarty_tpl->tpl_vars['notification']->value['idbidder']==true) {?>
                                     <li class="list-group-item">
-<<<<<<< HEAD
                                         <h4>New bid!! - Current price <?php echo $_smarty_tpl->tpl_vars['notification']->value['ammount']/100;?>
-=======
-                                        <h4>New bid!! - Current price <?php echo $_smarty_tpl->tpl_vars['notification']->value['ammount'];?>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
 €</h4>
                                     </li>
                                 <?php } else { ?>

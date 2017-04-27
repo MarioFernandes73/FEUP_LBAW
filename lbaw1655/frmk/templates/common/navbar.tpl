@@ -59,11 +59,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-<<<<<<< HEAD
                                     <li><a href="../users/profile.php">Profile</a></li>
-=======
-                                    <li><a href="profile.html">Profile</a></li>
->>>>>>> e66e7325c00a70a1ffdc7736edf730f61a3ee692
                                     <li><a href="admin.html">Administration Options</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="{$BASE_URL}actions/authentication/logout.php">Logout</a></li>
