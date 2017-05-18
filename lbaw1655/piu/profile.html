@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Online auctions</title>
+
+    <!-- Bootstrap -->
+    <link href="css/personal.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- others -->
+
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css"
+          href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Rating -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="js/star-rating.js" type="text/javascript"></script>
+
+    <script src="js/bootstrap-notify.js"></script>
+    <script src="js/bootstrap-notify.min.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Home</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Categories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Antiquities</a></li>
+                            <li><a href="#">Clothes</a></li>
+                            <li><a href="#">Decoration</a></li>
+                            <li><a href="#">Indoor</a></li>
+                            <li><a href="#">Jewelery</a></li>
+                            <li><a href="#">Outside</a></li>
+                            <li><a href="#">Others</a></li>
+                            <li><a href="#">Tools</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="createauction.html">Create Auction</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="ticket.html">Tickets</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="button" class="btn btn-default">Submit</button>
+                    <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
+                        Search
+                    </button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">My Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="admin.html">Administration Options</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN INTERACTION -->
+    <div class="jumbotron">
+        <!-- navs -->
+        <div class="panel panel-primary" style="min-height: 600px">
+            <div class="panel panel-default">
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li role="presentation"><a href="#">My Profile</a></li>
+                    <li role="presentation" class="active"><a href="#">Auctions</a></li>
+                    <li role="presentation"><a href="#">Tickets</a></li>
+                </ul>
+            </div>
+            <!-- 1 : Profile --
+            <div class="row">
+                <div class="col-sm-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Statistics</a></li>
+                        <li class="active"><a href="#">Edit Account</a></li>
+                        <li><a href="#">Delete Account</a></li>
+                    </ul>
+                </div>
+                <!-- MY ACCOUNT --
+                <div class="col-sm-5" style="padding-left: 5%">
+                    <table class="table responsive">
+                        <thead>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-user" aria-hidden="true"/></td>
+                            <td>lbaw</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-briefcase" aria-hidden="true"/></td>
+                            <td>Catarina Inês Lázaro Mário</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-calendar" aria-hidden="true"/></td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-envelope" aria-hidden="true"/></td>
+                            <td>lbaw@fe.up.pt</td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-earphone" aria-hidden="true"/></td>
+                            <td>987654321</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- STATISTICS --
+                <div class="col-sm-10" style="padding-left: 5%">
+                    <div class="thumbnail" style="border: none">
+                        <img src="assets/userStats.PNG" alt="statistics">
+                    </div>
+                </div>
+                <!-- EDIT ACCOUNT --
+                <div class="col-sm-10">
+                    <form class="form-horizontal" style="padding: 2% 25%" method="post" action="#">
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Name</label>
+                            <div class="input-group" id="name">
+                            <span class="input-group-addon">
+                                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                            </span>
+                                <input type="text" class="form-control" placeholder="User's current name"
+                                       aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Email</label>
+                            <div class="input-group" id="email">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </span>
+                                <input type="text" class="form-control" placeholder="User's current email"
+                                       aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass" class="cols-sm-2 control-label">Password</label>
+                            <div class="input-group" id="pass">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
+                                <input type="text" class="form-control" placeholder="User's current password"
+                                       aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass2" class="cols-sm-2 control-label">Confirm Password</label>
+                            <div class="input-group" id="pass2">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
+                                <input type="text" class="form-control" placeholder="User's current Password"
+                                       aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="number" class="cols-sm-2 control-label">Phone Number</label>
+                            <div class="input-group" id="number">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-earphone"></span>
+                            </span>
+                                <input type="tel" class="form-control" placeholder="User's current number"
+                                       aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="padding: 1em 3em">
+                            <button type="submit" style="min-height: 10px; font-size: 2vmin"
+                                    class="btn btn-primary btn-md btn-block">
+                                Edit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!--
+            </div> <!-- termina a row 1 -->
+            <!-- 2 : auctions -->
+            <div class="row">
+                <div class="col-sm-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li><a href="#">Followed <span class="badge">4</span></a></li>
+                        <li class="active"><a href="#">In Conclusion <span class="badge">4</span></a></li>
+                        <li><a href="#">History <span class="badge">4</span></a></li>
+                    </ul>
+                </div>
+                <!-- FOLLOWED --
+                <div class="col-sm-10" style="padding-left: 5%">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Auction</th>
+                                <th>Timeleft</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="auction.html">Computer</a></td>
+                                <td>2 days 21:52:36</td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Catarina</a></td>
+                                <td>00:21:54</td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Lázaro</a></td>
+                                <td>00:05:34</td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Mouse</a></td>
+                                <td>1 day 17:20:59</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- IN CONCLUSION -->
+                <div class="col-sm-10" style="padding-left: 5%">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Auction</th>
+                                <th>Type</th>
+                                <th colspan="2" class="text-center">State</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="auction.html">D'ZRT CD</a></td>
+                                <td>Reception</td>
+                                <td class="text-center"><strong>23:59:59 left</strong></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-success">Make Payment</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Sonic VideoGame</a></td>
+                                <td>Reception</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-success">Confirm reception</button>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-danger">Report Problem</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">PS4 semi-used</a></td>
+                                <td>Reception</td>
+                                <td class="text-center"><strong>Rate Seller</strong></td>
+                                <td>
+                                    <input class="rate rating-loading" data-size="xs">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Curtains with flowers</a></td>
+                                <td>Delivery</td>
+                                <td class="text-center"><strong>Waiting for buyer</strong></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-success disabled">Confirm Delivery</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Black Piano 2/3</a></td>
+                                <td>Delivery</td>
+                                <td class="text-center"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-success">Confirm Delivery</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">TV LED brand new</a></td>
+                                <td>Delivery</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-success">Payment received</button>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-danger">Report Problem</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="auction.html">Red Bicycle for kids</a></td>
+                                <td>Delivery</td>
+                                <td class="text-center"><strong>Rate Buyer</strong></td>
+                                <td>
+                                    <input class="rate rating-loading" data-size="xs">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <script>
+                            $(document).on('ready', function () {
+                                $('.rate').rating({showCaption: false, showClear: false});
+                            });
+                        </script>
+                    </div>
+                </div>
+                <!-- HISTORY --
+                <div class="col-sm-10" style="padding-left: 5%">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Auction</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="#auction.html">Purple Abajour</a></td>
+                                <td>21/01/2017</td>
+                                <td>7€</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#auction.html">Wood table to cut vegetables</a></td>
+                                <td>25/01/2017</td>
+                                <td>15€</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-->
+            </div> <!-- termina a row 2 -->
+            <!-- 3 : tickets --
+            <div class="row">
+                <div class="col-sm-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li><a href="#">Active <span class="badge">1</span></a></li>
+                        <li><a href="#">Solved <span class="badge">1</span></a></li>
+                        <li class="active"><a href="#">All <span class="badge">2</span></a></li>
+                    </ul>
+                </div>
+                <!-- ACTIVE --
+                <div class="col-sm-10" style="padding-left: 5%">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Identification</th>
+                                <th>My ticket is solved</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="#info">Product Broken</a></td>
+                                <td>
+                                    <button type="submit" class="btn btn-success btn-xs">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- SOLVED --
+                <div class="col-sm-10" style="padding-left: 5%">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Identification</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="#info">Can I have 2 e-mail adresses?</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <!-- ALL --
+            <div class="col-sm-10" style="top: -17px">
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#"><span aria-hidden="true">&larr;</span> Previous</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Next <span aria-hidden="true">&rarr;</span></a>
+                    </li>
+                </ul>
+                <h3 class="sub-header text-center">Product Broken</h3>
+                <div class="panel panel-default" style="min-height: 420px">
+                    <div class="panel-heading" style="min-height: 80px">
+                        <strong>lbaw</strong> My delivery came broken but the seller says that the product was not
+                        broken before he sent it. What can I do know? May I have my money back?
+                    </div>
+                    <div class="panel-body pre-scrollable" style="height: 220px">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Admin</strong>
+                            </div>
+                            <div class="panel-body">
+                                Hi! Can you take a picture to the product?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="min-height: 120px;">
+                        <form>
+                            <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
+                            <button style="margin-top: 5px;" type="submit" class="btn btn-success pull-right">
+                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                            </button>
+                            <label style="margin: 5px;" class="btn btn-success btn-file pull-right">
+                                <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                <input type="file" style="display: none;">
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+    </div> <!-- termina a row 3 -->
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="navbar-default" style="min-height: 100%">
+        <div class="container clear-top"
+             style="top-margin: 20px; overflow:auto; padding:25px; font-size: 12px; text-align: center">
+            <label>LBAW 2017<br> Catarina Ramos - Inês Gomes - Mário Fernandes - Lázaro Costa</label>
+        </div>
+    </div>
+    <footer style="position: relative; margin-top: -150px; height: 150px; clear:both; padding-top:20px"></footer>
+</div>
+
+<!-- notification container-->
+<div class="container">
+    <input type="button" value="Show notification" onclick="$.notify({
+	message: 'Payment successful!'
+},{
+	type: 'info',
+	delay: 8000
+});">
+</div>
+
+</body>
+</html>
