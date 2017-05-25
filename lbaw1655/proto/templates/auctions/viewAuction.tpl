@@ -2,6 +2,7 @@
 {include file='common/navbar.tpl'}
 <script src="{$BASE_URL}javascript/timeleft.js"></script>
 <script src="{$BASE_URL}javascript/auction.js"></script>
+<script src="{$BASE_URL}javascript/files.js"></script>
 
 <div class="jumbotron">
     <div class="row">
@@ -190,10 +191,10 @@
                                     style="margin: 5px;">
                                 <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
                             </button>
-                            <label class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
+                            <label id="uploadfiles" class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
                                 <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                                <input type="file" name="upload[]" style="display: none; " multiple="multiple"
-                                       onChange="uploadCommentFiles(this);"/>
+                                <input type="file" name="upload[]" style="display: none; " multiple="multiple" onchange="uploadFiles(this)"/>
+
                             </label>
                         </form>
                     </div>

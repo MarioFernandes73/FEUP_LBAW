@@ -51,25 +51,26 @@
         <!-- EDIT ACCOUNT -->
         <div class="profile-content hidden editAccount">
             <div class="col-sm-10">
-                <form class="form-horizontal" style="padding: 2% 25%" method="post" action="#">
+                <form   name="editaccount" class="form-horizontal" style="padding: 2% 25%" method="post" action="../../actions/users/editaccount.php">
+                    <!-- attributes -->
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Name</label>
                         <div class="input-group" id="name">
-                        <span class="input-group-addon">
-                             <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                        </span>
-                            <input type="text" class="form-control" placeholder="User's current name"
+                            <span class="input-group-addon">
+                                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                            </span>
+                            <input name="name" type="text" class="form-control" placeholder="User's current name"
                                    aria-describedby="basic-addon1">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Email</label>
+                        <label for="email" class="cols-sm-2 control-label">Address</label>
                         <div class="input-group" id="email">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-envelope"></span>
-                        </span>
-                            <input type="text" class="form-control" placeholder="User's current email"
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </span>
+                            <input name="address" type="email" class="form-control" placeholder="User's current email"
                                    aria-describedby="basic-addon1">
                         </div>
                     </div>
@@ -77,21 +78,22 @@
                     <div class="form-group">
                         <label for="pass" class="cols-sm-2 control-label">Password</label>
                         <div class="input-group" id="pass">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-lock"></span>
-                        </span>
-                            <input type="text" class="form-control" placeholder="User's current password"
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
+                            <input name="password" type="password" class="form-control" placeholder="User's current password"
+                                   pattern=".{literal}{5,}{/literal}" title="Password must be at least 5 characters long!"
                                    aria-describedby="basic-addon1">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div id="form-group-ConfirmPassword" class="form-group">
                         <label for="pass2" class="cols-sm-2 control-label">Confirm Password</label>
                         <div class="input-group" id="pass2">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-lock"></span>
-                        </span>
-                            <input type="text" class="form-control" placeholder="User's current Password"
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
+                            <input name="confirmPassword" type="password" class="form-control" placeholder="User's current Password"
                                    aria-describedby="basic-addon1">
                         </div>
                     </div>
@@ -99,16 +101,16 @@
                     <div class="form-group">
                         <label for="number" class="cols-sm-2 control-label">Phone Number</label>
                         <div class="input-group" id="number">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-earphone"></span>
-                        </span>
-                            <input type="tel" class="form-control" placeholder="User's current number"
-                                   aria-describedby="basic-addon1">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-earphone"></span>
+                            </span>
+                            <input name="phone" type="tel" class="form-control" placeholder="User's current number"
+                                   pattern="[0-9]{literal}{9}{/literal}" title="insert number phone valid!!" aria-describedby="basic-addon1">
                         </div>
                     </div>
 
                     <div class="form-group" style="padding: 1em 3em">
-                        <button type="submit" style="min-height: 10px; font-size: 2vmin"
+                        <button name="edit" type="submit" style="min-height: 10px; font-size: 2vmin"
                                 class="btn btn-primary btn-md btn-block">
                             Edit
                         </button>
@@ -118,3 +120,5 @@
         </div>
     </div>
 </div><!-- termina a row 1 -->
+<script src="{$BASE_URL}javascript/validate.js"></script>
+

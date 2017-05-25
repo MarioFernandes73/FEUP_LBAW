@@ -4,23 +4,76 @@ include_once('../../database/users.php');
 
 $idauction = $_POST['idauction'];
 $message = $_POST['message'];
+$filepath = $_POST['filepath'];
+
 $date = new DateTime();
-$files = $_FILES['upload'];
 $res;       //for errors
 
 
 if (isset($_SESSION['iduser'])) {
 
-
     //Create comment
-   /* try {
-        $res=createComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
+    try {
+       /* $res=createComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);*/
+
+
+        $pathimage="images/auctions/comments/" . $idcomment . "_" . $i . '.' . $imageFileType;
+        $newFilePath = $BASE_DIR .  $pathimage;
+
+        copy($filepath,$newFilePath);
+
+
     } catch (PDOException $e) {
         $res = 'Could not comment, please try again.';
         echo json_encode(array("result" => $res));
         exit();
-    }*/
+    }
 
+
+
+/*
+
+    if ($filepath != "") {
+        $imageFileType = pathinfo($filepath, PATHINFO_EXTENSION);
+
+        // Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            $res = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            echo json_encode(array("result" => $res));
+            exit();
+
+        } else {
+            $idcomment = getIdComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
+            //Setup our new file path
+
+            $pathimage="images/auctions/comments/" . $idcomment . "_" . $i . '.' . $imageFileType;
+            $newFilePath = $BASE_DIR .  $pathimage;
+
+            //Upload the file into the temp dir
+            if(copy($filepath,$newFilePath)){
+                $now = new DateTime();
+                $photos[$i] = array($idcomment . "_" . $i . '.' . $imageFileType, $pathimage, $now->format('Y-m-d'));
+
+                $res = addPhotosComment($idcomment, $photos);
+                if ($msg != "") {
+                    echo json_encode(array("result" => $res));
+                    exit();
+                }
+
+                $res = 0;
+                echo json_encode(array("result" => $res));
+                exit();
+            } else {
+                $res = "Error on uploading files. Please try again.";
+            }
+        }
+
+    } else {
+        $res = "The file could not be uploaded.";
+    }
+}
+*/
+/*
     //Add files
     $photos = array();
 
@@ -81,7 +134,7 @@ if (isset($_SESSION['iduser'])) {
                 $res = "The file could not be uploaded.";
             }
         }
-    }
+    }*/
 } else {
     $res = "User must be logged in.";
 }

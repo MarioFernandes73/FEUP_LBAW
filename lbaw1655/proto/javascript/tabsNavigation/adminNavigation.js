@@ -51,7 +51,12 @@ function usersAjax(id, state) {
             $('#'+id+'Badge').empty().append(users.length);
             $('#'+id+'Table').empty();
             for (var i = 0; i < users.length; i++) {
-                addUserTable(id, state, users[i]);
+                if(state == "Administrator"){
+                    addUserTable(id, state, users[i], users.length);
+                }
+                else{
+                    addUserTable(id, state, users[i]);
+                }
             }
         }
     });
@@ -104,13 +109,15 @@ function ticketsAjax(id, category=null, state=null){
     });
 }
 
-function addUserTable(id, state, user){
+function addUserTable(id, state, user, length){
     var text = '<tr id="user'+user.iduser+'">'+
         '<td><a href='+'../../pages/users/profile.php?iduser='+user.iduser+'>'+user.username+'</td>';
     if(state == "Administrator"){
-        text += '<td><button type="button" onclick="demoteUser('+user.iduser+')" class="btn btn-danger btn-xs">'+
-            '<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>'+
-            '</button></td>';
+        if(length == null && length != 1){
+            text += '<td><button type="button" onclick="demoteUser('+user.iduser+')" class="btn btn-danger btn-xs">'+
+                '<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>'+
+                '</button></td>';
+        }
     }else if(state == "Active"){
         text += '<td> <button type="button" onclick="promoteUser('+user.iduser+')" class="btn btn-success btn-xs"> ' +
             '<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> </button> </td> ' +

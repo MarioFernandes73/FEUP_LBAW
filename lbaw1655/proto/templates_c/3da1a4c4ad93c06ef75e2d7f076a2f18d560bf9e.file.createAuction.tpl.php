@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-26 12:30:01
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-18 09:05:19
          compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/auctions/createAuction.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:25909525658f7d96b535cd0-95567910%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3da1a4c4ad93c06ef75e2d7f076a2f18d560bf9e' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/auctions/createAuction.tpl',
-      1 => 1493206198,
+      1 => 1495094693,
       2 => 'file',
     ),
   ),
@@ -87,7 +87,6 @@ $_smarty_tpl->tpl_vars['category']->_loop = true;
                         </div>
 
                         <!-- Type of auction -->
-
                         <div class="form-group">
                             <label for="type" class="cols-sm-2 control-label">
                             Type of auction
@@ -129,7 +128,6 @@ T<?php echo smarty_modifier_date_format(time(),"%H:%M");?>
                         </div>
 
                         <!-- Time of the Auction -->
-
                         <div class="form-group">
                             <label for="time" class="cols-sm-2 control-label">Time in Hours</label>
                             <div class="input-group" id="time">
@@ -145,7 +143,6 @@ T<?php echo smarty_modifier_date_format(time(),"%H:%M");?>
                         </div>
 
                         <!-- Description -->
-
                         <div class="form-group">
                             <label for="comment">Item description</label>
                             <textarea name="description" pattern="([\w\_\?\.\,\!\+\-\s\n\\])*" class="form-control" rows="5" id="comment" placeholder="Write your description..."></textarea>

@@ -35,7 +35,6 @@ function getAuctionPhotosIDs($idauction)
 
 function getAuctionPhotosPathId($idauction)
 {
-
     global $conn;
     $stmt = $conn->prepare("SELECT \"Auction\".idauction, path FROM \"Auction\" JOIN \"ImagesAuction\"
 ON \"Auction\".idauction = \"ImagesAuction\".idauction
@@ -83,6 +82,86 @@ function auctionsHot()
     return $stmt->fetchAll();
 }
 
+
+function getAdvancedSearchedAuctions($offset,$name,$rating,$category,$type,$date,$duration)
+{
+    $statement = "SELECT * FROM \"Auction\" A WHERE  A.state = 'Opened'::auctionstate";
+    $params = array();
+    $i = 0;
+    $first = true;
+
+    if($name)
+    {
+        if($first)
+            $statement = $statement . " WHERE";
+
+        $statement = $statement." name=?";
+        $params[$i] = $name;
+        $i = $i+1;
+        $first = false;
+    }
+    if($rating)
+    {
+        if(!$first)
+            $statement = $statement." AND";
+        else
+            $statement = $statement." WHERE";
+        $statement = $statement." rating=?";
+        $params[$i] = $rating;
+        $i = $i+1;
+        $first = false;
+    }
+    if($category)
+    {
+        if(!$first)
+            $statement = $statement." AND";
+        else
+            $statement = $statement." WHERE";
+        $statement = $statement." category=?";
+        $params[$i] = $category;
+        $i = $i+1;
+        $first = false;
+    }
+    if($type)
+    {
+        if(!$first)
+            $statement = $statement." AND";
+        else
+            $statement = $statement." WHERE";
+        $statement = $statement." type=?";
+        $params[$i] = $type;
+        $i = $i+1;
+        $first = false;
+    }
+    if($date)
+    {
+        if(!$first)
+            $statement = $statement." AND";
+        else
+            $statement = $statement." WHERE";
+        $statement = $statement." type=?";
+        $params[$i] = $type;
+        $i = $i+1;
+        $first = false;
+    }
+    if($duration)
+    {
+        if(!$first)
+            $statement = $statement." AND";
+        else
+            $statement = $statement." WHERE";
+        $statement = $statement." duration=?";
+        $params[$i] = $duration;
+    }
+
+    $statement = $statement." LIMIT 9 OFFSET ".$offset;
+
+    global $conn;
+    $stmt = $conn->prepare($statement);
+    $stmt->execute($params);
+    return $stmt->fetchAll();
+}
+
 //comments
 function getAuctionComments($idauction)
 {
@@ -93,7 +172,6 @@ function getAuctionComments($idauction)
 }
 
 //bids
-
 function getLastBid($idAuction)
 {
     global $conn;
@@ -150,7 +228,6 @@ durationhours,description,state,idowner) VALUES (?,?,?,0,?,?,?,?,?,?)");
 
 function addAuctionPhotos($idauction, $photos)
 {
-
     if (is_array($photos)) {
         foreach ($photos as $photo) {
             if (addFile($photo[0], $photo[1], $photo[2]) != -1) {

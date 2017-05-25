@@ -40,5 +40,5 @@
 </div>
 
 {include file='common/footer.tpl'}
-<script src="{$BASE_URL}javascript/listAuctions.js"></script>
+<script src="{$BASE_URL}javascript/homepage.js"></script>
 <script src="{$BASE_URL}javascript/timeleft.js"></script>

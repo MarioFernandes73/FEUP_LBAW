@@ -25,6 +25,21 @@ function getIdReportComment($iduser, $idcomment)
         return $res['idticket'];
 }
 
+function getIdTicket($iduser, $title, $category)
+{
+
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"Ticket\" WHERE iduser=? AND title=? AND category=?");
+    $stmt->execute(array($iduser, $title, $category));
+
+    $res = $stmt->fetch();
+
+    if ($res == null)
+        return false;
+    else
+        return $res['idticket'];
+}
+
 function createTicketComment($date, $message, $iduser, $idticket)
 {
     global $conn;
@@ -32,7 +47,8 @@ function createTicketComment($date, $message, $iduser, $idticket)
     $stmt->execute(array($date, $message, $iduser, $idticket));
 }
 
-function hasTicketComment($iduser, $idticket){
+function hasTicketComment($iduser, $idticket)
+{
 
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM \"TicketComment\" WHERE iduser=? AND idticket=?");
@@ -95,3 +111,37 @@ function addPhotosComment($idcomment, $photos)
     }
 }
 
+function insertTicketIntoDB($iduser, $title, $category)
+{
+
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO \"Ticket\" (iduser,title,solved,category)
+VALUES (?,?,?,?)");
+    $stmt->execute(array($iduser, $title, 'false', $category));
+
+
+}
+
+function createTicket($iduser, $title, $category, $message)
+{
+
+    global $conn;
+    $conn->beginTransaction();
+    $msg = "";
+
+    insertTicketIntoDB($iduser, $title, $category);
+
+    $idticket = getIdTicket($iduser, $title, $category);
+
+   if (hasTicketComment($iduser, $idticket)) {
+        $conn->rollBack();
+        $msg = "Could not create ticket, please try again.";
+        return $msg;
+    }
+    
+    $now = new DateTime();
+    createTicketComment($now->format('Y-m-d H:i:s'), $message, $iduser, $idticket);
+
+    $conn->commit();
+    return $msg;
+}

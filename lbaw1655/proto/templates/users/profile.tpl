@@ -1,6 +1,10 @@
 {include file='common/header.tpl'}
 {include file='common/navbar.tpl'}
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script src="{$BASE_URL}javascript/timeleft.js"></script>
+<script src="{$BASE_URL}javascript/paypalButton.js"></script>
+
 <script>
     $(document).on('ready', function() {
         $('#rate').rating({

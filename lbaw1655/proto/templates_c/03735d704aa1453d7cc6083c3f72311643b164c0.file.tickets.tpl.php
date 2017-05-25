@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-12 00:41:13
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-18 08:45:51
          compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/tickets/tickets.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:82082210959141fcae98480-40841909%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '03735d704aa1453d7cc6083c3f72311643b164c0' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/tickets/tickets.tpl',
-      1 => 1494546069,
+      1 => 1495093484,
       2 => 'file',
     ),
   ),
@@ -19,10 +19,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_59141fcb0ef150_60103011',
   'variables' => 
   array (
+    'msg' => 0,
     'BASE_URL' => 0,
     'idComment' => 0,
     'idAuction' => 0,
-    'msg' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -36,58 +36,89 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <div class="row main">
         <div class="main-login main-center">
 
-            <form class="form-horizontal" style="padding: 0% 25%" method="POST"
-                  action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+            <!-- reportComment -->
+            <?php if ($_smarty_tpl->tpl_vars['msg']->value=="Report Comment") {?>
+                <form class="form-horizontal" style="padding: 0% 25%" method="POST"
+                      action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 actions/tickets/reportComment.php">
-                <h2 class="text-center">Ticket</h2>
-                <input name="idcomment" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['idComment']->value;?>
+                    <h2 class="text-center">Ticket</h2>
+                    <input name="idcomment" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['idComment']->value;?>
 "> </input>
-                <input name="idauction" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['idAuction']->value;?>
+                    <input name="idauction" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['idAuction']->value;?>
 "> </input>
 
-                <div class="form-group">
-                    <label for="Title">Title</label>
-                    <?php if ($_smarty_tpl->tpl_vars['msg']->value=="Report Comment") {?>
-                        <textarea  name="title" class="form-control" rows="1"
-                                   placeholder="<?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
+                    <div class="form-group">
+                        <label for="Title">Title</label>
+                        <textarea name="title" class="form-control" rows="1"
+                                  placeholder="<?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
 " readonly></textarea>
-                    <?php } else { ?>
-                        <textarea  name="title" class="form-control" rows="1"
-                                   placeholder="Title of ticket"></textarea>
-                    <?php }?>
 
-                </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" class="form-control form-control-lg">
-                        <option>Report</option>
-                        <?php if ($_smarty_tpl->tpl_vars['msg']->value!="Report Comment") {?>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" class="form-control form-control-lg">
+                            <option>Report</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Message</label>
+                        <textarea required="required" name="message" class="form-control" rows="5" id="comment"
+                                  placeholder="Write your ticket..."></textarea>
+
+                    </div>
+
+                    <div class="form-group" style="padding: 1em 3em">
+                        <button type="submit" style="min-height: 10px; font-size: 3vmin"
+                                class="btn btn-primary btn-lg btn-block login-button">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            <?php } else { ?>
+                <!-- report -->
+                <form class="form-horizontal" style="padding: 0% 25%" method="POST"
+                      action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+actions/tickets/createTicket.php">
+                    <h2 class="text-center">Ticket</h2>
+
+                    <div class="form-group">
+                        <label for="Title">Title</label>
+                        <textarea name="title" class="form-control" rows="1"
+                                 required="required" placeholder="Title of ticket"></textarea>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" class="form-control form-control-lg">
+                            <option>Report</option>
                             <option>Product</option>
                             <option>Questions</option>
                             <option>Others</option>
-                        <?php }?>
-                    </select>
-                </div>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="comment">Message</label>
-                    <textarea required="required" name="message" class="form-control" rows="5" id="comment"
-                              placeholder="Write your ticket..."></textarea>
+                    <div class="form-group">
+                        <label for="comment">Message</label>
+                        <textarea required="required" name="message" class="form-control" rows="5" id="comment"
+                                  placeholder="Write your ticket..."></textarea>
 
-                </div>
+                    </div>
 
-                <div class="form-group" style="padding: 1em 3em">
-                    <button type="submit" style="min-height: 10px; font-size: 3vmin"
-                            class="btn btn-primary btn-lg btn-block login-button">
-                        Send
-                    </button>
-                </div>
-            </form>
+                    <div class="form-group" style="padding: 1em 3em">
+                        <button type="submit" style="min-height: 10px; font-size: 3vmin"
+                                class="btn btn-primary btn-lg btn-block login-button">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            <?php }?>
         </div>
     </div>
 </div>
-
 
 <?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 <?php }} ?>

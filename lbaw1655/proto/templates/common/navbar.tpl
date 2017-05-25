@@ -26,7 +26,9 @@
                            aria-expanded="false">Categories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             {foreach $categories as $category}
-                                <li><a href="#">{$category["unnest"]}</a></li>
+                                <li><a href="{$BASE_URL}pages/auctions/searchResults.php?offset=1?category={$category["unnest"]}">
+                                        {$category["unnest"]}</a>
+                                </li>
                             {/foreach}
                         </ul>
                     </li>
@@ -47,9 +49,7 @@
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="button" class="btn btn-default">Submit</button>
-                    <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
-                        Search
-                    </button>
+                    <a href="{$BASE_URL}pages/auctions/advancedSearch.php" class="btn btn-default">Advanced Search</a>
                 </form>
 
                 <!-- Account -->

@@ -7,7 +7,7 @@ if ($_GET['lastMinute']) {
 } else if ($_GET['hot']) {
     $auctions = auctionsHot();
 } else {
-    $auctions = null;
+    $auctions = getAdvancedSearchedAuctions($_GET['offset'],$_GET['name'],$_GET['rating'],$_GET['category'],$_GET['type'],$_GET['date'],$_GET['duration']);
 }
 
 foreach ($auctions as $key => $auction) {

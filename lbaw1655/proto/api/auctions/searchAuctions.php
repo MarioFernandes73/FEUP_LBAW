@@ -6,9 +6,9 @@ if($type == "followed"){
     $stmt = $conn->prepare("SELECT * FROM \"Auction\" WHERE idauction IN 
    (SELECT idauction
    FROM \"Follow\"
-   WHERE iduser = ?)
+   WHERE iduser = ? AND state =?)
    LIMIT 10");
-    $stmt->execute(array($_SESSION["iduser"]));
+    $stmt->execute(array($_SESSION["iduser"], 'Opened'));
 }
 elseif($type == "inConclusion"){
     $stmt = $conn->prepare("SELECT * FROM \"Auction\" WHERE (idowner=? AND idauction IN 

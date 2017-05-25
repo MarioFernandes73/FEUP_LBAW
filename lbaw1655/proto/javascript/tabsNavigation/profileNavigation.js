@@ -90,8 +90,8 @@ function auctionsAjax(id, type){
             var auctions = JSON.parse(data);
             $('#'+id+'Badge').empty().append(auctions.length);
             $('#'+id+'Table').empty();
-
             for (var i = 0; i < auctions.length; i++) {
+
                 var text = '<tr><td><a>'+auctions[i].name+'</a></td>';
                 if(type == "followed"){
 
@@ -118,17 +118,27 @@ function auctionsAjax(id, type){
                         //BUYER
                         text += '<td>Reception</td>';
                         if(auctions[i].state == 'Awaiting_payment'){
-                            text += '<td class="text-center"><button type="button" class="btn btn-danger">Report Problem</button></td>'+
-                                '<td class="text-center">'+
-                                '<form name="_xclick" action="https://www.paypal.com/kh/cgi-bin/webscr" method="post">'+
-                                '<input type="hidden" name="cmd" value="_xclick">'+
-                                '<input type="hidden" name="business" value="mgustavofernandes@gmail.com">'+
-                                '<input type="hidden" name="currency_code" value="USD">'+
-                                '<input type="hidden" name="item_name" value="Teddy Bear">'+
-                                '<input type="hidden" name="amount" value="12.99">'+
-                                '<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" border="0" name="submit" alt="Make payments with PayPal - it\'s fast, free and secure!">'+
-                                '</form> </td>';
-                               // '<button type="button" class="btn btn-success">Make Payment</button></td>';
+
+                            /*    text += '<td><div id="paypal-button-container"></div>'+
+                                    '<div id="confirm" class="hidden">' +
+                                    '<div>Ship to:</div> ' +
+                                    '<div><span id="recipient">olaolaoaloalao</span>, <span id="line1"></span>, <span id="city"></span></div> ' +
+                                    '<div><span id="state"></span>, <span id="zip"></span>, <span id="country"></span></div> ' +
+                                    '<button id="confirmButton">Complete Payment</button> ' +
+                                    '</div> ' +
+                                    '<div id="thanks" class="hidden"> Thanks, <span id="thanksname"></span>! </div></td>';*/
+                            //text += '<td><div id="paypal-button-container"></div></td>';
+                            text += '<td><div class="paypal-button-container"></div></td>';
+
+
+
+                            /*else{
+                                text += '<td><button type="button" class="btn btn-success">Make Payment</button></td>';
+                                counter ++;
+                                alert(counter);
+                            }*/
+
+                              // text += '<td><button type="button" class="btn btn-success">Make Payment</button></td>';
                         }
                         else{
                             text += '<td class="text-center"><button type="button" class="btn btn-danger">Report Problem</button></td>'+
@@ -179,7 +189,15 @@ function auctionsAjax(id, type){
                     showCaption: false,
                     displayOnly: true
                 });
+
             }
+            paypalfunc();
+
         }
     });
+
+
+
+
+
 }

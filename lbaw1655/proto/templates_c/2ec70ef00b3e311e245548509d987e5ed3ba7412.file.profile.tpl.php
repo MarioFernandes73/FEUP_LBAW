@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-05 10:08:32
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-18 10:36:37
          compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/users/profile.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6879110895900b5904231a0-39164325%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2ec70ef00b3e311e245548509d987e5ed3ba7412' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/users/profile.tpl',
-      1 => 1493974972,
+      1 => 1495100159,
       2 => 'file',
     ),
   ),
@@ -28,8 +28,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->getSubTemplate ('common/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/timeleft.js"></script>
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/paypalButton.js"></script>
+
 <script>
     $(document).on('ready', function() {
         $('#rate').rating({
@@ -64,4 +69,5 @@ javascript/tabsNavigation/profileNavigation.js"></script>
         </div>
     </div>
 <?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 <?php }} ?>

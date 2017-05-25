@@ -32,14 +32,17 @@ function validatePasswordSignup() {
 
 function validatePasswordEditAccount() {
 
+
     $("form[name='editaccount'] input[name ='password']").focusout(function () {
         var password = document.forms["editaccount"].elements["password"].value;
         var confirmPassword = document.forms["editaccount"].elements["confirmPassword"].value;
 
+        console.log(password);
+        console.log(confirmPassword);
         if (!password) {//if o campo esta vazio
             if (!confirmPassword) {
                 $("#confirmation_invalid").remove();
-                $(":input[name='acao']").prop("disabled", false);
+                $(":input[name='edit']").prop("disabled", false);
             }
         }
     });
@@ -59,11 +62,11 @@ function validatePasswordEditAccount() {
                             '</div>')
                 });
             }
-            $(":input[name='acao']").prop("disabled", true);
+            $(":input[name='edit']").prop("disabled", true);
         }
         else {
             $("#confirmation_invalid").remove();
-            $(":input[name='acao']").prop("disabled", false);
+            $(":input[name='edit']").prop("disabled", false);
         }
     });
 }

@@ -49,7 +49,6 @@
                         </div>
 
                         <!-- Type of auction -->
-
                         <div class="form-group">
                             <label for="type" class="cols-sm-2 control-label">
                             Type of auction
@@ -82,7 +81,6 @@
                         </div>
 
                         <!-- Time of the Auction -->
-
                         <div class="form-group">
                             <label for="time" class="cols-sm-2 control-label">Time in Hours</label>
                             <div class="input-group" id="time">
@@ -98,7 +96,6 @@
                         </div>
 
                         <!-- Description -->
-
                         <div class="form-group">
                             <label for="comment">Item description</label>
                             <textarea name="description" pattern="([\w\_\?\.\,\!\+\-\s\n\\])*" class="form-control" rows="5" id="comment" placeholder="Write your description..."></textarea>

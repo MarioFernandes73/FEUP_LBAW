@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-18 08:26:11
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-25 18:52:41
          compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/common/navbar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187426155858f75b26bc6115-85522859%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db1f66c2f6b862e49897b10b3c44952f80177adf' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/common/navbar.tpl',
-      1 => 1495092367,
+      1 => 1495734757,
       2 => 'file',
     ),
   ),
@@ -66,8 +66,12 @@ pages/authentication/homepage.php">Home</a>
 foreach ($_from as $_smarty_tpl->tpl_vars['category']->key => $_smarty_tpl->tpl_vars['category']->value) {
 $_smarty_tpl->tpl_vars['category']->_loop = true;
 ?>
-                                <li><a href="#"><?php echo $_smarty_tpl->tpl_vars['category']->value["unnest"];?>
-</a></li>
+                                <li><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/auctions/searchResults.php?offset=1?category=<?php echo $_smarty_tpl->tpl_vars['category']->value["unnest"];?>
+">
+                                        <?php echo $_smarty_tpl->tpl_vars['category']->value["unnest"];?>
+</a>
+                                </li>
                             <?php } ?>
                         </ul>
                     </li>
@@ -90,9 +94,8 @@ pages/tickets/tickets.php">Tickets</a></li>
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="button" class="btn btn-default">Submit</button>
-                    <button type="button" onclick="location.href='Search.html'" class="btn btn-default">Advanced
-                        Search
-                    </button>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/auctions/advancedSearch.php" class="btn btn-default">Advanced Search</a>
                 </form>
 
                 <!-- Account -->

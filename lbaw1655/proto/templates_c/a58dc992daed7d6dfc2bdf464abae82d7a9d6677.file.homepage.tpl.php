@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-06 14:51:57
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-18 10:12:54
          compiled from "/opt/lbaw/lbaw1655/public_html/proto/templates/authentication/homepage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:94777696558f75b26a29bf5-88400756%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a58dc992daed7d6dfc2bdf464abae82d7a9d6677' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/proto/templates/authentication/homepage.tpl',
-      1 => 1494078701,
+      1 => 1495098538,
       2 => 'file',
     ),
   ),
@@ -69,6 +69,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-javascript/listAuctions.js"></script>
+javascript/homepage.js"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/timeleft.js"></script><?php }} ?>

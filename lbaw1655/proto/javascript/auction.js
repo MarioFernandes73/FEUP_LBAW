@@ -101,20 +101,23 @@ function commentAuction() {
     $("button[name='commentAuction']").click(function () {
         $idauction = $("input[name='idauction']").val();
         $message = $("textarea[name='message']").val();
+        $file = $("input[name='upload']");
+        $filepath = $file.val();
 
         $.ajax({
             type: 'POST',
             url: '../../api/auctions/commentAuction.php',
             data: {
                 "idauction": $idauction,
-                "message": $message
+                "message": $message,
+                "filepath": $filepath
             },
             success: function (data) {
                 data = JSON.parse(data);
                 if (data.result != 0)
                     newNotification('panel-danger', data.result);
                 else if (data.result == 0) {
-                    $("#createComment").after(
+                    /*$("#createComment").after(
                         "<div class='panel panel-default'>" +
                         "<div class='panel-heading'>" +
                         "<strong>Anonymous</strong>" +
@@ -137,7 +140,7 @@ function commentAuction() {
                         "{$comment.message}" +
                         "</div>" +
                         "</div>"
-                    );
+                    );*/
                     newNotification('panel-success', "Commented auction with success.");
                 }
             },
@@ -147,41 +150,3 @@ function commentAuction() {
         });
     });
 };
-
-/*$(document).ready(function () {
- $('input[name="upload"]').change(function () {*/
-
-function uploadCommentFiles(input) {
-
-    var files = input.files;
-
-    console.log(input.val());
-
-    for (var i = 0; i < files.length; i++) {
-
-        console.log(files[i].name);
-        console.log($("input[name='upload']").val);
-        console.log(files[i].size);
-        console.log(files[i].type);
-        console.log(files[i].error);
-
-        $.ajax({
-            type: 'POST',
-            url: '../../api/auctions/uploadCommentFiles.php',
-            data: {
-                "name": "upload",
-                "filename": files[i]['name'],
-                "filepath": files[i]['tmp_name'],
-                "filesize": files[i]['size'],
-                "filetype": files[i]['type'],
-                "fileerror": files[i]['error']
-            },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
-        });
-    }
-
-}
-/*   });
- });*/

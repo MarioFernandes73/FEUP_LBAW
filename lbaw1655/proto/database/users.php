@@ -119,8 +119,11 @@ function deleteAccount($idUser)
 function editProfile($idUser, $name, $address, $password, $phonenumber){
     global $conn;
     $conn->beginTransaction();
+    $msg="";
 
-    $state = getUser($idUser).state;
+    $state = getUser($idUser)['state'];
+
+
 
     if(!isRegistered($state))
     {
@@ -128,9 +131,11 @@ function editProfile($idUser, $name, $address, $password, $phonenumber){
         return "You need to be a registered user!";
     }
 
+
     if($name != ""){
-        $stmt = $conn->prepare("UPDATE \"User\" SET name = ? WHERE \"User\".iduser = ?");
+        $stmt = $conn->prepare("UPDATE \"User\" SET name = ? WHERE iduser = ?");
         $stmt->execute(array($name, $idUser));
+        $msg=$name;
     }
 
     if($address != ""){
@@ -149,7 +154,10 @@ function editProfile($idUser, $name, $address, $password, $phonenumber){
         $stmt = $conn->prepare("UPDATE \"User\" SET phonenumber=? WHERE \"User\".iduser = ?");
         $stmt->execute(array($phonenumber, $idUser));
     }
+
+
     $conn->commit();
+    return $msg;
 }
 
 /*Auctions related*/
