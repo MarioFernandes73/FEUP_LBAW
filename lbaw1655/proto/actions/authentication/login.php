@@ -38,8 +38,8 @@ if ($res == true) {
             $_SESSION[$key] = $value;
         }
     }
-    $_SESSION['success_messages'][] = 'Login successful';
+    $_SESSION['success_messages'][] = 'Login successful.';
 } else {
-    $_SESSION['error_messages'][] = 'Login failed';
+    $_SESSION['error_messages'][] = 'Login failed.';
 }
 header('Location: ' . $_SERVER['HTTP_REFERER']);

@@ -5,5 +5,8 @@ function newNotification(typeclass,message){
 
         $("nav").after("<div class='panel " + typeclass + "' style='display:none'><div class='panel-heading'>" + message + "</div></div>");
         $("nav").next().fadeIn(700).slideDown(700);
+
+        if(typeclass == ".panel-danger")
+            $(document).scrollTop();
     });
 };

@@ -24,6 +24,12 @@
                        <!-- Scheduled Auctions Table Body-->
                        </tbody>
                    </table>
+                   <nav aria-label="...">
+                       <ul class="pager">
+                           <li class="previous"><a onclick="previous(3)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                           <li class="next"><a onclick="next(3)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                       </ul>
+                   </nav>
                </div>
                <!-- Active -->
                <div class="col-sm-10 auctions-content activeAuctions hidden">
@@ -39,6 +45,12 @@
                        <!-- Active Auctions Table Body-->
                        </tbody>
                    </table>
+                   <nav aria-label="...">
+                       <ul class="pager">
+                           <li class="previous"><a onclick="previous(4)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                           <li class="next"><a onclick="next(4)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                       </ul>
+                   </nav>
                </div>
                <!-- In conclusion -->
                <div class="col-sm-10 auctions-content inConclusionAuctions hidden">
@@ -53,6 +65,12 @@
                        <!-- In Conclusion Auctions Table Body-->
                        </tbody>
                    </table>
+                   <nav aria-label="...">
+                       <ul class="pager">
+                           <li class="previous"><a onclick="previous(5)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                           <li class="next"><a onclick="next(5)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                       </ul>
+                   </nav>
                </div>
                <!-- History -->
                <div class="col-sm-10 auctions-content historyAuctions hidden">
@@ -68,6 +86,12 @@
                        <!--History Auctions Table Body -->
                        </tbody>
                    </table>
+                   <nav aria-label="...">
+                       <ul class="pager">
+                           <li class="previous"><a onclick="previous(6)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                           <li class="next"><a onclick="next(6)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                       </ul>
+                   </nav>
                </div>
                <!-- Banned-->
                <div class="col-sm-10 auctions-content bannedAuctions hidden">
@@ -83,6 +107,12 @@
                        <!--Banned Auctions Table Body -->
                        </tbody>
                    </table>
+                   <nav aria-label="...">
+                       <ul class="pager">
+                           <li class="previous"><a onclick="previous(7)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                           <li class="next"><a onclick="next(7)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                       </ul>
+                   </nav>
                </div>
            </div>
        </div> <!-- fim da row da auction -->

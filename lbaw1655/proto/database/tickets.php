@@ -84,33 +84,6 @@ function userReportedAuction($iduser, $idauction)
         return true;
 }
 
-function addPhotosComment($idcomment, $photos)
-{
-    $msg = "";
-
-    if (is_array($photos)) {
-        var_dump("array");
-        foreach ($photos as $photo) {
-            if (addFile($photo[0], $photo[1], $photo[2]) != -1) {
-                $idfile = getFileId($photo[0], $photo[1]);
-                addAImagesComment($idfile, $idcomment);
-            } else {
-                $msg = "Could not insert file try again";
-                return $msg;
-            }
-        }
-    } else {
-        if (addFile($photos[0], $photos[1], $photos[2]) != -1) {
-            $idfile = getFileId($photos[0], $photos[1]);
-
-            addAImagesComment($idfile, $idcomment);
-        } else {
-            $msg = "Could not insert file try again";
-            return $msg;
-        }
-    }
-}
-
 function insertTicketIntoDB($iduser, $title, $category)
 {
 
@@ -144,4 +117,61 @@ function createTicket($iduser, $title, $category, $message)
 
     $conn->commit();
     return $msg;
+}
+
+function getAllTickets($idUser,$offset){
+    global $conn;
+    $statement = "SELECT * FROM \"Ticket\" WHERE iduser=? LIMIT 10 OFFSET ".$offset*10;
+    $stmt = $conn->prepare($statement);
+    $stmt->execute(array($idUser));
+    return $stmt->fetchAll();
+}
+
+function getUserTickets($idUser, $solved,$offset){
+    global $conn;
+    $statement = "SELECT * FROM \"Ticket\" WHERE iduser=? AND solved=? LIMIT 10 OFFSET ".$offset*10;
+    $stmt = $conn->prepare($statement);
+    $stmt->execute(array($idUser, $solved));
+    return $stmt->fetchAll();
+}
+
+function solveTicket($idticket){
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"Ticket\" SET solved=TRUE, resolveddate=now() WHERE idticket=?");
+    $stmt->execute(array($idticket));
+    return $stmt->fetchAll();
+}
+
+function getTicket($idticket){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM \"Ticket\" JOIN \"TicketComment\" ON \"Ticket\".idticket = \"TicketComment\".idticket JOIN \"User\" ON \"TicketComment\".iduser = \"User\".iduser WHERE \"Ticket\".idticket=? ORDER BY date ASC");
+    $stmt->execute(array($idticket));
+    return $stmt->fetchAll();
+}
+
+function getAdminTickets($state,$category,$offset){
+    global $conn;
+    $statement = "SELECT \"User\".iduser, \"Ticket\".idticket, title, username, \"Ticket\".resolveddate FROM \"Ticket\" JOIN \"User\" ON \"Ticket\".iduser = \"User\".iduser";
+    if($category == "null")
+    {
+        if($state == "")
+        {
+            $statement = $statement." LIMIT 10 OFFSET ".$offset*10;
+            $stmt = $conn->prepare($statement);
+            $stmt->execute(array());
+        }
+        else
+        {
+            $statement =  $statement." WHERE solved=? LIMIT 10 OFFSET ".$offset*10;
+            $stmt = $conn->prepare($statement);
+            $stmt->execute(array($state));
+        }
+    }
+    else
+    {
+        $statement =  $statement."  WHERE solved=? AND category=? LIMIT 10 OFFSET ".$offset*10;
+        $stmt = $conn->prepare($statement);
+        $stmt->execute(array($state, $category));
+    }
+    return $stmt->fetchAll();
 }

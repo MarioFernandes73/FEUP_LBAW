@@ -18,7 +18,7 @@
                             class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
         </div>
-        <div class="panel-footer"><a href="searchresult.html">See More</a></div>
+        <div class="panel-footer"><a href="{$BASE_URL}pages/auctions/searchResults.php?lastMinute=true">See More</a></div>
     </div>
 
     <div class="panel panel-primary" id="hot">
@@ -34,7 +34,7 @@
                             class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
         </div>
-        <div class="panel-footer"><a href="searchresult.html">See More</a></div>
+        <div class="panel-footer"><a href="{$BASE_URL}pages/auctions/searchResults.php?hot=true">See More</a></div>
     </div>
 
 </div>

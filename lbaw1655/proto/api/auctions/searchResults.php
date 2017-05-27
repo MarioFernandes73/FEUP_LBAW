@@ -6,6 +6,8 @@ if ($_GET['lastMinute']) {
     $auctions = auctionsLMO();
 } else if ($_GET['hot']) {
     $auctions = auctionsHot();
+} else if($_GET['fullTextSearch']) {
+    $auctions = getFullTextSearch($_GET['fullTextSearch']);
 } else {
     $auctions = getAdvancedSearchedAuctions($_GET['offset'],$_GET['name'],$_GET['rating'],$_GET['category'],$_GET['type'],$_GET['date'],$_GET['duration']);
 }

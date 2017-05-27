@@ -1,38 +1,46 @@
-function uploadFiles(input) {
+var files;
 
-    var files = input.files;
-    var newDoc = "</div><img class='fileImage' src='' width='200' style='display:none;' />";
-    for (var i = 0; i < files.length; i++) {
+function prepareUpload(event) {
+    alert("PrepareUpload");
+    files = event.files;
+}
 
-        var path = URL.createObjectURL(input.files[i])
-        var tmppath = path;
-        var name = files[i]['name'];
+function makeUpload(){
+    alert("UploadFiles");
 
-        tmppath = tmppath.replace('blob:','');
-        /*  tmppath = tmppath.toString();*/
-        //  tmppath = tmppath.replace('\\' , '');
+    // Create a formdata object and add the files
+    var data = new FormData();
+    $.each(files, function(key, value)
+    {
+        data.append(key, value);
+        alert(value);
+    });
 
-
-        console.log('path',path + "/" + name);
-
-        $("#uploadfiles").after(newDoc);
-        $("#uploadfiles").after().fadeIn("fast").attr('src',path);
-/*
-        $.ajax({
-            type: 'POST',
-            url: '../../api/files/uploadFiles.php',
-            data: {
-                "filename": name,
-                "filepath": tmppath
-            },
-            success: function (data) {
-
-                data = JSON.parse(data);
-                newNotification('panel-danger', data.result);
-            },
-            error: function (request, status, error) {
-                alert(request.responseText);
+    $.ajax({
+        url: '../../api/files/uploadFiles.php?files',
+        type: 'POST',
+        data: data,
+        cache: false,
+        dataType: 'json',
+        processData: false, // Don't process the files
+        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+        success: function(data, textStatus, jqXHR)
+        {
+            if(typeof data.error === 'undefined')
+            {
+                console.log(data);
             }
-        });*/
-    }
+            else
+            {
+                // Handle errors here
+                console.log('ERRORS: ' + data.error);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            // Handle errors here
+            console.log('ERRORS: ' + textStatus);
+            // STOP LOADING SPINNER
+        }
+    });
 }

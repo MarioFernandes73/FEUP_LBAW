@@ -1,6 +1,6 @@
 {include file='common/header.tpl'}
 {include file='common/navbar.tpl'}
-
+<span id="sessionid" class="hidden">{$sessionid}</span>
 <!-- MAIN INTERACTION -->
 <div class="jumbotron">
     <!-- Navs -->

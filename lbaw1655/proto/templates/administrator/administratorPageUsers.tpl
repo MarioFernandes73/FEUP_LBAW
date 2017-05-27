@@ -21,6 +21,12 @@
                 <!-- Admin Users Table Body -->
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li class="previous"><a onclick="previous(0)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                    <li class="next"><a onclick="next(0)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
         </div>
         <!-- Users -->
         <div class="col-sm-10 users-content activeUsers hidden">
@@ -36,6 +42,12 @@
                 <!-- Active Users Table Body-->
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li class="previous"><a onclick="previous(1)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                    <li class="next"><a onclick="next(1)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
         </div>
         <!-- Banned Users -->
         <div class="col-sm-10 users-content bannedUsers hidden">
@@ -50,6 +62,12 @@
                 <!--Banned Users Table Body-->
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li class="previous"><a onclick="previous(2)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                    <li class="next"><a onclick="next(2)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div> <!-- fim da row do user -->

@@ -1,3 +1,5 @@
+var offsets = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
 window.onload = function () {       //elementos mudam
     prepareNavigation($("#administrator-navigation > li"));        //prepare horizontal bar
     prepareSidebar($("#users-navigation > li"));                //prepare sidebar
@@ -6,31 +8,80 @@ window.onload = function () {       //elementos mudam
     prepareTab("users-tab");
 }
 
+function next(myoffset)
+{
+    offsets[myoffset]++;
+
+    executeAjax(myoffset);
+}
+
+function previous(myoffset)
+{
+    if(offsets[myoffset] <= 0)
+        return false;
+
+    offsets[myoffset]--;
+
+    executeAjax(myoffset);
+}
+
+function executeAjax(myoffset)
+{
+    if(myoffset == 0)
+        usersAjax("adminUsers","Administrator",0);
+    else if(myoffset == 1)
+        usersAjax("activeUsers","Active",1);
+    else if(myoffset == 2)
+        usersAjax("bannedUsers","Banned",2);
+    else if(myoffset == 3)
+        auctionsAjax("scheduledAuctions", "Scheduled",3);
+    else if(myoffset == 4)
+        auctionsAjax("activeAuctions", "Active",4);
+    else if(myoffset == 5)
+        auctionsAjax("inConclusionAuctions","inConclusion",5);
+    else if(myoffset == 6)
+        auctionsAjax("historyAuctions","Closed",6);
+    else if(myoffset == 7)
+        auctionsAjax("bannedAuctions","Banned",7);
+    else if(myoffset == 8)
+        ticketsAjax(8,"reportsTickets", "Report", false);
+    else if(myoffset == 9)
+        ticketsAjax(9,"productsTickets", "Product", false);
+    else if(myoffset == 10)
+        ticketsAjax(10,"othersTickets", "Questions", false);
+    else if(myoffset == 11)
+        ticketsAjax(11,"questionsTickets", "Others", false);
+    else if(myoffset == 12)
+        ticketsAjax(12,"solvedTickets",null,true);
+    else if(myoffset == 13)
+        ticketsAjax(13,"allTickets");
+}
+
 //elementos mudaram
 function prepareTab(id){
     var element;
     if(id == "users-tab"){
         element = $(".users-content");
-        usersAjax("adminUsers","Administrator");
-        usersAjax("activeUsers","Active");
-        usersAjax("bannedUsers","Banned");
+        usersAjax("adminUsers","Administrator",0);
+        usersAjax("activeUsers","Active",1);
+        usersAjax("bannedUsers","Banned",2);
     }
     else if(id == "auctions-tab"){
         element = $(".auctions-content");
-        auctionsAjax("scheduledAuctions", "Scheduled");
-        auctionsAjax("activeAuctions", "Active");
-        auctionsAjax("inConclusionAuctions","inConclusion");
-        auctionsAjax("historyAuctions","Closed");
-        auctionsAjax("bannedAuctions","Banned");
+        auctionsAjax("scheduledAuctions", "Scheduled",3);
+        auctionsAjax("activeAuctions", "Active",4);
+        auctionsAjax("inConclusionAuctions","inConclusion",5);
+        auctionsAjax("historyAuctions","Closed",6);
+        auctionsAjax("bannedAuctions","Banned",7);
     }
     else if(id == "tickets-tab"){
         element = $(".tickets-content");
-        ticketsAjax("reportsTickets", "Report", false);
-        ticketsAjax("productsTickets", "Product", false);
-        ticketsAjax("othersTickets", "Questions", false);
-        ticketsAjax("questionsTickets", "Others", false);
-        ticketsAjax("solvedTickets",null,true);
-        ticketsAjax("allTickets");
+        ticketsAjax(8,"reportsTickets","Report", false);
+        ticketsAjax(9,"productsTickets", "Product", false);
+        ticketsAjax(10,"othersTickets", "Questions", false);
+        ticketsAjax(11,"questionsTickets", "Others", false);
+        ticketsAjax(12,"solvedTickets",null,true);
+        ticketsAjax(13,"allTickets");
     }
     else if(id == "statistics-tab"){
         element = $(".statistics-content");
@@ -40,19 +91,18 @@ function prepareTab(id){
     }
 }
 
-
-function usersAjax(id, state) {
+function usersAjax(id,state,myoffset) {
     $.ajax({
         type: 'get',
         url: '../../api/administrator/searchUsers.php',
-        data: {"state": state},
+        data: {"state": state, "offset":offsets[myoffset]},
         success: function(data){
             var users = JSON.parse(data);
             $('#'+id+'Badge').empty().append(users.length);
             $('#'+id+'Table').empty();
             for (var i = 0; i < users.length; i++) {
                 if(state == "Administrator"){
-                    addUserTable(id, state, users[i], users.length);
+                    addUserTable(id, state, users[i]);
                 }
                 else{
                     addUserTable(id, state, users[i]);
@@ -63,12 +113,11 @@ function usersAjax(id, state) {
 }
 
 
-function auctionsAjax(id, state){
-
+function auctionsAjax(id,state,myoffset){
     $.ajax({
         type: 'get',
         url: '../../api/administrator/searchAuctions.php',
-        data: {"state": state},
+        data: {"state": state,"offset":offsets[myoffset]},
         success: function(data){
             var auctions = JSON.parse(data);
             $('#'+id+'Badge').empty().append(auctions.length);
@@ -80,25 +129,26 @@ function auctionsAjax(id, state){
     });
 }
 
-function ticketsAjax(id, category=null, state=null){
+function ticketsAjax(myoffset,id,category=null,state=null){
     $.ajax({
         type: 'get',
         url: '../../api/administrator/searchTickets.php',
-        data: {"state": state, "category": ''+category+''},
-        success: function(data){
+        data: {"state": state, "category": ''+category+'',"offset":offsets[myoffset]},
+        success: function(data) {
             var specificTickets = JSON.parse(data);
             $('#'+id+'Badge').empty().append(specificTickets.length);
             $('#'+id+'Table').empty();
 
             for (var i = 0; i < specificTickets.length; i++) {
-                var text = '<tr> <td><a>'+specificTickets[i].title+'</a></td> <td><a>'+specificTickets[i].username+'</a></td><td>CREATION DATE</td>';
+                var text = '<tr> <td><a href="" onclick="openTicket('+specificTickets[i].idticket+'); return false;">'+specificTickets[i].title+'</a></td>' +
+                    '<td><a href='+'../../pages/users/profile.php?iduser='+specificTickets[i].iduser+'>'+specificTickets[i].username+'</a></td>';
                 if(category == null){
                     if(state != null){
-                        text += '<td>SOLVED DATE</td>';
+                        text += '<td>'+specificTickets[i].resolveddate+'</td>';
                     }
                 }
                 else{
-                    text +='<td> <button type="submit" class="btn btn-success btn-sm"> ' +
+                    text +='<td> <button type="button" onclick="solveTicket('+specificTickets[i].idticket+')" class="btn btn-success btn-sm"> ' +
                         '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </button> </td> ';
                 }
                 text += '</tr>';
@@ -109,15 +159,22 @@ function ticketsAjax(id, category=null, state=null){
     });
 }
 
-function addUserTable(id, state, user, length){
+function addUserTable(id, state, user){
+
+    var sessionid = $("#sessionid")[0].innerHTML;
+
     var text = '<tr id="user'+user.iduser+'">'+
         '<td><a href='+'../../pages/users/profile.php?iduser='+user.iduser+'>'+user.username+'</td>';
     if(state == "Administrator"){
-        if(length == null && length != 1){
+        if(user.iduser != sessionid){
             text += '<td><button type="button" onclick="demoteUser('+user.iduser+')" class="btn btn-danger btn-xs">'+
                 '<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>'+
                 '</button></td>';
+        } else {
+            text += '<td></td>';
         }
+
+
     }else if(state == "Active"){
         text += '<td> <button type="button" onclick="promoteUser('+user.iduser+')" class="btn btn-success btn-xs"> ' +
             '<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> </button> </td> ' +
@@ -254,3 +311,14 @@ function updateBadge(id1, id2){
     $('#'+id2+'')[0].innerHTML = currentBadgeNumber-1;
 }
 
+
+function solveTicket(idTicket){
+    $.ajax({
+        type: 'post',
+        url: '../../api/administrator/solveTicket.php',
+        data: {"idticket":idTicket},
+        success: function(data){
+            prepareTab("tickets-tab");
+        }
+    });
+}

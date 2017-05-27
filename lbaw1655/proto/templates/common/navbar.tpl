@@ -5,7 +5,6 @@
         <div class="container-fluid">
 
             <!-- Home Button -->
-
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                         aria-expanded="false" aria-controls="navbar">
@@ -18,7 +17,6 @@
             </div>
 
             <!-- Categories -->
-
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
@@ -26,7 +24,7 @@
                            aria-expanded="false">Categories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             {foreach $categories as $category}
-                                <li><a href="{$BASE_URL}pages/auctions/searchResults.php?offset=1?category={$category["unnest"]}">
+                                <li><a href="{$BASE_URL}pages/auctions/searchResults.php?category={$category["unnest"]}">
                                         {$category["unnest"]}</a>
                                 </li>
                             {/foreach}
@@ -43,17 +41,16 @@
                 </ul>
 
                 <!-- Search -->
-
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-left"
+                      method="GET" action="{$BASE_URL}pages/auctions/searchResults.php">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input name="fullTextSearch" type="text" class="form-control" placeholder="Search">
+                        <button type="submit" class="btn btn-default">Search</button>
                     </div>
-                    <button type="button" class="btn btn-default">Submit</button>
                     <a href="{$BASE_URL}pages/auctions/advancedSearch.php" class="btn btn-default">Advanced Search</a>
                 </form>
 
                 <!-- Account -->
-
                 {if $USERNAME}
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">

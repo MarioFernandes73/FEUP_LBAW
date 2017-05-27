@@ -5,7 +5,6 @@ $message = $_POST['message'];
 $title = $_POST['title'];
 $category = $_POST['category'];
 
-var_dump($_POST);
 
 if (isset($_SESSION['iduser'])) {
 
@@ -18,7 +17,7 @@ if (isset($_SESSION['iduser'])) {
             exit();
         }
 
-        $_SESSION['success_messages'] = 'Created ticket successfully';
+        $_SESSION['success_messages'] = 'Ticket created successfully';
         header('Location: ../../pages/authentication/homepage.php');
 
     } catch
@@ -27,7 +26,7 @@ if (isset($_SESSION['iduser'])) {
         header('Location: ../../pages/authentication/homepage.php');
     }
 } else {
-    $_SESSION['error_messages'] = "User must be logged in.";
+    $_SESSION['error_messages'] = "User must be authenticated to proceed.";
     header('Location: ../../pages/authentication/homepage.php');
     exit();
 }

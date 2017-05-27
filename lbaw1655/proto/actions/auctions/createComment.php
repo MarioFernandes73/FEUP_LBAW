@@ -73,7 +73,7 @@ if (isset($_SESSION['iduser'])) {
                           header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
                         exit();
                     } else {
-                        $_SESSION['error_messages'] = "Error on uploading files. Please try again.";
+                        $_SESSION['error_messages'] = "Error uploading files. Please try again.";
                         header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
                         exit();
                     }
@@ -87,7 +87,7 @@ if (isset($_SESSION['iduser'])) {
         }
     }
 } else {
-    $_SESSION['error_messages'] = "User must be logged in.";
+    $_SESSION['error_messages'] = "User must be authenticated to proceed.";
     header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
     exit();
 }

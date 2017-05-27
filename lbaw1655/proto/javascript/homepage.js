@@ -71,7 +71,7 @@ function fillList(data, type,n) {
                 '<a href="' + BASE_URL + 'pages/auctions/viewAuction.php?idauction=' + auction.idauction + '">' + auction.name + '<br></a>' +
                 '<label>' + auction.category + '' +
                 '<br><div class="timeleft">'+timeleft+'</div>' +
-                '<br>Last Price : ' + auction.currentprice +
+                '<br>Last Price : ' + auction.currentprice/100 +
                 '</label>' +
                 '</div>' +
                 '</div>' +
@@ -90,7 +90,7 @@ function fillList(data, type,n) {
                 '<a href="' + BASE_URL + 'pages/auctions/viewAuction.php?idauction=' + auction.idauction + '">' + auction.name + '<br></a>' +
                 '<label>' + auction.category + '' +
                 '<br><div class="timeleft">'+timeleft+'</div>' +
-                '<br>Last Price : ' + auction.currentprice +
+                '<br>Last Price : ' + auction.currentprice/100 +
                 '</label>' +
                 '</div>' +
                 '</div>' +
@@ -109,7 +109,7 @@ function fillList(data, type,n) {
                 '<a href="' + BASE_URL + 'pages/auctions/viewAuction.php?idauction=' + auction.idauction + '">' + auction.name + '<br></a>' +
                 '<label>' + auction.category + '' +
                 '<br><div class="timeleft">'+timeleft+'</div>' +
-                '<br>Last Price : ' + auction.currentprice +
+                '<br>Last Price : ' + auction.currentprice/100 +
                 '</label>' +
                 '</div>' +
                 '</div>' +

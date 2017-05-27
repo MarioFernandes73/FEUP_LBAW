@@ -51,7 +51,7 @@ if (isset($_SESSION['iduser'])) {
                             $photos[$i] = array($_FILES['upload']['name'][$i], $pathImage, $now->format('Y-m-d'));
                             $_SESSION['success_messages'] = "The file " . $_FILES['upload']['name'][$i] . " was uploaded with success.";
                         } else {
-                            $_SESSION['error_messages'] = "Error on uploading files. Please try again.";
+                            $_SESSION['error_messages'] = "Error uploading files. Please try again.";
                             header('Location:' . $BASE_URL . 'pages/auctions/createAuction.php');
                             exit();
                         }

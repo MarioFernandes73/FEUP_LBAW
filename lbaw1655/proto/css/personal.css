@@ -134,8 +134,6 @@
         position: fixed;
         left: 15px;
         top: -17px;
-        z-index: 1000;
-        display: block;
         padding-top: 17px;
         padding-bottom: 400px;
         overflow-x: hidden;

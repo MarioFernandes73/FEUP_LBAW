@@ -1,26 +1,15 @@
 <?php
-include_once('../../config/init.php');
+include_once('../../database/users.php');
 
-global $conn;
-
-if(isset($_GET["iduser"])){
-    $stmt = $conn->prepare("SELECT * FROM \"User\" WHERE iduser=?");
-    $stmt->execute(array($_GET["iduser"]));
-    echo json_encode($stmt->fetch());
+if(isset($_GET["iduser"]))
+{
+    echo json_encode(getUser($_GET["iduser"]));
     return;
 }
+
 $state = $_GET["state"];
-if($state == "Active"){
-    $stmt = $conn->prepare("SELECT * FROM \"User\" WHERE state=? OR state=? LIMIT 10");
-    $stmt->execute(array("Validated", "Registered"));
-}
-else{
-    $stmt = $conn->prepare("SELECT * FROM \"User\" WHERE state=? LIMIT 10");
-    $stmt->execute(array($state));
-}
-$users = $stmt->fetchAll();
+$offset = $_GET["offset"];
 
-
-echo json_encode($users);
+echo json_encode(getAdminUsers($state,$offset));
 
 

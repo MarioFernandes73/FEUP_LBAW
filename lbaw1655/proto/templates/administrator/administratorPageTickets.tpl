@@ -1,6 +1,6 @@
 <!-- TICKETS -->
           <div class="row">
-              <div class="tickets-content hidden">
+              <div id="ticket-container" class="tickets-content hidden">
               <div class="col-sm-2 sidebar">
                   <ul id="tickets-navigation" class="nav nav-sidebar">
                       <li class="active reportsTickets"><a>Reports <span id="reportsTicketsBadge" class="badge"></span></a></li>
@@ -12,202 +12,132 @@
                   </ul>
               </div>
               <!-- Reports -->
-              <div class="col-sm-10 tickets-content reportsTickets" >
+              <div class="col-sm-10 tickets-content reportsTickets tickets-list" >
                   <table class="table table-responsive pre">
                       <thead>
                       <tr>
                           <th>Ticket</th>
                           <th>Username</th>
-                          <th>Sent Date</th>
                           <th>Solved</th>
                       </tr>
                       </thead>
                       <tbody id="reportsTicketsTable">
-                      <!--<tr>
-                          <td><a href="#info">Report Username</a></td>
-                          <td><a href="#profile.html">auctionLover</a></td>
-                          <td>27/02/2017</td>
-                          <td>
-                              <button type="submit" class="btn btn-success btn-sm">
-                                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                              </button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td><a href="#info">Report Auction</a></td>
-                          <td><a href="#profile.html">liza</a></td>
-                          <td>05/03/2017</td>
-                          <td>
-                              <button type="submit" class="btn btn-success btn-sm">
-                                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                              </button>
-                          </td>
-                      </tr><!-->
+
                       </tbody>
                   </table>
+                  <nav aria-label="...">
+                      <ul class="pager">
+                          <li class="previous"><a onclick="previous(8)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                          <li class="next"><a onclick="next(8)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                      </ul>
+                  </nav>
               </div>
               <!-- Products -->
-              <div class="col-sm-10 tickets-content productsTickets hidden" >
+              <div class="col-sm-10 tickets-content productsTickets hidden tickets-list" >
                   <table class="table table-responsive pre">
                       <thead>
                       <tr>
                           <th>Ticket</th>
                           <th>Username</th>
-                          <th>Sent Date</th>
                           <th>Solved</th>
                       </tr>
                       </thead>
                       <tbody id="productsTicketsTable">
-                     <!-- <tr>
-                          <td><a href="#info">Bug found</a></td>
-                          <td><a href="#profile.html">Xman99</a></td>
-                          <td>03/03/2017</td>
-                      </tr><!-->
+
                       </tbody>
                   </table>
+                  <nav aria-label="...">
+                      <ul class="pager">
+                          <li class="previous"><a onclick="previous(9)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                          <li class="next"><a onclick="next(9)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                      </ul>
+                  </nav>
               </div>
               <!-- Others-->
-                  <div class="col-sm-10 tickets-content othersTickets hidden" >
+                  <div class="col-sm-10 tickets-content othersTickets hidden tickets-list" >
                       <table class="table table-responsive pre">
                           <thead>
                           <tr>
                               <th>Ticket</th>
                               <th>Username</th>
-                              <th>Sent Date</th>
                               <th>Solved</th>
                           </tr>
                           </thead>
                           <tbody id="othersTicketsTable">
-                          <!-- <tr>
-                               <td><a href="#info">Bug found</a></td>
-                               <td><a href="#profile.html">Xman99</a></td>
-                               <td>03/03/2017</td>
-                           </tr><!-->
+
                           </tbody>
                       </table>
+                      <nav aria-label="...">
+                          <ul class="pager">
+                              <li class="previous"><a onclick="previous(10)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                              <li class="next"><a onclick="next(10)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                          </ul>
+                      </nav>
                   </div>
                   <!--Questions -->
-                  <div class="col-sm-10 tickets-content questionsTickets hidden" >
+                  <div class="col-sm-10 tickets-content questionsTickets hidden tickets-list" >
                       <table class="table table-responsive pre">
                           <thead>
                           <tr>
                               <th>Ticket</th>
                               <th>Username</th>
-                              <th>Sent Date</th>
                               <th>Solved</th>
                           </tr>
                           </thead>
                           <tbody id="questionsTicketsTable">
-                          <!-- <tr>
-                               <td><a href="#info">Bug found</a></td>
-                               <td><a href="#profile.html">Xman99</a></td>
-                               <td>03/03/2017</td>
-                           </tr><!-->
+
                           </tbody>
                       </table>
+                      <nav aria-label="...">
+                          <ul class="pager">
+                              <li class="previous"><a onclick="previous(11)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                              <li class="next"><a onclick="next(11)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                          </ul>
+                      </nav>
                   </div>
 
           <!-- Solved -->
-          <div class="col-sm-10 tickets-content solvedTickets hidden">
+          <div class="col-sm-10 tickets-content solvedTickets hidden tickets-list">
               <table class="table table-responsive pre">
                   <thead>
                   <tr>
                       <th>Ticket</th>
                       <th>Username</th>
-                      <th>Sent Date</th>
                       <th>Resolved Date</th>
                   </tr>
                   </thead>
                   <tbody id="solvedTicketsTable">
-                 <!-- <tr>
-                      <td><a href="#info">My product is broken</a></td>
-                      <td><a href="#profile.html">mike</a></td>
-                      <td>14/02/2017</td>
-                      <td>21/02/2017</td>
-                  </tr>
-                  <tr>
-                      <td><a href="#info">Report Username</a></td>
-                      <td><a href="#profile.html">sisi</a></td>
-                      <td>5/02/2017</td>
-                      <td>9/02/2017</td>
-                  </tr>
-                  <tr>
-                      <td><a href="#info">Stupid Question</a></td>
-                      <td><a href="#profile.html">auctionLover</a></td>
-                      <td>31/01/2017</td>
-                      <td>2/02/2017</td>
-                  </tr><!-->
+
                   </tbody>
               </table>
+              <nav aria-label="...">
+                  <ul class="pager">
+                      <li class="previous"><a onclick="previous(12)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                      <li class="next"><a onclick="next(12)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                  </ul>
+              </nav>
           </div>
 
                   <!-- ALL -->
-                  <div class="col-sm-10 tickets-content allTickets hidden" >
+                  <div class="col-sm-10 tickets-content allTickets hidden tickets-list" >
                       <table class="table table-responsive pre">
                           <thead>
                           <tr>
                               <th>Ticket</th>
                               <th>Username</th>
-                              <th>Sent Date</th>
                           </tr>
                           </thead>
                           <tbody id="allTicketsTable">
-                          <!-- <tr>
-                               <td><a href="#info">Bug found</a></td>
-                               <td><a href="#profile.html">Xman99</a></td>
-                               <td>03/03/2017</td>
-                           </tr><!-->
+
                           </tbody>
                       </table>
+                      <nav aria-label="...">
+                          <ul class="pager">
+                              <li class="previous"><a onclick="previous(13)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                              <li class="next"><a onclick="next(13)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                          </ul>
+                      </nav>
                   </div>
-          <!-- My ticket -->
-             <!-- <div class="col-sm-10" style="top: -17px">
-                  <ul class="pager">
-                      <li class="previous">
-                          <a href="#"><span aria-hidden="true">&larr;</span> Previous</a>
-                      </li>
-                      <li class="next">
-                          <a href="#">Next <span aria-hidden="true">&rarr;</span></a>
-                      </li>
-                  </ul>
-                  <h3 class="sub-header text-center">Bug found</h3>
-                  <div class="panel panel-default" style="min-height: 530px">
-                      <div class="panel-heading" style="min-height: 80px">
-                          <strong>Xman99</strong> Hi! Today I was navigating by your site and I found out that my "FAQ" section was not available!! I'm writing to you because I don't know if your section has some problem our just don't exist...
-                          Thanks by your time.
-                      </div>
-                      <div class="panel-body pre-scrollable" style="height: 330px">
-                          <div class="panel panel-default">
-                              <div class="panel-heading">
-                                  <strong>Admin</strong>
-                              </div>
-                              <div class="panel-body">
-                                  Hi! Thanks by your time. It was our fault, the problem will be solved soon.
-                              </div>
-                          </div>
-                          <div class="panel panel-default">
-                              <div class="panel-heading">
-                                  <strong>Xman99</strong>
-                              </div>
-                              <div class="panel-body">
-                                  ok :)
-                              </div>
-                          </div>
-                      </div>
-                      <div class="panel-footer" style="min-height: 120px">
-                          <form>
-                              <textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea>
-                              <button style="margin-top:5px" type="submit" class="btn btn-success pull-right">
-                              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                          </button>
-                              <label style="margin: 5px;" class="btn btn-success btn-file pull-right">
-                              <span   class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                              <input type="file" style="display: none;">
-                          </label>
-                          </form>
-                      </div>
-                  </div>
-              </div><!-->
           </div>
           </div>
           <!-- fim da row dos tickets -->

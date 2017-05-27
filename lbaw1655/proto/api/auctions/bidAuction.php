@@ -6,6 +6,6 @@ $value = $_POST['bidvalue']*100;
 if(isset($_SESSION['iduser']))
     $res = bidAuction($_POST['idauction'],$_SESSION['iduser'],$value);
 else
-    $res = "You must be logged in to bid.";
+    $res = "User must be authenticated to proceed.";
 
 echo json_encode(array("result" => $res));

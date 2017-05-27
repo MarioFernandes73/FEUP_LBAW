@@ -11,15 +11,15 @@ $name = trim(strip_tags($_POST['name']));
 
 if(!hasUsername($usermame)){
 
-    if(!hasAddress($address)){
-
+    if(!hasAddress($address))
+    {
         try {
             $msg = addUser($username, $name, $birthDate, $address, $password, $phoneNumber);
 
             if($msg != '')
                 throw new PDOException($msg);
 
-            $_SESSION['success_messages'][] = 'User registered successfully';
+            $_SESSION['success_messages'][] = 'User registered successfully.';
             header('Location: ../../pages/authentication/homepage.php');
 
         }catch (PDOException $e){
@@ -28,13 +28,13 @@ if(!hasUsername($usermame)){
         }
     }
     else {
-        $_SESSION['error_messages'][] = 'Address used';
+        $_SESSION['error_messages'][] = 'Address already used.';
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
 }
  else {
-     $_SESSION['error_messages'][] = 'User used';
+     $_SESSION['error_messages'][] = 'That username has already been taken. Please, insert a new one.';
      header('Location: ' . $_SERVER['HTTP_REFERER']);
      exit;
  }

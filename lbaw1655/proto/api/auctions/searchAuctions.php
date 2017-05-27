@@ -1,40 +1,16 @@
 <?php
-include_once('../../config/init.php');
+include_once('../../database/auctions.php');
+
 $type = $_GET["type"];
-global $conn;
+$offset = $_GET["offset"];
+
 if($type == "followed"){
-    $stmt = $conn->prepare("SELECT * FROM \"Auction\" WHERE idauction IN 
-   (SELECT idauction
-   FROM \"Follow\"
-   WHERE iduser = ? AND state =?)
-   LIMIT 10");
-    $stmt->execute(array($_SESSION["iduser"], 'Opened'));
+    $auctionsArray = getFollowedAuctions($_SESSION["iduser"],$offset);
 }
 elseif($type == "inConclusion"){
-    $stmt = $conn->prepare("SELECT * FROM \"Auction\" WHERE (idowner=? AND idauction IN 
-   (SELECT idauction
-   FROM \"winningBid\")) OR 
-   idauction IN 
-   (SELECT idauction
-   FROM \"winningBid\"
-   WHERE iduser=?)
-   LIMIT 10");
-    $stmt->execute(array($_SESSION["iduser"],$_SESSION["iduser"]));
+    $auctionsArray = getInConclusionAuctions($_SESSION["iduser"],$offset);
 }
 elseif($type == "history"){
-    $stmt = $conn->prepare("SELECT  buyerrating, sellerrating, name, startingdate, durationhours,  state, idowner, MAX(currentprice) AS ammount FROM(
-SELECT * FROM \"winningBid\" JOIN \"Auction\" ON \"winningBid\".idauction = \"Auction\".idauction  WHERE
- (iduser=? OR \"Auction\".idauction IN 
-   (SELECT idauction
-   FROM \"Auction\"
-   WHERE idowner = ?))
-   LIMIT 10) AS temp
-group by buyerrating, sellerrating, name, startingdate, durationhours, state, idowner");
-    $stmt->execute(array($_SESSION["iduser"],$_SESSION["iduser"]));
+    $auctionsArray = getHistoryAuctions($_SESSION["iduser"],$offset);
 }
-//order by date
-//createtime+durationhours-currentdate
-
-
-$auctionsArray = $stmt->fetchAll();
 echo json_encode($auctionsArray);

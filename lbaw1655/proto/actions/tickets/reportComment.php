@@ -17,7 +17,7 @@ if (isset($_SESSION['iduser'])) {
             exit();
         }
 
-        $_SESSION['success_messages'] = 'Reported comment successfully';
+        $_SESSION['success_messages'] = 'Comment reported successfully.';
         header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
 
     } catch
@@ -26,7 +26,7 @@ if (isset($_SESSION['iduser'])) {
         header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
     }
 } else {
-    $_SESSION['error_messages'] = "User must be logged in.";
+    $_SESSION['error_messages'] = "User must be authenticated to proceed.";
     header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
     exit();
 }

@@ -83,82 +83,63 @@ function auctionsHot()
 }
 
 
-function getAdvancedSearchedAuctions($offset,$name,$rating,$category,$type,$date,$duration)
+function getAdvancedSearchedAuctions($offset, $name, $rating, $category, $type, $date, $duration)
 {
-    $statement = "SELECT * FROM \"Auction\" A WHERE  A.state = 'Opened'::auctionstate";
+    $statement = "SELECT idauction,category,\"Auction\".name,currentprice,startingdate,durationhours
+                  FROM \"Auction\" JOIN \"User\" ON \"Auction\".idowner = \"User\".iduser
+                  WHERE \"Auction\".state = 'Opened'::auctionstate";
     $params = array();
     $i = 0;
-    $first = true;
 
-    if($name)
-    {
-        if($first)
-            $statement = $statement . " WHERE";
-
-        $statement = $statement." name=?";
+    if ($name) {
+        $statement = $statement . " AND \"Auction\".name=?";
         $params[$i] = $name;
-        $i = $i+1;
-        $first = false;
+        $i = $i + 1;
     }
-    if($rating)
-    {
-        if(!$first)
-            $statement = $statement." AND";
-        else
-            $statement = $statement." WHERE";
-        $statement = $statement." rating=?";
+    if ($rating) {
+        $statement = $statement . " AND \"User\".rating=?";
         $params[$i] = $rating;
-        $i = $i+1;
-        $first = false;
+        $i = $i + 1;
     }
-    if($category)
-    {
-        if(!$first)
-            $statement = $statement." AND";
-        else
-            $statement = $statement." WHERE";
-        $statement = $statement." category=?";
+    if ($category) {
+        $statement = $statement . " AND category=?";
         $params[$i] = $category;
-        $i = $i+1;
-        $first = false;
+        $i = $i + 1;
     }
-    if($type)
-    {
-        if(!$first)
-            $statement = $statement." AND";
-        else
-            $statement = $statement." WHERE";
-        $statement = $statement." type=?";
+    if ($type) {
+        $statement = $statement . " AND type=?";
         $params[$i] = $type;
-        $i = $i+1;
-        $first = false;
+        $i = $i + 1;
     }
-    if($date)
-    {
-        if(!$first)
-            $statement = $statement." AND";
-        else
-            $statement = $statement." WHERE";
-        $statement = $statement." type=?";
+    if ($date) {
+        $statement = $statement . " AND startingdate=?";
         $params[$i] = $type;
-        $i = $i+1;
-        $first = false;
+        $i = $i + 1;
     }
-    if($duration)
-    {
-        if(!$first)
-            $statement = $statement." AND";
-        else
-            $statement = $statement." WHERE";
-        $statement = $statement." duration=?";
+    if ($duration) {
+        $statement = $statement . " AND durationhours=?";
         $params[$i] = $duration;
     }
 
-    $statement = $statement." LIMIT 9 OFFSET ".$offset;
+    $statement = $statement . " LIMIT 9 OFFSET " . $offset*9;
 
     global $conn;
     $stmt = $conn->prepare($statement);
     $stmt->execute($params);
+    return $stmt->fetchAll();
+}
+
+function getFullTextSearch($mysearch)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+      SELECT * 
+      FROM \"Auction\"
+      WHERE \"Auction\".state = 'Opened'::auctionstate
+      AND ( to_tsvector('english', name) @@ to_tsquery('english', ?)
+            OR to_tsvector('english', description) @@ to_tsquery('english', ?)
+            OR LOWER(name) LIKE LOWER(?));");
+    $stmt->execute(array($mysearch,$mysearch,'%'.$mysearch.'%'));
     return $stmt->fetchAll();
 }
 
@@ -245,6 +226,21 @@ function addAuctionPhotos($idauction, $photos)
 
 //comments
 
+function addPhotosComment($idcomment, $name, $path, $date)
+{
+    $msg = "";
+    if (addFile($name, $path, $date) != -1) {
+        $idfile = getFileId($name, $path);
+
+        addAImagesComment($idfile, $idcomment);
+    } else {
+        $msg = "Could not insert file try again";
+        return $msg;
+    }
+
+    return $msg;
+}
+
 function createComment($idauction, $iduser, $date, $message)
 {
     //POR TRANSIÇÃO
@@ -253,7 +249,7 @@ function createComment($idauction, $iduser, $date, $message)
 
     if (!isValidUser(getUser($iduser)['state'])) {
         $conn->rollBack();
-        return "You must be a validated user to comment on the auction.";
+        return "User without permissions to comment an auction.";
     }
 
     if (getIdComment($idauction, $iduser, $date, $message) != null) {
@@ -284,8 +280,8 @@ function getComment($idcomment)
     $stmt = $conn->prepare("SELECT message FROM \"Comment\" WHERE idcomment =? AND NOT(message LIKE 'REMOVED%')");
     $stmt->execute(array($idcomment));
 
-    $result= $stmt->fetch();
-    if($result==null)
+    $result = $stmt->fetch();
+    if ($result == null)
         return false;
     else
         return $result['message'];
@@ -300,11 +296,11 @@ function removeComment($iduser, $idcomment)
 
     if (!isAdminUser(getUser($iduser)['state'])) {
         $conn->rollBack();
-        $result = "You must be a administrator user to remove comment on the auction.";
+        $result = "User without permissions to remove comment on the auction.";
         return $result;
     }
     $msg = getComment($idcomment);
-    if(!$msg){
+    if (!$msg) {
         $conn->rollBack();
         $result = "It's not possible to remove the comment.";
         return $result;
@@ -312,8 +308,8 @@ function removeComment($iduser, $idcomment)
 
     $msg = "REMOVED" . $msg;
 
-   $stmt = $conn->prepare("UPDATE \"Comment\" SET message=? WHERE idcomment = ?");
-    $stmt->execute(array($msg,$idcomment));
+    $stmt = $conn->prepare("UPDATE \"Comment\" SET message=? WHERE idcomment = ?");
+    $stmt->execute(array($msg, $idcomment));
 
     $conn->commit();
     return $result;
@@ -336,7 +332,6 @@ ORDER BY date DESC;");
     return $stmt->fetchAll();
 }
 
-
 function editAuction($idAuction, $idUser, $name, $description, $category)
 {
 
@@ -348,7 +343,7 @@ function editAuction($idAuction, $idUser, $name, $description, $category)
 
     if (!isAdminUser($state)) {
         $conn->rollback();
-        return "You need to be a Administrator user!";
+        return "User without permissions to edit the auction.";
     }
 
 
@@ -379,6 +374,12 @@ function bidAuction($idauction, $idbidder, $value)
     if (isValidUser(getUser($idbidder)['state'])) {
 
         $auction = getAuction($idauction);
+
+        if($auction['state'] != 'Opened'){
+            $conn->rollBack();
+            return "Can not make a bid on a not opened auction.";
+        }
+
         $currentprice = $auction['currentprice'];
         $baseprice = $auction['baseprice'];
         $type = $auction['type'];
@@ -397,7 +398,7 @@ function bidAuction($idauction, $idbidder, $value)
         $stmt->execute(array($idauction, $idbidder, $value, $date->format('Y-m-d H:i:s')));
     } else {
         $conn->rollBack();
-        return "You must be an administrator or a validated user to bid on an auction.";
+        return "User without permissions to remove bin on the auction.";
     }
 
     $conn->commit();
@@ -409,14 +410,27 @@ function followAuction($iduser, $idauction)
     global $conn;
     $conn->beginTransaction();
 
-    if (isUserFollowing($iduser, $idauction)) {
+    $auction = getAuction($idauction);
+    if($auction['state'] != 'Opened'){
         $conn->rollBack();
-        return 0;
+        $res = array("result" => 1, "msg"=>"Can not follow/unfollow an not opened auction.");
+        return $res;
+    }
+
+    if (isUserFollowing($iduser, $idauction)) {
+
+        $stmt = $conn->prepare("DELETE FROM \"Follow\" WHERE iduser=? and idauction=?;");
+        $stmt->execute(array($iduser, $idauction));
+        $conn->commit();
+        $res = array("result" => 0, "msg"=>"Unfollow the auction successfully.", "follow"=>"Unfollow");
+        return $res;
+
     }
 
     if (isAuctionOwner($iduser, $idauction)) {
         $conn->rollBack();
-        return "You can't follow an auction that you own.";
+        $res = array("result" => 1, "msg"=>"Can not follow a self-owned auction.");
+        return $res;
     }
 
     $state = getUser($iduser)['state'];
@@ -425,9 +439,12 @@ function followAuction($iduser, $idauction)
         $stmt = $conn->prepare("INSERT INTO \"Follow\" (iduser,idauction) VALUES (?,?)");
         $stmt->execute(array($iduser, $idauction));
         $conn->commit();
+        $res = array("result" => 0, "msg"=>"Follow the auction successfully.","follow"=>"Follow");
+        return $res;
     } else {
         $conn->rollBack();
-        return "You have to be an administrator or a validated user to follow an auction.";
+        $res = array("result" => 1, "msg"=>"User without permissions to follow an auction.");
+        return $res;
     }
 }
 
@@ -435,9 +452,16 @@ function reportAuction($iduser, $idauction)
 {
     global $conn;
     $conn->beginTransaction();
+
+    $auction = getAuction($idauction);
+    if($auction['state'] != 'Opened'){
+        $conn->rollBack();
+        return "Can not report an not opened auction.";
+    }
+
     if (userReportedAuction($iduser, $idauction)) {
         $conn->rollBack();
-        return "You already reported this auction.";
+        return "Auction already reported.";
     }
 
     createTicketAuction($iduser, $idauction);
@@ -450,10 +474,13 @@ function reportComment($iduser, $idcomment, $message)
 {
     global $conn;
     $conn->beginTransaction();
+
+    //TODO verificar se a auction esta aberta
+
     $msg = "";
     if (getIdReportComment($iduser, $idcomment)) {
         $conn->rollBack();
-        $msg = "You already reported this comment.";
+        $msg = "Comment already reported.";
         return $msg;
     }
 
@@ -463,7 +490,7 @@ function reportComment($iduser, $idcomment, $message)
 
     if (hasTicketComment($iduser, $idticket)) {
         $conn->rollBack();
-        $msg = "You already reported this comment.";
+        $msg ="Comment already reported.";
         return $msg;
     }
 
@@ -472,4 +499,137 @@ function reportComment($iduser, $idcomment, $message)
 
     $conn->commit();
     return $msg;
+}
+
+function advanceState($idauction){
+
+    global $conn;
+    $stmt = $conn->prepare("SELECT state FROM \"Auction\" WHERE idauction=?");
+    $stmt->execute(array($idauction));
+    $tempState = $stmt->fetch();
+    if($tempState['state'] == 'Awaiting_payment')
+        $stmt = $conn->prepare("UPDATE \"Auction\" SET state='Awaiting_delivery'::\"auctionstate\" WHERE idauction=?");
+    elseif($tempState['state'] == 'Awaiting_delivery')
+        $stmt = $conn->prepare("UPDATE \"Auction\" SET state='Closed'::\"auctionstate\" WHERE idauction=?");
+    if($stmt->execute(array($idauction)))
+        return true;
+    else
+        return false;
+}
+
+function rateAuction($iduser, $idauction, $val, $type){
+    global $conn;
+
+    if($type == "buyer")
+        $stmt = $conn->prepare("UPDATE \"winningBid\" SET buyerrating=? WHERE iduser=? AND idauction=?");
+    elseif($type == "seller")
+        $stmt = $conn->prepare("UPDATE \"winningBid\" SET sellerrating=? WHERE iduser=? AND idauction=?");
+    else
+        return false;
+    return $stmt->execute(array($val,$iduser, $idauction ));
+}
+
+function getIdUser($idauction){
+    global $conn;
+    $stmt = $conn->prepare("SELECT iduser FROM \"winningBid\" JOIN \"Auction\" ON \"winningBid\".idauction = \"Auction\".idauction WHERE \"Auction\".idauction = ?");
+    $stmt->execute(array($idauction));
+    return $stmt->fetch();
+}
+
+function getFollowedAuctions($iduser,$offset){
+    global $conn;
+    $stmt = $conn->prepare("
+    SELECT * FROM \"Auction\" WHERE idauction IN 
+    (SELECT idauction
+    FROM \"Follow\"
+    WHERE iduser = ? AND state='Opened'::\"auctionstate\")
+    LIMIT 10 OFFSET ".$offset*10);
+    $stmt->execute(array($iduser));
+    return $stmt->fetchAll();
+}
+
+function getInConclusionAuctions($iduser,$offset){
+    global $conn;
+    $stmt = $conn->prepare("
+    SELECT * 
+    FROM \"Auction\" 
+    WHERE (state='Awaiting_delivery'::\"auctionstate\" 
+    OR state='Awaiting_payment'::\"auctionstate\") 
+    AND(
+        (idowner=? AND idauction IN (SELECT idauction FROM \"winningBid\")) 
+        OR 
+        idauction IN (SELECT idauction FROM \"winningBid\" WHERE iduser=?)
+        )
+   LIMIT 10 OFFSET ".$offset*10);
+    $stmt->execute(array($iduser,$iduser));
+    return $stmt->fetchAll();
+}
+
+function getHistoryAuctions($iduser,$offset){
+    global $conn;
+
+    $statement = "
+SELECT  iduser, buyerrating, sellerrating, id, name, startingdate, durationhours,  state, idowner, MAX(currentprice) AS ammount 
+FROM (
+  SELECT iduser, buyerrating, sellerrating, \"Auction\".idauction AS id, name, startingdate, durationhours,  state, idowner, currentprice 
+  FROM \"winningBid\" JOIN \"Auction\" ON \"winningBid\".idauction = \"Auction\".idauction  
+  WHERE state='Closed'::\"auctionstate\" AND (iduser=?) 
+  )AS temp
+group by iduser, buyerrating, sellerrating, id, name, startingdate, durationhours, state, idowner
+UNION
+SELECT iduser, buyerrating, sellerrating, id, name, startingdate, durationhours,  state, idowner, MAX(currentprice) AS ammount 
+FROM(
+  SELECT iduser, buyerrating, sellerrating, \"Auction\".idauction AS id, name, startingdate, durationhours,  state, idowner, currentprice 
+  FROM \"winningBid\" JOIN \"Auction\" ON \"winningBid\".idauction = \"Auction\".idauction  
+  WHERE state='Closed'::\"auctionstate\" 
+  AND \"Auction\".idauction IN 
+    (SELECT idauction
+     FROM \"Auction\"
+     WHERE idowner = ?)
+    )AS temp
+group by iduser, buyerrating, sellerrating, id, name, startingdate, durationhours, state, idowner
+LIMIT 10 OFFSET ".$offset*10;
+
+    $stmt = $conn->prepare($statement);
+    $stmt->execute(array($iduser,$iduser));
+    return $stmt->fetchAll();
+}
+
+function getActiveAdminAuctions($offset){
+    global $conn;
+    $statement = "
+SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", \"User\".iduser AS idowner, \"User\".name AS \"userName\" 
+FROM \"Auction\" Join \"User\" ON idowner=iduser
+WHERE \"Auction\".state=? 
+LIMIT 10 OFFSET ".$offset*10;
+
+    $stmt = $conn->prepare($statement);
+    $stmt->execute(array("Opened"));
+    return $stmt->fetchAll();
+}
+
+function getConcludingAdminAuctions($offset){
+    global $conn;
+    $statement = "
+SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", \"Auction\".state AS state,\"User\".iduser AS idowner, \"User\".name AS \"owner\", \"Bid\".idbidder
+FROM \"Auction\" Join \"User\" ON idowner=iduser Join \"Bid\" ON \"Auction\".currentprice=\"Bid\".ammount
+WHERE \"Auction\".state=? OR \"Auction\".state=? 
+LIMIT 10 OFFSET ".$offset*10;
+
+    $stmt = $conn->prepare($statement);
+    $stmt->execute(array("Awaiting_delivery", "Awaiting_payment"));
+    return $stmt->fetchAll();
+}
+
+function getAdminAuctions($offset,$state){
+    global $conn;
+    $statement = "
+SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", startingdate, durationhours,\"User\".iduser AS idowner, \"User\".name AS \"userName\"
+FROM \"Auction\" Join \"User\" ON idowner=iduser
+WHERE \"Auction\".state=? 
+LIMIT 10 OFFSET ".$offset*10;
+
+    $stmt = $conn->prepare($statement);
+    $stmt->execute(array($state));
+    return $stmt->fetchAll();
 }

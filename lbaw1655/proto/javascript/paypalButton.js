@@ -1,18 +1,10 @@
-function paypalfunc() {
+function paypalfunc(auction) {
 
-        $(".paypal-button-container").each(function(i,obj){
-            alert(obj.innerHTML);
-            });
-
+    var id = '#paypal-button-container'+auction.idauction;
 
     // Render the PayPal button
-/*
+
     paypal.Button.render({
-
-
-
-
-
         // Set your environment
 
         env: 'sandbox', // sandbox | production
@@ -40,7 +32,7 @@ function paypalfunc() {
             return actions.payment.create({
                 transactions: [
                     {
-                        amount: { total: 1, currency: 'EUR' }
+                        amount: { total: auction.currentprice/100, currency: 'EUR' }
                     }
                 ]
             });
@@ -53,9 +45,9 @@ function paypalfunc() {
             // Execute the payment
 
             return actions.payment.execute().then(function() {
-                window.alert('Payment Complete!');
+                payAuction(auction.idauction);
             });
         }
 
-    }, '#paypal-button-container');*/
+    }, id);
 }

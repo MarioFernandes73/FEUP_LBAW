@@ -28,16 +28,16 @@ if (isset($_SESSION['iduser'])) {
             }
         }
 
-        $_SESSION['success_messages'][] = 'The profile was updated with success!';
+        $_SESSION['success_messages'][] = 'Profile updated with success.';
        header('Location: ../../pages/users/profile.php');
        exit();
     } catch (PDOException $e) {
-        $_SESSION['error_messages'][] = 'The profile couldn\'t be changed.';
+        $_SESSION['error_messages'][] = 'Could not change profile. Please, try again.';
         header('Location: ../../pages/authentication/homepage.php');
         exit;
     }
 } else {
-    $_SESSION['error_messages'] = "User must be logged in.";
+    $_SESSION['error_messages'] = "User must be authenticated to proceed.";
     header('Location:' . $BASE_URL . 'pages/auctions/createAuction.php');
     exit();
 }

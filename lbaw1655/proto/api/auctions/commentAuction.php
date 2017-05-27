@@ -4,139 +4,98 @@ include_once('../../database/users.php');
 
 $idauction = $_POST['idauction'];
 $message = $_POST['message'];
-$filepath = $_POST['filepath'];
-
+$idcomment = -1;
 $date = new DateTime();
-$res;       //for errors
-
+$res = 0;
+$photos;
 
 if (isset($_SESSION['iduser'])) {
 
     //Create comment
     try {
-       /* $res=createComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);*/
 
+        if($message == "" && sizeof($_FILES) == 0){
+            $res = "Comment without any message or file. Please try again";
+            echo json_encode(array("result" => $res));
+            exit();
+        }
 
-        $pathimage="images/auctions/comments/" . $idcomment . "_" . $i . '.' . $imageFileType;
-        $newFilePath = $BASE_DIR .  $pathimage;
+        $res=createComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
 
-        copy($filepath,$newFilePath);
+        if($res != 0){
+            echo json_encode(array("result" => $res));
+            exit();
+        }
 
+        //Add files
+        $photos = array();
+        $totalSize = 0;
+
+        foreach($_FILES as $file){
+            $totalSize += $file['size'];
+        }
+
+        if($totalSize > $TOTAL_SIZE_IMAGES){
+            $res = "The uploaded files in total have more than 5MB. Please upload files with a total capacity bellow 5MB.";
+            echo json_encode(array("result" => $res));
+            exit();
+        }
+
+        $uploaddir = $BASE_DIR . 'images/auctions/comments/' .  $idauction;
+        $i = 0;
+
+        if(!file_exists($BASE_DIR . 'images/auctions/comments/' .  $idauction))
+            mkdir($BASE_DIR . 'images/auctions/comments/' .  $idauction, 0777, true);
+
+        foreach($_FILES as $file){
+
+            $tmppath = $file['tmp_name'];
+
+            if($tmppath != ""){
+
+                $type = pathinfo($file['name'],PATHINFO_EXTENSION);
+
+                if($type != 'jpg' && $type != 'png' && $type != 'jpeg' && $type != 'gif'){
+                    $res = "Sorry, only JPG, JPEG, PNG & GIF files allowed.";
+                    echo json_encode(array("result" => $res));
+                    exit();
+                }
+                else{
+                    $idcomment = getIdComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
+
+                    //Setup our new file path
+                    $pathimage= "images/auctions/comments/" . $idauction . "/" . $idcomment . '_' . $i . $type;
+                    $newFilePath = $uploaddir . "/" . $idcomment . "_" . $i . $type;
+
+                    //Upload the file into the temp dir
+                    if (move_uploaded_file($tmppath, $newFilePath)){
+
+                        $msg = addPhotosComment($idcomment,$file['name'], $pathimage, $date->format('Y-m-d'));
+                        array_push($photos,array('name' => $file['name'], 'path' => $pathimage));
+
+                        if($msg != ""){
+                            unlink($newFilePath);
+                            echo json_encode(array("result" => $res));
+                            exit();
+                        }
+                    } else {
+                        $res = "Error uploading files. Please try again.";
+                        echo json_encode(array("result" => $res));
+                        exit();
+                    }
+                    $i = $i + 1;
+                }
+            }
+        }
 
     } catch (PDOException $e) {
-        $res = 'Could not comment, please try again.';
+        $res = "Could not comment. Please try again.";
         echo json_encode(array("result" => $res));
         exit();
     }
 
-
-
-/*
-
-    if ($filepath != "") {
-        $imageFileType = pathinfo($filepath, PATHINFO_EXTENSION);
-
-        // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            $res = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            echo json_encode(array("result" => $res));
-            exit();
-
-        } else {
-            $idcomment = getIdComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
-            //Setup our new file path
-
-            $pathimage="images/auctions/comments/" . $idcomment . "_" . $i . '.' . $imageFileType;
-            $newFilePath = $BASE_DIR .  $pathimage;
-
-            //Upload the file into the temp dir
-            if(copy($filepath,$newFilePath)){
-                $now = new DateTime();
-                $photos[$i] = array($idcomment . "_" . $i . '.' . $imageFileType, $pathimage, $now->format('Y-m-d'));
-
-                $res = addPhotosComment($idcomment, $photos);
-                if ($msg != "") {
-                    echo json_encode(array("result" => $res));
-                    exit();
-                }
-
-                $res = 0;
-                echo json_encode(array("result" => $res));
-                exit();
-            } else {
-                $res = "Error on uploading files. Please try again.";
-            }
-        }
-
-    } else {
-        $res = "The file could not be uploaded.";
-    }
-}
-*/
-/*
-    //Add files
-    $photos = array();
-
-    $total = count($files['name']);
-    $totalSize = 0;
-    // var_dump($total);
-
-    echo json_encode(array("result" => ($files[0]['name'])));
-    exit();
-
-    for ($i = 0; $i < $total; $i++) {
-        $totalSize += $files['size'][$i];
-    }
-
-    if ($totalSize < $TOTAL_SIZE_IMAGES && $totalSize > 0) {
-        // Loop through each file
-        for ($i = 0; $i < $total; $i++) {
-
-            //Get the temp file path
-            $tmpFilePath = $files['tmp_name'][$i];
-
-            //Make sure we have a filepath
-            if ($tmpFilePath != "") {
-                $imageFileType = pathinfo($files["name"][$i], PATHINFO_EXTENSION);
-
-                // Allow certain file formats
-                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                    $res = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                    echo json_encode(array("result" => $res));
-                    exit();
-
-                } else {
-                    $idcomment = getIdComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
-                    //Setup our new file path
-                    $pathimage="images/auctions/comments/" . $idcomment . "_" . $i . '.' . $imageFileType;
-                    $newFilePath = $BASE_DIR .  $pathimage;
-
-                    //Upload the file into the temp dir
-                    if (move_uploaded_file($tmpFilePath, $newFilePath)) {
-                        $now = new DateTime();
-                        $photos[$i] = array($files['name'][$i], $pathimage, $now->format('Y-m-d'));
-
-                        $res = addPhotosComment($idcomment, $photos);
-                        if ($msg != "") {
-                            echo json_encode(array("result" => $res));
-                            exit();
-                        }
-
-                        $res = 0;
-                        echo json_encode(array("result" => $res));
-                        exit();
-                    } else {
-                        $res = "Error on uploading files. Please try again.";
-                    }
-                }
-
-            } else {
-                $res = "The file could not be uploaded.";
-            }
-        }
-    }*/
 } else {
-    $res = "User must be logged in.";
+    $res = "User must be authenticated to proceed.";
 }
 
-echo json_encode(array("result" => $res));
+echo json_encode(array("result" => $res, "photos" => $photos, "state" => $_SESSION['state'],'date' => $date->format('Y-m-d')));

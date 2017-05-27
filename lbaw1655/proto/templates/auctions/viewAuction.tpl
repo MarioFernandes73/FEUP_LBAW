@@ -4,6 +4,8 @@
 <script src="{$BASE_URL}javascript/auction.js"></script>
 <script src="{$BASE_URL}javascript/files.js"></script>
 
+<input name="idauction" type="hidden" value="{$currentAuction.idauction}"/>
+
 <div class="jumbotron">
     <div class="row">
 
@@ -38,7 +40,7 @@
             <div class="btn-group btn-group-justified" role="group" aria-label="..." style="min-height: 60px">
 
                 <!-- Follow -->
-                <div class="btn-group" role="group">
+                <div class="btn-group" name="divfollow" role="group">
                     <button type="button" name="follow" class="btn btn-info btn-block">Follow</button>
                 </div>
 
@@ -50,6 +52,7 @@
 
             <!-- Bid -->
             <div class='well col-sm-12'>
+                {if $currentAuction.type == "English"}
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Your price</label>
                     <div class="col-sm-10">
@@ -57,10 +60,14 @@
                                ng-pattern="/^[0-9]+(\.[0-9][0-9]?)?$/" step="0.01"/>
                     </div>
                 </div>
-                <input name="idauction" type="hidden" value="{$currentAuction.idauction}"/>
                 <button type="button" name="makebid" style="min-height: 10px; font-size: 3vmin"
                         class="btn btn-primary btn-lg btn-block login-button">Bid
                 </button>
+                {elseif $currentAuction.type == "Dutch"}
+                    <button type="button" name="buynow" style="min-height: 10px; font-size: 3vmin"
+                            class="btn btn-primary btn-lg btn-block login-button">Buy Now
+                    </button>
+                {/if}
             </div>
         </div>
 
@@ -187,13 +194,13 @@
                             <input name="idauction" type="hidden" value="{$currentAuction.idauction}"/>
                             <textarea name="message" required="required" class="col-sm-12" rows="3"
                                       placeholder="Do you have some question?"></textarea>
-                            <button type="button" name="commentAuction" class="btn btn-success pull-right"
+                            <button id="makeComment" type="button" name="commentAuction" class="btn btn-success pull-right"
                                     style="margin: 5px;">
-                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-send" aria-hidden="true" ></span>
                             </button>
-                            <label id="uploadfiles" class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
+                            <label class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
                                 <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                                <input type="file" name="upload[]" style="display: none; " multiple="multiple" onchange="uploadFiles(this)"/>
+                                <input type="file" name="upload[]" style="display: none; " multiple="multiple" onchange="saveFiles(this)"/>
 
                             </label>
                         </form>

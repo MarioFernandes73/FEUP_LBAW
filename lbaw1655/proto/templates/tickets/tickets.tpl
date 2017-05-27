@@ -7,10 +7,11 @@
         <div class="main-login main-center">
 
             <!-- reportComment -->
-            {if $msg == "Report Comment"}
+            {if $msg != "" }
                 <form class="form-horizontal" style="padding: 0% 25%" method="POST"
                       action="{$BASE_URL}actions/tickets/reportComment.php">
                     <h2 class="text-center">Ticket</h2>
+                    <input name="iduser" type="hidden" value="{$idUser}"> </input>
                     <input name="idcomment" type="hidden" value="{$idComment}"> </input>
                     <input name="idauction" type="hidden" value="{$idAuction}"> </input>
 

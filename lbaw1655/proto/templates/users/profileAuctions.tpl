@@ -23,6 +23,12 @@
                         <!-- Followed Auctions Table body-->
                         </tbody>
                     </table>
+                    <nav aria-label="...">
+                        <ul class="pager">
+                            <li class="previous"><a onclick="previous(0)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                            <li class="next"><a onclick="next(0)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -42,6 +48,12 @@
                         <!-- In Conclusion Auctions Table Body-->
                         </tbody>
                     </table>
+                    <nav aria-label="...">
+                        <ul class="pager">
+                            <li class="previous"><a onclick="previous(1)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                            <li class="next"><a onclick="next(1)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -62,6 +74,12 @@
                         <!--History Auctions Table Body -->
                         </tbody>
                     </table>
+                    <nav aria-label="...">
+                        <ul class="pager">
+                            <li class="previous"><a onclick="previous(2)"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                            <li class="next"><a onclick="next(2)">Next <span aria-hidden="true">&rarr;</span></a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ error_reporting(E_ERROR | E_WARNING); // E_NOTICE by default
 $BASE_DIR = dirname(__DIR__) . '/'; //FIXME
 $BASE_URL = dirname(dirname(dirname($_SERVER['PHP_SELF']))) . '/'; //FIXME
 
-$TOTAL_SIZE_IMAGES = 50000000;
+$TOTAL_SIZE_IMAGES = 5000000;
 
 $conn = new PDO('pgsql:host=dbm.fe.up.pt;dbname=lbaw1655', 'lbaw1655', 'vo66gl49'); //FIXME
 $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

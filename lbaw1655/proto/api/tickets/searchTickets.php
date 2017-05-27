@@ -1,14 +1,14 @@
 <?php
-include_once('../../config/init.php');
+include_once('../../database/tickets.php');
+
 $solved = $_GET["solved"];
-global $conn;
+$offset = $_GET["offset"];
+
 if(is_null($solved)) {
-    $stmt = $conn->prepare("SELECT * FROM \"Ticket\" WHERE iduser=? LIMIT 10");
-    $stmt->execute(array($_SESSION["iduser"]));
+    $ticketArray = getAllTickets($_SESSION["iduser"],$offset);
 }
 else{
-    $stmt = $conn->prepare("SELECT * FROM \"Ticket\" WHERE iduser=? AND solved=? LIMIT 10");
-    $stmt->execute(array($_SESSION["iduser"], $solved));
+    $ticketArray = getUserTickets($_SESSION["iduser"], $solved,$offset);
 }
-$ticketArray = $stmt->fetchAll();
+
 echo json_encode($ticketArray);

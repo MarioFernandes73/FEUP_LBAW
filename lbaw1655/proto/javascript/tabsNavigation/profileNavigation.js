@@ -1,3 +1,5 @@
+var offsets = new Array(0,0,0,0,0,0);
+
 window.onload = function () {
     prepareNavigation($("#profile-navigation > li"));        //prepare horizontal bar
     prepareSidebar($("#myProfile-navigation > li"));                //prepare sidebar
@@ -5,6 +7,38 @@ window.onload = function () {
     prepareSidebar($("#myTickets-navigation > li"));                //prepare sidebar
 }
 
+function next(myoffset)
+{
+    offsets[myoffset]++;
+
+    executeAjax(myoffset);
+}
+
+function previous(myoffset)
+{
+    if(offsets[myoffset] <= 0)
+        return false;
+
+    offsets[myoffset]--;
+
+    executeAjax(myoffset);
+}
+
+function executeAjax(myoffset)
+{
+    if(myoffset == 0)
+        auctionsAjax("followedAuctions", "followed",0);
+    else if (myoffset == 1)
+        auctionsAjax("inConclusionAuctions","inConclusion",1);
+    else if(myoffset == 2)
+        auctionsAjax("historyAuctions","history",2);
+    else if(myoffset == 3)
+        ticketsAjax(3,"activeTickets", false);
+    else if(myoffset == 4)
+        ticketsAjax(4,"solvedTickets", true);
+    else if(myoffset == 5)
+        ticketsAjax(5,"allTickets");
+}
 
 function prepareTab(id){
     var element;
@@ -13,53 +47,44 @@ function prepareTab(id){
     }
     else if(id == "auctions-tab"){
         element = $(".auctions-content");
-        auctionsAjax("followedAuctions", "followed");
-        auctionsAjax("inConclusionAuctions","inConclusion");
-        auctionsAjax("historyAuctions","history");
+        auctionsAjax("followedAuctions", "followed",0);
+        auctionsAjax("inConclusionAuctions","inConclusion",1);
+        auctionsAjax("historyAuctions","history",2);
     }
     else if(id == "tickets-tab"){
         element = $(".tickets-content");
-        activeTicketsAjax();
-        solvedTicketsAjax();
-        allTicketsAjax();
+        ticketsAjax(3,"activeTickets", false);
+        ticketsAjax(4,"solvedTickets", true);
+        ticketsAjax(5,"allTickets");
     }
     element[0].classList.remove("hidden");
 }
 
-function activeTicketsAjax() {
+function ticketsAjax(myoffset,id, type){
     $.ajax({
         type: 'get',
         url: '../../api/tickets/searchTickets.php',
-        data: {"solved": false},
+        data: {"solved": type,"offset":offsets[myoffset]},
         success: function(data){
-            var activeTickets = JSON.parse(data);
-            $("#activeTicketsBadge").empty().append(activeTickets.length);
-            $("#activeTicketsTable").empty();
-            for (var i = 0; i < activeTickets.length; i++) {
-                    $("#activeTicketsTable").append('<td><a>' + activeTickets[i].title + '</a></td>'+
-                    '<td>'+
-                    '<button type="submit" class="btn btn-success btn-xs">'+
-                    '<span class="glyphicon glyphicon-ok" aria-hidden="false"></span>'+
-                    '</button>'+
-                    '</td>'
-                );
-            }
-        }
-    });
-}
+            var tickets = JSON.parse(data);
+            $('#'+id+'Badge').empty().append(tickets.length);
+            $('#'+id+'Table').empty();
+            allTickets=[];
+            for (var i = 0; i < tickets.length; i++) {
 
-function solvedTicketsAjax(){
-    $.ajax({
-        type: 'get',
-        url: '../../api/tickets/searchTickets.php',
-        data: {"solved": true},
-        success: function(data){
-            var activeTickets = JSON.parse(data);
-            $("#solvedTicketsBadge").empty().append(activeTickets.length);
-            $("#solvedTicketsTable").empty();
-            for (var i = 0; i < activeTickets.length; i++) {
-                $("#solvedTicketsTable").append('<td><a>' + activeTickets[i].title + '</a></td>'
-                );
+                var text = '<tr><td><a href="" onclick="openTicket('+tickets[i].idticket+'); return false;">' + tickets[i].title + '</a></td>';
+
+                if(type == false){
+                    text += '<td id="ticket'+tickets[i].idticket+'">'+
+                        '<button type="button" onclick="solveTicket('+tickets[i].idticket+')" class="btn btn-success btn-xs">'+
+                        '<span class="glyphicon glyphicon-ok" aria-hidden="false"></span>'+
+                        '</button>'+
+                        '</td>';
+                }
+
+                text += '</tr>';
+
+                $('#'+id+'Table').append(text);
             }
         }
     });
@@ -81,18 +106,20 @@ function allTicketsAjax(){
     });
 }
 
-function auctionsAjax(id, type){
+function auctionsAjax(id,type,myoffset){
     $.ajax({
         type: 'get',
         url: '../../api/auctions/searchAuctions.php',
-        data: {"type": type},
+        data: {"type": type,"offset":offsets[myoffset]},
         success: function (data) {
             var auctions = JSON.parse(data);
+            var iduser = $("#iduser")[0].innerHTML;
             $('#'+id+'Badge').empty().append(auctions.length);
             $('#'+id+'Table').empty();
+            var runPaypal = [];
             for (var i = 0; i < auctions.length; i++) {
 
-                var text = '<tr><td><a>'+auctions[i].name+'</a></td>';
+                var text = '<tr id="auction'+auctions[i].idauction+'"><td><a href='+'../../pages/auctions/viewAuction.php?idauction='+auctions[i].idauction+'>'+auctions[i].name+'</a></td>';
                 if(type == "followed"){
 
                     var startingDate = new Date(auctions[i].startingdate);
@@ -105,45 +132,27 @@ function auctionsAjax(id, type){
                         //OWNER
                         text += '<td>Delivery</td>';
                         if(auctions[i].state == 'Awaiting_payment'){
-                            text += '<td class="text-center">'+
-                                '<button type="button" class="btn btn-success">Payment received</button></td>'+
-                                '<td class="text-center"><button type="button" class="btn btn-danger">Report Problem</button></td>';
+                            text += '<td class="text-center"><strong>Waiting for payment, please stand by.</strong></td>'+
+                                '<td class="text-center"><button type="button" onclick="reportUserPayment('+auctions[i].idauction+')" class="btn btn-danger">Report Problem</button></td>';
                         }
                         else{
-                            text += '<td class="text-center"><strong>Waiting for buyer</strong></td>'+
-                                '<td class="text-center"><button type="button" class="btn btn-danger">Report Problem</button></td>';
+                            text += '<td class="text-center"><strong>Payment has been concluded. Please send your item.</strong></td>'+
+                                '<td class="text-center"><button type="button" onclick="reportUserDelivery('+auctions[i].idauction+')" class="btn btn-danger">Report Problem</button></td>';
                         }
                     }
                     else {
                         //BUYER
                         text += '<td>Reception</td>';
                         if(auctions[i].state == 'Awaiting_payment'){
+                            runPaypal.push(auctions[i]);
+                            text += '<td><div id="paypal-button-container'+auctions[i].idauction+'"></div></td>';
+                            text += '<td><button type="button" onclick="payAuction('+auctions[i].idauction+')" class="btn btn-success">Make Offline Payment</button></td>';
 
-                            /*    text += '<td><div id="paypal-button-container"></div>'+
-                                    '<div id="confirm" class="hidden">' +
-                                    '<div>Ship to:</div> ' +
-                                    '<div><span id="recipient">olaolaoaloalao</span>, <span id="line1"></span>, <span id="city"></span></div> ' +
-                                    '<div><span id="state"></span>, <span id="zip"></span>, <span id="country"></span></div> ' +
-                                    '<button id="confirmButton">Complete Payment</button> ' +
-                                    '</div> ' +
-                                    '<div id="thanks" class="hidden"> Thanks, <span id="thanksname"></span>! </div></td>';*/
-                            //text += '<td><div id="paypal-button-container"></div></td>';
-                            text += '<td><div class="paypal-button-container"></div></td>';
-
-
-
-                            /*else{
-                                text += '<td><button type="button" class="btn btn-success">Make Payment</button></td>';
-                                counter ++;
-                                alert(counter);
-                            }*/
-
-                              // text += '<td><button type="button" class="btn btn-success">Make Payment</button></td>';
                         }
                         else{
-                            text += '<td class="text-center"><button type="button" class="btn btn-danger">Report Problem</button></td>'+
+                            text += '<td class="text-center"><button type="button" onclick="reportUserDelivery('+auctions[i].idowner+')" class="btn btn-danger">Report Problem</button></td>'+
                                 '<td class="text-center">'+
-                                '<button type="button" class="btn btn-success">Confirm Delivery</button></td>';
+                                '<button type="button" onclick="confirmDelivery('+auctions[i].idauction+')" class="btn btn-success">Confirm Delivery</button></td>';
                         }
                     }
                 } else if(type == "history") {
@@ -158,22 +167,28 @@ function auctionsAjax(id, type){
                     var text = '<tr><td><a>'+auctions[i].name+'</a></td><td>'+endingDate.getFullYear()+'-'+monthNames[endingDate.getMonth()]+'-'+endingDate.getDay()+'</td><td>'+auctions[i].ammount+'</td>';
 
                     if(auctions[i].idowner == iduser){
+
+                        //SELLER
+                        if(auctions[i].buyerrating == null){
+                            text += '<td><input id="rateAuction'+auctions[i].id+'"  class="rateperson" data-size="xs" data-min="0" data-max="5" data-step="0.5"/></td>';
+                            text += '<td><button type="button" onclick="rateBuyer('+auctions[i].iduser+','+auctions[i].id+')" class="btn btn-success">Rate other user</button></td>'
+                        }
+                        else{
+                            text += '<td><input  class="showrate" value="'+auctions[i].buyerrating+'" data-size="xs" data-min="0" data-max="5" data-step="0.5"/></td>';
+                        }
+
+                    }
+                    else{
+
                         //BUYER
                         if(auctions[i].sellerrating == null){
 
-                            text += '<td><input  class="rateperson" data-size="xs" data-min="0" data-max="5" data-step="0.5"/></td>';
+                            text += '<td><input id="rateAuction'+auctions[i].id+'" class="rateperson" data-size="xs" data-min="0" data-max="5" data-step="0.5" value="0"/></td>';
+                            text += '<td><button type="button" onclick="rateSeller('+iduser+','+auctions[i].id+')" class="btn btn-success">Rate other user</button></td>'
                         }
                         else
                             text += '<td><input  class="showrate" value="'+auctions[i].sellerrating+'" data-size="xs" data-min="0" data-max="5" data-step="0.5"/></td>';
-                    }
-                    else{
-                        //SELLER
-                        if(auctions[i].buyerrating == null){
-                            text += '<td><input  class="rateperson" data-size="xs" data-min="0" data-max="5" data-step="0.5"/></td>';
-                        }
-                        else{
-                            text += '<td><input  class="showrate" value="'+auctions[i].sellerrating+'" data-size="xs" data-min="0" data-max="5" data-step="0.5"/></td>';
-                        }
+
                     }
                     text += '</tr>';
 
@@ -191,13 +206,120 @@ function auctionsAjax(id, type){
                 });
 
             }
-            paypalfunc();
+            for(var i = 0; i < runPaypal.length; i++){
+                paypalfunc(runPaypal[i]);
+            }
+
 
         }
     });
 
+}
+
+function payAuction(id){
+    advanceState(id);
+    $("#auction"+id).remove();
+    auctionsAjax("inConclusionAuctions","inConclusion",1);
+}
+
+function advanceState(id){
+    $.ajax({
+        type: 'post',
+        url: '../../api/auctions/advanceState.php',
+        data: {"id": id},
+        success: function (data) {
+        }
+    });
+}
+
+function confirmDelivery(id){
+advanceState(id);
+$("#auction"+id).remove();
+auctionsAjax("inConclusionAuctions","inConclusion",1);
+auctionsAjax("historyAuctions","history",2);
+}
 
 
+function rateBuyer(iduser,id){
+    var val = ($("#rateAuction"+id)[0].value);
+    rateAuction(iduser, id, val, "buyer");
+}
+
+function rateSeller(iduser, id){
+    var val = ($("#rateAuction"+id)[0].value);
+    rateAuction(iduser, id, val, "seller");
+}
 
 
+function rateAuction(iduser, id, val, type){
+
+    if(val != ""){
+        $.ajax({
+            type: 'post',
+            url: '../../api/auctions/rateAuction.php',
+            data: {"iduser": iduser,
+                "id": id,
+                "val": val,
+                "type": type},
+            success: function (data) {
+
+            }
+        });
+    }
+
+    $("#auction"+id).remove();
+    auctionsAjax("historyAuctions","history",2);
+
+}
+
+function reportUser(iduser, subject){
+
+    var form = $('<form name="report" class="hidden"' +
+        'action="../../pages/tickets/tickets.php"  method="post"> ' +
+        '<input name="idUser" value="'+iduser+'"/>' +
+        '<input name="msg" value="'+subject+'"/>' +
+        '</form>');
+
+    $('body').append(form);
+    form.submit();
+
+}
+
+function reportUserDelivery(iduser){
+    reportUser(iduser,"Item receivement");
+}
+
+function reportBuyer(idauction, subject){
+    $.ajax({
+        type: 'post',
+        url: '../../api/auctions/getIdUser.php',
+        data: {"idauction": idauction},
+        success: function (data) {
+            data = JSON.parse(data);
+            reportUser(data.iduser,subject);
+        }
+    });
+}
+
+function reportUserPayment(idauction){
+    reportBuyer(idauction, "Payment receivement");
+}
+
+function reportUserDelivery(idauction){
+    reportBuyer(idauction, "Item Delivery");
+}
+
+function solveTicket(idticket){
+    $.ajax({
+        type: 'post',
+        url: '../../api/tickets/solveTicket.php',
+        data: {"idticket": idticket},
+        success: function (data) {
+            $("#ticket"+idticket).remove();
+            ticketsAjax(3,"activeTickets", false);
+            ticketsAjax(4,"solvedTickets", true);
+            ticketsAjax(5,"allTickets");
+
+        }
+    });
 }
