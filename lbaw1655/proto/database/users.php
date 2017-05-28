@@ -25,12 +25,9 @@ function isAdminUser($state)
         return true;
     else
         return false;
-
 }
 
 /* Database */
-
-
 function validPass($user, $pass)
 {
     global $conn;
@@ -79,15 +76,15 @@ function addUser($username, $name, $birthDate, $address, $password, $phoneNumber
 
     if (hasUsername($username)) {
         $conn->rollback();
-        $msg = "That username already exists. Please try another one.";
+        $msg = "Username already taken. Please try another one.";
         return $msg;
     } else if (hasAddress($address)) {
         $conn->rollback();
-        $msg = "That address already exists. Please try another one.";
+        $msg = "Address already taken. Please try another one.";
         return $msg;
     } else if ($yearsOld < 18) {
         $conn->rollback();
-        $msg = "You can only signup if you are older that 18.";
+        $msg = "Must be at least 18 years old.";
         return $msg;
     }
 
@@ -147,7 +144,7 @@ function editProfile($idUser, $name, $address, $password, $phonenumber)
 
     if (!isRegistered($state)) {
         $conn->rollback();
-        return "You need to be a registered user!";
+        return "User without permissions to edit profile.";
     }
 
 
@@ -229,13 +226,6 @@ function promoteUser($id,$state){
         $stmt = $conn->prepare("UPDATE \"User\" SET state = 'Validated'::userstate WHERE iduser=? AND state =?");
     }
     $stmt->execute(array($id, $state));
-}
-
-function banUser($id)
-{
-    global $conn;
-    $stmt = $conn->prepare("UPDATE \"Auction\" SET state = 'Banned'::auctionstate WHERE idauction=? ");
-    $stmt->execute(array($id));
 }
 
 function getAdminUsers($state,$offset){

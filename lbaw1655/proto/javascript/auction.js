@@ -6,6 +6,8 @@ $(document).ready(function () {
     // hoverFollowAuction();
     //mouseLeaveFollowAuction();
     reportAuction();
+    buyAuction();
+    alterPrice();
     bidAuction();
     makeComment();
     removeComment();
@@ -13,7 +15,7 @@ $(document).ready(function () {
 
 function saveFiles(event){
     files =  event.files;
-    newNotification('panel-success', "Files uploaded with Success");
+    newNotification('panel-success', "Files uploaded with success.");
 }
 
 function clickFollowAuction() {
@@ -98,9 +100,9 @@ function initiationFollow() {
             data = JSON.parse(data);
 
             if (data.result)
-                $("button[name='follow']").text("Follow");
-            else
                 $("button[name='follow']").text("Unfollow");
+            else
+                $("button[name='follow']").text("Follow");
         }
     });
 };
@@ -130,7 +132,7 @@ function removeComment() {
 };
 
 function reportAuction() {
-    $("button[name='report']").click(function () {
+    $(document).on('click','button[name=report]',function () {
         $.ajax({
             type: 'POST',
             url: '../../api/tickets/reportAuction.php',
@@ -141,6 +143,31 @@ function reportAuction() {
                     newNotification('panel-danger', data.result);
                 else if (data.result == 0)
                     newNotification('panel-success', "Auction reported with success.");
+            },
+            error: function (request, status, error) {
+                alert(request.responseText);
+            }
+        });
+    });
+};
+
+function buyAuction() {
+    $("button[name='buynow']").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../../api/auctions/buyAuction.php',
+            data: {
+                "idauction": $("input[name='idauction']").val(),
+                "bidvalue": $("input[name='currentprice']").val()
+            },
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.result != 0)
+                    newNotification('panel-danger', data.result);
+                else if (data.result == 0) {
+                    newNotification('panel-success', "Successfully won the auction.");
+                }
+
             },
             error: function (request, status, error) {
                 alert(request.responseText);
@@ -177,7 +204,7 @@ function bidAuction() {
 };
 
 function makeComment(){
-     $('#makeComment').click(function() {
+     $('#makeComment').on('click',function() {
         $idauction = $("input[name='idauction']").val();
         $message = $("textarea[name='message']").val();
 
@@ -213,10 +240,7 @@ function makeComment(){
                     var content = "<div class='panel panel-default'>" +
                                 "<div class='panel-heading'>" +
                                 "<strong>Anonymous</strong>" +
-                                "<span class='text-muted'> Commented on " + data.date +
-                                "<button style='margin-left: 5px;' type='button' class='btn btn-danger btn-xs pull-right'>" +
-                                "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
-                                "</button>";
+                                "<span class='text-muted'> Commented on " + data.date;
 
                     if(data.state == "Administrator"){
                           content +=      "<button type='button' class='btn btn-warning btn-xs pull-right'>" +
@@ -256,3 +280,29 @@ function makeComment(){
         });
     });
 };
+
+function alterPrice(){
+    $("button[name='alterprice']").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '../../api/auctions/alterAuctionPrice.php',
+            data: {
+                "idauction": $("input[name='idauction']").val(),
+                "altervalue": $("input[name='newprice']").val()
+            },
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.result != 0)
+                    newNotification('panel-danger', data.result);
+                else if (data.result == 0) {
+                    var value = $("input[name='newprice']").val() + '€';
+                    $("dd[name='currentprice']").text(value);
+                    newNotification('panel-success', "Success! Price has been altered.");
+                }
+            },
+            error: function (request, status, error) {
+                alert(request.responseText);
+            }
+        });
+    });
+}

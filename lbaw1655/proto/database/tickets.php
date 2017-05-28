@@ -27,7 +27,6 @@ function getIdReportComment($iduser, $idcomment)
 
 function getIdTicket($iduser, $title, $category)
 {
-
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM \"Ticket\" WHERE iduser=? AND title=? AND category=?");
     $stmt->execute(array($iduser, $title, $category));
@@ -49,7 +48,6 @@ function createTicketComment($date, $message, $iduser, $idticket)
 
 function hasTicketComment($iduser, $idticket)
 {
-
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM \"TicketComment\" WHERE iduser=? AND idticket=?");
     $stmt->execute(array($iduser, $idticket));
@@ -86,18 +84,14 @@ function userReportedAuction($iduser, $idauction)
 
 function insertTicketIntoDB($iduser, $title, $category)
 {
-
     global $conn;
     $stmt = $conn->prepare("INSERT INTO \"Ticket\" (iduser,title,solved,category)
 VALUES (?,?,?,?)");
     $stmt->execute(array($iduser, $title, 'false', $category));
-
-
 }
 
 function createTicket($iduser, $title, $category, $message)
 {
-
     global $conn;
     $conn->beginTransaction();
     $msg = "";
@@ -108,7 +102,7 @@ function createTicket($iduser, $title, $category, $message)
 
    if (hasTicketComment($iduser, $idticket)) {
         $conn->rollBack();
-        $msg = "Could not create ticket, please try again.";
+        $msg = "Could not create ticket. Please try again.";
         return $msg;
     }
     

@@ -207,6 +207,35 @@ durationhours,description,state,idowner) VALUES (?,?,?,0,?,?,?,?,?,?)");
     return true;
 }
 
+function createAuctionDutch($name, $category, $baseprice, $type, $startdate, $time, $description, $state, $idowner){
+    global $conn;
+    $conn->beginTransaction();
+
+    /**
+     * Verify if user is validated to create an auction
+     */
+
+    $stmt = $conn->prepare("SELECT state FROM \"User\" WHERE iduser = ?");
+    $stmt->execute(array($idowner));
+
+    if (isValidUser($stmt->fetch())) {
+        $conn->rollback();
+        return false;
+    }
+
+    /**
+     * Created the auction
+     */
+
+    $stmt = $conn->prepare("INSERT INTO \"Auction\" (name,category,baseprice,currentprice,type,startingdate,
+durationhours,description,state,idowner) VALUES (?,?,?,?,?,?,?,?,?,?)");
+    $stmt->execute(array($name, $category, $baseprice, $baseprice, $type, $startdate, $time, $description, $state, $idowner));
+
+    $conn->commit();
+
+    return true;
+}
+
 function addAuctionPhotos($idauction, $photos)
 {
     if (is_array($photos)) {
@@ -234,7 +263,7 @@ function addPhotosComment($idcomment, $name, $path, $date)
 
         addAImagesComment($idfile, $idcomment);
     } else {
-        $msg = "Could not insert file try again";
+        $msg = "Could not insert file. Please try again.";
         return $msg;
     }
 
@@ -296,13 +325,13 @@ function removeComment($iduser, $idcomment)
 
     if (!isAdminUser(getUser($iduser)['state'])) {
         $conn->rollBack();
-        $result = "User without permissions to remove comment on the auction.";
+        $result = "User without permissions to remove comment on auction.";
         return $result;
     }
     $msg = getComment($idcomment);
     if (!$msg) {
         $conn->rollBack();
-        $result = "It's not possible to remove the comment.";
+        $result = "Could not remove comment. Please try again.";
         return $result;
     }
 
@@ -340,7 +369,6 @@ function editAuction($idAuction, $idUser, $name, $description, $category)
 
     $state = getUser($idUser)['state'];
 
-
     if (!isAdminUser($state)) {
         $conn->rollback();
         return "User without permissions to edit the auction.";
@@ -371,6 +399,52 @@ function bidAuction($idauction, $idbidder, $value)
     global $conn;
     $conn->beginTransaction();
 
+    $res = bidTransaction($conn, $idauction, $idbidder, $value);
+    if($res != "")
+        return $res;
+
+    $conn->commit();
+    return 0;
+}
+
+function alterAuctionPrice($idauction, $iduser, $value){
+
+    global $conn;
+    $conn->beginTransaction();
+
+    if (isValidUser(getUser($iduser)['state'])) {
+
+        $auction = getAuction($idauction);
+
+        if($auction['state'] != 'Opened'){
+            $conn->rollBack();
+            return "Can not make a bid on a not opened auction.";
+        }
+        if($auction['idowner'] != $iduser){
+            $conn->rollBack();
+            return "Only the owner of the auction can alter its price.";
+        }
+        if($auction['type'] != 'Dutch'){
+            $conn->rollBack();
+            return "You can only alter \"dutch\" auctions price.";
+        }
+        if ($auction['currentprice'] < $value) {
+            $conn->rollBack();
+            return "The alter value must be lower than the current price.";
+        }
+
+    } else {
+        $conn->rollBack();
+        return "User without permissions to bin on auction.";
+    }
+
+    $stmt = $conn->prepare("UPDATE \"Auction\" SET currentprice = ? WHERE state = 'Opened'::auctionstate AND idauction=?");
+    $stmt->execute(array($value, $idauction));
+    $conn->commit();
+    return 0;
+}
+
+function bidTransaction($conn, $idauction, $idbidder, $value){
     if (isValidUser(getUser($idbidder)['state'])) {
 
         $auction = getAuction($idauction);
@@ -384,11 +458,13 @@ function bidAuction($idauction, $idbidder, $value)
         $baseprice = $auction['baseprice'];
         $type = $auction['type'];
 
-        if ($currentprice >= $value && $type != 'Blind') {
-            $conn->rollBack();
-            return "The bid value is lower than the current price. Please insert a value above.";
+        if($type == 'Dutch'){
+            if ($currentprice != $value ) {
+                $conn->rollBack();
+                return "The buy value is lower than the current price.";
+            }
         }
-        if ($baseprice > $value) {
+        elseif ($baseprice > $value) {
             $conn->rollBack();
             return "The bid value is lower than the base price. Please insert a value above.";
         }
@@ -398,11 +474,24 @@ function bidAuction($idauction, $idbidder, $value)
         $stmt->execute(array($idauction, $idbidder, $value, $date->format('Y-m-d H:i:s')));
     } else {
         $conn->rollBack();
-        return "User without permissions to remove bin on the auction.";
+        return "User without permissions to bin on auction.";
     }
+    return "";
+}
 
+function buyAuction($idauction, $idbidder, $value){
+
+    global $conn;
+    $conn->beginTransaction();
+
+    $res = bidTransaction($conn, $idauction, $idbidder, $value);
+    if($res != "")
+        return $res;
+    $stmt = $conn->prepare("UPDATE \"Auction\" SET state = 'Awaiting_payment'::auctionstate WHERE state = 'Opened'::auctionstate AND idauction=?");
+    $stmt->execute(array($idauction));
     $conn->commit();
     return 0;
+
 }
 
 function followAuction($iduser, $idauction)
@@ -422,7 +511,7 @@ function followAuction($iduser, $idauction)
         $stmt = $conn->prepare("DELETE FROM \"Follow\" WHERE iduser=? and idauction=?;");
         $stmt->execute(array($iduser, $idauction));
         $conn->commit();
-        $res = array("result" => 0, "msg"=>"Unfollow the auction successfully.", "follow"=>"Unfollow");
+        $res = array("result" => 0, "msg"=>"Unfollow the auction successfully.", "follow"=>"Follow");
         return $res;
 
     }
@@ -439,7 +528,7 @@ function followAuction($iduser, $idauction)
         $stmt = $conn->prepare("INSERT INTO \"Follow\" (iduser,idauction) VALUES (?,?)");
         $stmt->execute(array($iduser, $idauction));
         $conn->commit();
-        $res = array("result" => 0, "msg"=>"Follow the auction successfully.","follow"=>"Follow");
+        $res = array("result" => 0, "msg"=>"Follow the auction successfully.","follow"=>"Unfollow");
         return $res;
     } else {
         $conn->rollBack();
@@ -499,6 +588,13 @@ function reportComment($iduser, $idcomment, $message)
 
     $conn->commit();
     return $msg;
+}
+
+function banAuction($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"Auction\" SET state = 'Banned'::auctionstate WHERE idauction=? ");
+    $stmt->execute(array($id));
 }
 
 function advanceState($idauction){
@@ -598,7 +694,7 @@ LIMIT 10 OFFSET ".$offset*10;
 function getActiveAdminAuctions($offset){
     global $conn;
     $statement = "
-SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", \"User\".iduser AS idowner, \"User\".name AS \"userName\" 
+SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", \"User\".iduser AS idowner, \"User\".username AS \"username\" 
 FROM \"Auction\" Join \"User\" ON idowner=iduser
 WHERE \"Auction\".state=? 
 LIMIT 10 OFFSET ".$offset*10;
@@ -611,7 +707,7 @@ LIMIT 10 OFFSET ".$offset*10;
 function getConcludingAdminAuctions($offset){
     global $conn;
     $statement = "
-SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", \"Auction\".state AS state,\"User\".iduser AS idowner, \"User\".name AS \"owner\", \"Bid\".idbidder
+SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", \"Auction\".state AS state,\"User\".iduser AS idowner, \"User\".username AS \"username\", \"Bid\".idbidder
 FROM \"Auction\" Join \"User\" ON idowner=iduser Join \"Bid\" ON \"Auction\".currentprice=\"Bid\".ammount
 WHERE \"Auction\".state=? OR \"Auction\".state=? 
 LIMIT 10 OFFSET ".$offset*10;
@@ -624,7 +720,7 @@ LIMIT 10 OFFSET ".$offset*10;
 function getAdminAuctions($offset,$state){
     global $conn;
     $statement = "
-SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", startingdate, durationhours,\"User\".iduser AS idowner, \"User\".name AS \"userName\"
+SELECT \"Auction\".idauction, \"Auction\".name AS \"auctionName\", startingdate, durationhours,\"User\".iduser AS idowner, \"User\".username AS \"username\"
 FROM \"Auction\" Join \"User\" ON idowner=iduser
 WHERE \"Auction\".state=? 
 LIMIT 10 OFFSET ".$offset*10;

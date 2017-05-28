@@ -2,14 +2,64 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/auctions.php');
 
-if ($_GET['lastMinute']) {
+if (isset ( $_GET ["hot"] ))
+    $hot = trim(strip_tags($_GET["hot"]));
+else
+    $hot = false;
+
+if (isset ( $_GET ["lastMinute"] ))
+    $lmo = trim(strip_tags($_GET["lastMinute"]));
+else
+    $lmo = false;
+
+if (isset ( $_GET ["name"] ))
+    $name = trim(strip_tags($_GET["name"]));
+else
+    $name = "";
+
+if (isset ( $_GET ["rating"] ))
+    $rating = trim(strip_tags($_GET["rating"]));
+else
+    $rating = "";
+
+if (isset ( $_GET ["category"] ))
+    $category = trim(strip_tags($_GET["category"]));
+else
+    $category = "";
+
+if (isset ( $_GET ["type"] ))
+    $type = trim(strip_tags($_GET["type"]));
+else
+    $type = "";
+
+if (isset ( $_GET ["startingdate"] ))
+    $date = trim(strip_tags($_GET["startingdate"]));
+else
+    $date = "";
+
+if (isset ( $_GET ["durationhours"] ))
+    $duration = trim(strip_tags($_GET["durationhours"]));
+else
+    $duration = "";
+
+if (isset ( $_GET ["fullTextSearch"] ))
+    $fts = trim(strip_tags($_GET["fullTextSearch"]));
+else
+    $fts = false;
+
+if (isset ( $_GET ["offset"] ))
+    $offset = trim(strip_tags($_GET["offset"]));
+else
+    $offset = 0;
+
+if ($lmo) {
     $auctions = auctionsLMO();
-} else if ($_GET['hot']) {
+} else if ($hot) {
     $auctions = auctionsHot();
-} else if($_GET['fullTextSearch']) {
-    $auctions = getFullTextSearch($_GET['fullTextSearch']);
+} else if($fts != false) {
+    $auctions = getFullTextSearch($fts);
 } else {
-    $auctions = getAdvancedSearchedAuctions($_GET['offset'],$_GET['name'],$_GET['rating'],$_GET['category'],$_GET['type'],$_GET['date'],$_GET['duration']);
+    $auctions = getAdvancedSearchedAuctions($offset,$name,$rating,$category,$type,$date,$duration);
 }
 
 foreach ($auctions as $key => $auction) {

@@ -1,7 +1,12 @@
 <?php
 include_once('../../database/users.php');
 
-$hasAddress = hasAddress($_GET['address']);
+if (isset ( $_GET ["address"] )){
+    $address = trim(strip_tags($_GET["address"]));
+    $hasAddress = hasAddress($address);
+    echo json_encode(array("hasUser" => $hasAddress));
+    die();
+}
 
-echo json_encode(array("hasUser" => $hasAddress));
+$_SESSION['error_messages'][] = 'Error getting address.';
 ?>

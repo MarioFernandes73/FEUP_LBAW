@@ -1,13 +1,24 @@
 <?php
-include_once('../../config/init.php');
 include_once('../../database/auctions.php');
 include_once('../../database/users.php');
 
+if(!isset($_SESSION['iduser'])) {
+    $userState = "guest";
+} else {
+    $userState = getUser($_SESSION['iduser'])['state'];
+}
 
-$auction = getAuction($_GET['idauction']);
+if (isset ( $_GET ['idauction'] ))
+    $idauction = trim(strip_tags($_GET['idauction']));
+else{
+    $_SESSION['error_messages'][] = 'Auction undefined.';
+    header('Location: ../../index.php');
+    return;
+}
+
+$auction = getAuction($idauction);
 $idowner = $auction['idowner'];
 $comments = getComentPathAuction($auction['idauction']);
-//$comments = getAuctionComments($auction['idauction']);
 $bids = getAuctionBids($auction['idauction']);
 
 //order notifications
@@ -19,7 +30,6 @@ usort($notifications, "compareNotifications");
 
 //get timeLeft
 $hoursLeft = $auction['durationhours'];
-
 $startingDate = new DateTime($auction['startingdate']);
 $endingDate = $startingDate->add(new DateInterval('PT'.$hoursLeft.'H'));
 $currentDate = new DateTime();
@@ -29,10 +39,8 @@ if($endingDate < $currentDate){
     $timeLeft =  $currentDate->diff($endingDate)->format('%a days %h:%i:%s');
 }
 
-
 //get photos
-$photoPathIds =getAuctionPhotosPathId($auction['idauction']);
-
+$photoPathIds = getAuctionPhotosPathId($auction['idauction']);
 if($photoPathIds!=null) {
     foreach ($photoPathIds as $photo) {
         $photoArray[] = $photo;
@@ -41,13 +49,14 @@ if($photoPathIds!=null) {
 else {
     $photoArray[]['path'] = 'images/assets/auctionDefault.jpg';
 }
-
 $smarty->assign('iduser',$_SESSION['iduser']);
+$smarty->assign('userState',$userState);
 $smarty->assign('currentAuction',$auction);
 $smarty->assign('currentAuctionOwner',getUser($idowner));
 $smarty->assign('currentAuctionComments',$comments);
 $smarty->assign('notifications',$notifications);
 $smarty->assign('timeLeft',$timeLeft);
 $smarty->assign('currentAuctionPhotos',$photoArray);
+$smarty->assign('idcomment',-1);
 
 $smarty->display('auctions/viewAuction.tpl');

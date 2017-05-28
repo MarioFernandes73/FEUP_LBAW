@@ -1,4 +1,11 @@
 <?php
 include_once('../../database/auctions.php');
-$idauction = $_POST['id'];
+
+if (!isset($_POST["id"]) ){
+    $_SESSION['error_messages'][] = 'Error receiving auction.';
+    header('Location: ../../index.php');
+    die();
+}
+
+$idauction = trim(strip_tags($_POST['id']));
 echo advanceState($idauction);

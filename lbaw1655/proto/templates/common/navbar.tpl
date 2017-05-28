@@ -57,7 +57,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{$BASE_URL}pages/users/profile.php">Profile</a></li>
+                                <li><a href="{$BASE_URL}pages/users/profile.php?iduser={$IDUSER}">Profile</a></li>
                                 {if ($STATE == "Administrator")}
                                     <li><a href="{$BASE_URL}pages/administrator/administratorPage.php">Administration
                                             Options</a></li>

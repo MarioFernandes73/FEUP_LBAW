@@ -12,7 +12,6 @@
         <!-- MY ACCOUNT -->
         <div class="profile-content myAccount">
             <div class="col-sm-10">
-                {if $view==true}
                 <table class="table responsive">
                     <thead>
                     <tr>
@@ -42,8 +41,6 @@
                     </tr>
                     </tbody>
                 </table>
-                {/if}
-
             </div>
         </div>
         <!-- STATISTICS -->

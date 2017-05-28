@@ -37,49 +37,16 @@ function previous()
 
 function initAuctionList() {
 
-    if($("input:hidden[name=fullTextSearch]").val() != "")
-    {
-        $.getJSON(BASE_URL + "api/auctions/searchResults.php",
-            {
-                fullTextSearch:$("input:hidden[name=fullTextSearch]").val()
-            },
-            function (data) {
-                fillList(data);
-            });
-    }
-    else if($("input:hidden[name=hot]").val() == true)
-    {
-        $.getJSON(BASE_URL + "api/auctions/searchResults.php",
-            {
-                hot:true
-            },
-            function (data) {
-                fillList(data);
-            });
-    }
-    else if($("input:hidden[name=lastMinute]").val() == true)
-    {
-        $.getJSON(BASE_URL + "api/auctions/searchResults.php",
-            {
-                lastMinute:true
-            },
-            function (data) {
-                fillList(data);
-            });
-    }
-    else
-    {
-        $.getJSON(BASE_URL + "api/auctions/searchResults.php",
-            {
-                name:$("input:hidden[name=name]").val(),rating:$("input:hidden[name=rating]").val(),category:$("input:hidden[name=category]").val(),
-                type:$("input:hidden[name=type]").val(),date:$("input:hidden[name=date]").val(),duration:$("input:hidden[name=duration]").val(),
-                offset:offset,hot:$("input:hidden[name=hot]").val(),lastMinute:$("input:hidden[name=lastMinute]").val()
-            },
-            function (data) {
-                fillList(data);
-            });
-    }
-
+    $.getJSON(BASE_URL + "api/auctions/searchResults.php",
+        {
+            name:$("input:hidden[name=name]").val(),rating:$("input:hidden[name=rating]").val(),category:$("input:hidden[name=category]").val(),
+            type:$("input:hidden[name=type]").val(),date:$("input:hidden[name=date]").val(),duration:$("input:hidden[name=duration]").val(),
+            fullTextSearch:$("input:hidden[name=fullTextSearch]").val(),
+            offset:offset,hot:$("input:hidden[name=hot]").val(),lastMinute:$("input:hidden[name=lastMinute]").val()
+        },
+        function (data) {
+            fillList(data);
+        });
 }
 
 function fillList(data) {

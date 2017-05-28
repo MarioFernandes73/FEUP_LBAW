@@ -86,8 +86,14 @@ if (isset($_SESSION['iduser'])) {
 
         try {
             //call to create auction
-            $done = createAuction($_POST['name'], $_POST['category'], $baseprice, $_POST['type'], $_POST['startingdate'],
-                $_POST['durationhours'], $description, $state, $_SESSION['iduser']);
+            if($_POST['type'] == "Dutch"){
+                $done = createAuctionDutch($_POST['name'], $_POST['category'], $baseprice, $_POST['type'], $_POST['startingdate'],
+                    $_POST['durationhours'], $description, $state, $_SESSION['iduser']);
+            } else {
+                $done = createAuction($_POST['name'], $_POST['category'], $baseprice, $_POST['type'], $_POST['startingdate'],
+                    $_POST['durationhours'], $description, $state, $_SESSION['iduser']);
+            }
+
 
             if (!$done) {
                 $_SESSION['error_messages'] = "User must be a validated user or administrator to create an auction.";

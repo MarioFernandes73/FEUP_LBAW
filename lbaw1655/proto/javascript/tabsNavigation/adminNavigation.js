@@ -11,7 +11,6 @@ window.onload = function () {       //elementos mudam
 function next(myoffset)
 {
     offsets[myoffset]++;
-
     executeAjax(myoffset);
 }
 
@@ -21,7 +20,6 @@ function previous(myoffset)
         return false;
 
     offsets[myoffset]--;
-
     executeAjax(myoffset);
 }
 
@@ -193,17 +191,17 @@ function addAuctionTable(id, state, auction){
 
     var text = '<tr id="auction'+auction.idauction+'" > <td><a href='+'../../pages/auctions/viewAuction.php?idauction='+auction.idauction+'>'+auction.auctionName+'</a></td> ';
     if(state == "Scheduled"){
-        text += '<td><a href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>'+auction.userName+'</a></td> ' +
+        text += '<td><a href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>'+auction.username+'</a></td> ' +
             '<td>'+auction.startingdate+'</td>';
     }
     else if(state == "Active"){
-        text += '<td><a  href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>'+auction.userName+'</a></td> ' +
+        text += '<td><a  href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>'+auction.username+'</a></td> ' +
             '<td> <button type="button" onclick="banAuction('+auction.idauction+')" class="btn btn-danger btn-xs"> ' +
             '<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> </button> </td>';
     }
     else if (state == "inConclusion"){
         if(auction.state == "Awaiting_delivery"){
-            text += '<td>Waiting for <a href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>inConclusionAuction.owner</a> delivery</td>';
+            text += '<td>Waiting for <a href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>inConclusionAuction.username</a> delivery</td>';
         }
         else if(auction.state == "Awaiting_payment"){
             text += '<td>Waiting for payment from buyer: <a href='+'../../pages/users/profile.php?iduser='+auction.idbidder+'>'+auction.idbidder+'</a></td>';
@@ -216,7 +214,7 @@ function addAuctionTable(id, state, auction){
         var startingDate = new Date(auction.startingdate);
         var endingDate = new Date(startingDate.setHours(startingDate.getHours() + auction.durationhours));
 
-        text += '<td><a href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>'+auction.userName+'</a></td> ' +
+        text += '<td><a href='+'../../pages/users/profile.php?iduser='+auction.idowner+'>'+auction.username+'</a></td> ' +
             '<td>'+endingDate.getFullYear()+'-'+monthNames[endingDate.getMonth()]+'-'+endingDate.getDay()+'</td>';
     }
     else if(state == "Banned"){

@@ -1,3 +1,5 @@
+var files;
+
 function prepareSidebar(elements) {
     for (var i in elements)
         elements[i].onclick = function () {
@@ -49,6 +51,94 @@ function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
 
+function saveFiles(event){
+    newNotification('panel-success', "Files successfully uploaded.");
+    files = event.files;
+}
+
+function addTicketComment(event,idTicket) {
+
+    alert(idTicket);
+    alert($(event.target).prev().html());
+
+        /*$idauction = $("input[name='idauction']").val();
+        $message = $("textarea[name='message']").val();*/
+
+        // Create a formdata object and add the files
+        var info = new FormData();
+       /* info.append('idauction',$idauction);
+        info.append('message',$message);*/
+       info.append('idticket',idTicket);
+        $.each(files, function (key, value) {
+            info.append(key, value);
+            alert(value);
+        });
+
+/*
+        $.ajax({
+            url: '../../api/auctions/commentAuction.php?files',
+            type: 'POST',
+            data: info,
+            cache: false,
+            processData: false, // Don't process the files
+            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+            success: function (data) {
+                data = JSON.parse(data);
+
+                $('textarea[name="message"]').val("");
+                $('input[name="upload"]').files = null;
+                files =null;
+
+                if (data.result != 0){
+                    newNotification('panel-danger', data.result);
+                    $(document).scrollTop(0);
+                }
+                else if (data.result == 0) {
+
+                    var content = "<div class='panel panel-default'>" +
+                        "<div class='panel-heading'>" +
+                        "<strong>Anonymous</strong>" +
+                        "<span class='text-muted'> Commented on " + data.date;
+
+                    if(data.state == "Administrator"){
+                        content +=      "<button type='button' class='btn btn-warning btn-xs pull-right'>" +
+                            "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>" +
+                            "</button>";
+                    }
+
+                    content += "</div>";
+
+                    //Load all files of the comment
+                    for(var i =0; i < data.photos.length; i++) {
+
+                        var photo = data.photos[i];
+                        console.log(photo);
+                        console.log(photo.name);
+                        console.log(photo.path);
+                        console.log(photo.date);
+
+                        if (photo.path != "") {
+                            content += "<div class='thumbnail' style='border: none'>" +
+                                "<img src='../../" + photo.path + "' alt='comment image'>" +
+                                "</div>";
+                        }
+                    }
+
+                    content +=    "<div class='panel-body'>" +
+                        $message + "</div></div>";
+
+                    $(content).insertAfter(("#createComment"));
+
+                    newNotification('panel-success', "Commented auction with success.");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('ERRORS: ' + textStatus);
+            }
+        });
+    });
+*/
+}
 
 
 function openTicket(idticket){
@@ -86,13 +176,13 @@ function openTicket(idticket){
 
             text += '</div><div class="panel-footer" style="min-height: 120px;">'+
                 '<form id="ticketForm"> ' +
-                '<textarea class="col-sm-12" rows="3" placeholder="New answer"></textarea> ' +
-                '<button style="margin-top: 5px;" type="submit" class="btn btn-success pull-right"> ' +
+                '<textarea id="ticketComment" class="col-sm-12" rows="3" placeholder="New answer"></textarea> ' +
+                '<button style="margin-top: 5px;" type="button" class="btn btn-success pull-right" onclick="addTicketComment(this,' + idticket + ')"> ' +
                 '<span class="glyphicon glyphicon-send" aria-hidden="true"></span> ' +
                 '</button> ' +
                 '<label style="margin: 5px;" class="btn btn-success btn-file pull-right"> ' +
                 '<span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> ' +
-                '<input type="file" style="display: none;"> ' +
+                '<input type="file" style="display: none;" onchange="saveFiles(this)"> ' +
                 '</label> ' +
                 '</form> ' +
                 '</div> ' +
