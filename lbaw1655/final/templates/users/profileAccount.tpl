@@ -45,26 +45,8 @@
         </div>
         <!-- STATISTICS -->
         <div class="profile-content statistics hidden">
-
-            <div class="col-sm-5">
-                <div class="circle-tile ">
-                    <div class="circle-tile-heading dark-blue"><em class="fa fa-users fa-fw fa-3x"></em></div>
-                    <div class="circle-tile-content dark-blue">
-                        <div class="circle-tile-description text-faded">Total bids</div>
-                        <div id="totalBidsStats" class="circle-tile-number text-faded "></div>
-                    </div>
-                </div>
+            <div class="col-sm-10">
             </div>
-            <div class="col-sm-5">
-                <div class="circle-tile ">
-                    <div class="circle-tile-heading red"><em class="fa fa-bullhorn fa-fw fa-3x"></em></div>
-                    <div class="circle-tile-content red">
-                        <div class="circle-tile-description text-faded">Auctions won</div>
-                        <div id="totalWonAuctionsStats" class="circle-tile-number text-faded "></div>
-                    </div>
-                </div>
-            </div>
-
         </div>
         <!-- EDIT ACCOUNT -->
         <div class="profile-content hidden editAccount">
@@ -149,11 +131,7 @@
                               action="../../actions/users/deleteaccount.php">
 
                             <div id="form-group-ConfirmPassword2" class="form-group">
-                                <label class="cols-sm-2 control-label">
-                                    <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                            title="Required field">*</button>
-                                    Confirm Password
-                                </label>
+                                <label class="cols-sm-2 control-label">Confirm Password</label>
                                 <div class="input-group" id="pass2">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-lock"></span>
@@ -175,9 +153,4 @@
     </div>
 </div><!-- termina a row 1 -->
 <script src="{$BASE_URL}javascript/validate.js"></script>
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 

@@ -33,7 +33,7 @@
                     {if $USERNAME}
                         <li><a href="{$BASE_URL}pages/auctions/createAuction.php">Create Auction</a></li>
                     {/if}
-                    <li><a href="{$BASE_URL}pages/authentication/faq.php">FAQ</a></li>
+                    <li><a href={$BASE_URL}pages/authentication/faq.php">FAQ</a></li>
                     {if $USERNAME}
                         <li><a href="{$BASE_URL}pages/tickets/tickets.php">Tickets</a></li>
                     {/if}
@@ -102,15 +102,11 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <form method="post" action="../../actions/authentication/login.php">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-link btn-xs pull-left" data-toggle="tooltip"
-                                    title="Required field">*</button>
+                        <div class="form-group">*
                             <input name="user" class="form-control input-lg" placeholder="Username" title="username" type="text"
                                    required="required">
                         </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-link btn-xs pull-left" data-toggle="tooltip"
-                                    title="Required field">*</button>
+                        <div class="form-group">*
                             <input name="pass" class="form-control input-lg" placeholder="Password" title="password" type="password"
                                    required="required">
                         </div>
@@ -120,9 +116,3 @@
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>

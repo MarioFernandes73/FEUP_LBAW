@@ -1,6 +1,8 @@
 {include file='common/header.tpl'}
 {include file='common/navbar.tpl'}
 
+
+
 <!-- REGISTER -->
 <div class="jumbotron">
     <div class="row main">
@@ -13,11 +15,7 @@
                   action="../../actions/authentication/signup.php"  method="post">
                 <!-- attributes -->
                 <div id="form-group-Username" class="form-group">
-                    <label class="cols-sm-2 control-label">
-                        Username
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label class="cols-sm-2 control-label">Username*</label>
                     <div class="input-group" id="username">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -28,10 +26,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="cols-sm-2 control-label">Name
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label class="cols-sm-2 control-label">Name*</label>
                     <div class="input-group" id="name">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
@@ -42,10 +37,7 @@
                 </div>
 
                 <div id="form-group-Birthdate" class="form-group">
-                    <label class="cols-sm-2 control-label">Birth date
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label class="cols-sm-2 control-label">Birth date*</label>
                     <div class="input-group date" id="date" data-provide="datepicker">
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -55,10 +47,7 @@
                 </div>
 
                 <div id="form-group-Address" class="form-group">
-                    <label class="cols-sm-2 control-label">Address
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label class="cols-sm-2 control-label">Address*</label>
                     <div class="input-group" id="address">
                                 <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-envelope"></span></span>
@@ -68,10 +57,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="cols-sm-2 control-label">Password
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label class="cols-sm-2 control-label">Password*</label>
                     <div class="input-group" id="pass1">
                                 <span class="input-group-addon"><span
                                             class=" glyphicon glyphicon-lock"></span></span>
@@ -83,10 +69,7 @@
                 </div>
 
                 <div id="form-group-ConfirmPassword" class="form-group">
-                    <label class="cols-sm-2 control-label">Confirm Password
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label class="cols-sm-2 control-label">Confirm Password*</label>
                     <div class="input-group" id="pass2">
                                 <span class="input-group-addon"><span
                                             class=" glyphicon glyphicon-lock"></span></span>
@@ -96,10 +79,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="cols-sm-2 control-label">Phone Number
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label class="cols-sm-2 control-label">Phone Number*</label>
                     <div class="input-group" >
                                 <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-earphone"></span></span>
@@ -110,10 +90,7 @@
                 </div>
 
                 <div class="checkbox">
-                    <label><input name="signupTerms" title="accept terms" required type="checkbox">I accept the terms and conditions.
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
-                                title="Required field">*</button>
-                    </label>
+                    <label><input name="signupTerms" title="accept terms" required type="checkbox">I accept the terms and conditions.*</label>
                 </div>
 
                 <div class="form-group" style="padding: 1em 0em">
@@ -130,10 +107,5 @@
 </div>
 
 <script src="{$BASE_URL}javascript/validate.js"></script>
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 
 {include file='common/footer.tpl'}

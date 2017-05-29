@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-29 22:12:47
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-29 23:44:05
          compiled from "/opt/lbaw/lbaw1655/public_html/final/templates/authentication/signup.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:263533997592c8dc0247446-63508512%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '630d88d2d15ee947d586f3cd4a4135250a625e8f' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/final/templates/authentication/signup.tpl',
-      1 => 1496092362,
+      1 => 1496097845,
       2 => 'file',
     ),
   ),
@@ -137,8 +137,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </div>
 
                 <div class="checkbox">
-                    <label><input name="signupTerms" title="accept terms" required type="checkbox">I accept the terms and conditions.
-                        <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
+                    <label><input name="signupTerms" title="accept terms" required type="checkbox">I accept the terms and conditions.</label>
+                        <label><button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
                                 title="Required field">*</button>
                     </label>
                 </div>

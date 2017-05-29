@@ -8,8 +8,8 @@
 
             <div>
                 <br><br>
-                <h4 class="text-center mytext"> This website was developed by a group of students of FEUP (Faculdade de Engenharia da Universidade do Porto)
-                    <br>in the class of LBAW in the 3rd year of the Master's Degree in Informatics and Computer Engineering.</h4>
+                <h5 class="text-center mytext"> This website was developed by a group of students of FEUP (Faculdade de Engenharia da Universidade do Porto)
+                    <br>in the class of LBAW in the 3rd year of the Master's Degree in Informatics and Computer Engineering.</h5>
 
                 <br>
 

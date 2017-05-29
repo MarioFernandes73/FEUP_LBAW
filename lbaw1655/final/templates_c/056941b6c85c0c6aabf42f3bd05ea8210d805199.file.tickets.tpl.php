@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-29 23:38:02
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-29 23:51:22
          compiled from "/opt/lbaw/lbaw1655/public_html/final/templates/tickets/tickets.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:435443912592c6bec844575-24668958%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '056941b6c85c0c6aabf42f3bd05ea8210d805199' => 
     array (
       0 => '/opt/lbaw/lbaw1655/public_html/final/templates/tickets/tickets.tpl',
-      1 => 1496097481,
+      1 => 1496098279,
       2 => 'file',
     ),
   ),
@@ -76,7 +76,7 @@ actions/tickets/reportComment.php">
                         <label for="category">Category
                             <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
                                     title="Required field">*
-                            </button>
+                            </button></label><label>
                             <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
                                     title="Choose ticket category according to your problem.'Report' for site problems,
                                     'Product' for auction payment and delivery problems, 'Questions' for more info.
@@ -142,7 +142,7 @@ actions/tickets/createTicket.php">
                         <label for="category">Category
                             <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
                                     title="Required field">*
-                            </button>
+                            </button></label><label>
                             <button type="button" class="btn btn-link btn-xs pull-right" data-toggle="tooltip"
                                     title="Choose ticket category according to your problem.'Report' for site problems,
                                     'Product' for auction payment and delivery problems, 'Questions' for more info.

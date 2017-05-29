@@ -6,13 +6,7 @@
 
     <div class="panel panel-primary responsive" id="lastMinute">
         <div class="panel panel-default" style="background-color: #f5f5f5">
-            <h3 class="text-center mytext">
-                Last Minute Opportunities
-                <button type="button" class="btn btn-link btn-xs center-left" data-toggle="tooltip"
-                        title="Top auctions with ending date near.">
-                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                </button>
-            </h3>
+            <h3 class="text-center mytext">Last Minute Opportunities</h3>
         </div>
         <div class="panel-body">
             <div class="carousel slide" id="myCarouselOpp">
@@ -29,13 +23,7 @@
 
     <div class="panel panel-primary" id="hot">
         <div class="panel panel-default" style="background-color: #f5f5f5">
-            <h3 class="text-center mytext">
-                Hot
-                <button type="button" class="btn btn-link btn-xs center-left" data-toggle="tooltip"
-                        title="Top popular auctions with the most bids.">
-                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                </button>
-            </h3>
+            <h3 class="text-center mytext">Hot</h3>
         </div>
         <div class="panel-body">
             <div class="carousel slide" id="myCarouselHot">
@@ -53,8 +41,3 @@
 <script src="{$BASE_URL}javascript/homepage.js"></script>
 <script src="{$BASE_URL}javascript/timeleft.js"></script>
 {include file='common/footer.tpl'}
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
