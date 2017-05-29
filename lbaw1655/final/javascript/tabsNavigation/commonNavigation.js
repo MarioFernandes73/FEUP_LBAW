@@ -1,6 +1,4 @@
 var files = [];
-var offset = 0;
-var reloadMore = true;
 
 function prepareSidebar(elements) {
     for (var i in elements)
@@ -14,84 +12,6 @@ function prepareSidebar(elements) {
                 $("#openedTicket").remove();        //removes an opened ticket if such exists
             }
         }
-}
-
-function reloadMoreComments(event,idticket){
-
-    //If scroll on top
-    if($(document.getElementById("messages")).scrollTop() < 200 && reloadMore) {
-        reloadMore = false;
-        offset += 10;
-
-        var scrollheight = document.getElementById("messages").scrollHeight;
-
-        //Request More Comments
-        $.ajax({
-            type: 'get',
-            url: '../../api/tickets/getTicket.php',
-            data: {"idticket": idticket, "offset" : offset},
-            success: function (data) {
-                var ticketComments = JSON.parse(data);
-
-                if (ticketComments.length < 10)     //After this do not have more comments to reload
-                    reloadMore = false;
-                else
-                    reloadMore = true;
-
-                if(ticketComments.length == 0)
-                    return;
-
-                var text = "";
-
-                //comments
-                for (var i = ticketComments.length - 1; i >= 0; i--) {
-
-                    text +=
-                        '<div class=" panel panel-default  ticketCommentBlock">' +
-                        '<div class="panel-heading">' +
-                        '<strong>' + ticketComments[i].username + '</strong>' +
-                        "<span class='text-muted'> Commented on " + ticketComments[i].date + "</span>" +
-                        '</div>' +
-                        '<div class="panel-body">';
-
-                    text += ticketComments[i].message;
-
-                    //images
-                    if (ticketComments[i].path != null) {
-                        text += "<div class='thumbnail' style='border: none'><img src='../../" + ticketComments[i].path + "'alt='comment image'></div>";
-
-                        //in case there is more than one
-                        var tmp_id = ticketComments[i].idticketcomment;
-                        while (i - 1 > 1) {
-                            i--
-                            if (ticketComments[i].idticketcomment == tmp_id) {
-                                text += "<div class='thumbnail' style='border: none'><img src='../../" + ticketComments[i].path + "' alt='comment image'></div>";
-                            }
-                            else {
-                                i++;
-                                break;
-                            }
-                        }
-                    }
-
-                    text += '</div> </div>';
-                }
-                $(event).prepend(text);
-
-            },
-            error: function (textStatus) {
-                console.log('ERRORS: ' + textStatus);
-            }
-        });
-
-        var newHeight = document.getElementById("messages").scrollHeight;
-
-        $(event).stopImmediatePropagation;
-        setTimeout(function() {
-            $(document.getElementById("messages")).scrollTop(newHeight - scrollheight + 200);
-            },200
-        );
-    }
 }
 
 function removeAllHidden(elements){
@@ -228,7 +148,7 @@ function openTicket(idticket){
     $.ajax({
         type: 'get',
         url: '../../api/tickets/getTicket.php',
-        data: {"idticket": idticket, "offset" : offset},
+        data: {"idticket": idticket},
         success: function (data) {
             var ticketComments = JSON.parse(data);
 
@@ -241,11 +161,11 @@ function openTicket(idticket){
                 '<div class="panel panel-default" style="min-height: 420px"> ' +
                 '<div class="panel-heading " style="min-height:80px"> ' +
                 '<strong>'+ticketComments[0].username+'   </strong>'+ticketComments[0].message+'</div> ' +
-                '<div id="messages" class="panel-body pre-scrollable" style="height:600px" onscroll="reloadMoreComments(this,' + idticket + ')">';
+                '<div id="messages" class="panel-body pre-scrollable" style="height:600px">';
 
 
             //comments
-            for (var i = ticketComments.length -1; i > 1; i--){
+            for (var i = 1; i < ticketComments.length; i++){
 
                 text +=
                     '<div class=" panel panel-default  ticketCommentBlock">' +
@@ -263,13 +183,13 @@ function openTicket(idticket){
 
                     //in case there is more than one
                     var tmp_id = ticketComments[i].idticketcomment;
-                    while(i-1 > 1){
-                        i--
+                    while(i+1 < ticketComments.length){
+                        i++
                         if(ticketComments[i].idticketcomment == tmp_id){
                             text += "<div class='thumbnail' style='border: none'><img src='../../" + ticketComments[i].path + "' alt='comment image'></div>";
                         }
                         else{
-                            i++;
+                            i--;
                             break;
                         }
                     }

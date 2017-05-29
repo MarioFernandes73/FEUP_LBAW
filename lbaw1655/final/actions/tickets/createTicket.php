@@ -1,27 +1,28 @@
 <?php
 include_once('../../database/tickets.php');
 
-if (!isset($_POST["category"])) {
+if (!isset($_POST["category"]) ){
     $_SESSION['error_messages'][] = 'Error invalid category.';
     die();
 }
 $category = trim(strip_tags($_POST['category']));
 
-if (!isset($_POST["message"])) {
+if(!isset($_POST["message"])){
     $message = null;
-} else {
+}else{
     $message = trim(strip_tags($_POST['message']));
 }
 
-if (!isset($_POST["title"])) {
+if(!isset($_POST["title"])){
     $title = null;
-} else {
+}else{
     $title = trim(strip_tags($_POST['title']));
 }
 
 if (isset($_SESSION['iduser'])) {
 
-    try {
+   /* try
+    {*/
         $msg = createTicket($_SESSION['iduser'], $title, $category, $message);
         if ($msg != "") {
             $_SESSION['error_messages'] = $msg;
@@ -32,11 +33,10 @@ if (isset($_SESSION['iduser'])) {
         $_SESSION['success_messages'] = 'Ticket created successfully';
         header('Location: ../../pages/authentication/homepage.php');
 
-    } catch (PDOException $e) {
-        $_SESSION['error_messages'][] = 'Try later';
-        header('Location: ../../index.php');
-        die();
-    }
+    /*} catch (PDOException $e) {
+        $_SESSION['error_messages'] = 'Could not created ticket. Please try again.'+$e;
+        header('Location: ../../pages/authentication/homepage.php');
+    }*/
 } else {
     $_SESSION['error_messages'] = "User must be authenticated to proceed.";
     header('Location: ../../pages/authentication/homepage.php');

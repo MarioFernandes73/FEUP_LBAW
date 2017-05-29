@@ -1,15 +1,9 @@
 <?php
 include_once('../../database/users.php');
 
-if (isset ($_GET ["address"])) {
+if (isset ( $_GET ["address"] )){
     $address = trim(strip_tags($_GET["address"]));
-    try {
-        $hasAddress = hasAddress($address);
-    } catch (PDOException $e) {
-        $_SESSION['error_messages'][] = 'Try later';
-        header('Location: ../../index.php');
-        die();
-    }
+    $hasAddress = hasAddress($address);
     echo json_encode(array("hasUser" => $hasAddress));
     die();
 }

@@ -90,9 +90,9 @@ function addUser($username, $name, $birthDate, $address, $password, $phoneNumber
 
     $options = ['cost' => 12];
     $hashPass = password_hash($password, PASSWORD_DEFAULT, $options);
-    $stmt = $conn->prepare("INSERT INTO \"User\" (username, password, birthdate, name, address, state, phonenumber) 
-									 VALUES ( ?, ?, ?, ?, ?, ? ,?)");
-    $stmt->execute(array($username, $hashPass, $birthDate, $name, $address, 'Validated', $phoneNumber));
+    $stmt = $conn->prepare("INSERT INTO \"User\" (username, password, birthdate, name, address, phonenumber) 
+									 VALUES ( ?, ?, ?, ?, ?,?)");
+    $stmt->execute(array($username, $hashPass, $birthDate, $name, $address, $phoneNumber));
 
     $conn->commit();
 }
@@ -241,18 +241,4 @@ function getAdminUsers($state,$offset){
         $stmt->execute(array($state));
     }
     return $stmt->fetchAll();
-}
-
-function getQtUsers(){
-    global $conn;
-    $stmt = $conn->prepare("SELECT COUNT(*) FROM \"User\"");
-    $stmt->execute();
-    return $stmt->fetch();
-}
-
-function getQtBids($iduser){
-    global $conn;
-    $stmt = $conn->prepare("SELECT COUNT(*) FROM \"Bid\" WHERE idbidder=?");
-    $stmt->execute(array($iduser));
-    return $stmt->fetch();
 }

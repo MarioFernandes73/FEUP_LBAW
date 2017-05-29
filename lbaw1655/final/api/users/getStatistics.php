@@ -2,7 +2,12 @@
 include_once('../../database/auctions.php');
 include_once('../../database/users.php');
 
-$userid = $_GET['userid'];
+if (!isset($_GET['userid']) ){
+    $_SESSION['error_messages'][] = 'Error receiving user.';
+    header('Location: ../../index.php');
+    exit();
+}
+$userid =  trim(strip_tags($_GET['userid']));
 try {
 
     $quantityBids = getQtBids($userid);

@@ -12,13 +12,6 @@ if(!isset($_SESSION['iduser'])){
 }
 
 $id = trim(strip_tags($_POST["idauction"]));
-
-try {
-    $res = banAuction($id, $_SESSION['iduser']);
-} catch (PDOException $e) {
-    $_SESSION['error_messages'][] = 'Try later';
-    header('Location: ../../index.php');
-    die();
-}
+$res = banAuction($id,$_SESSION['iduser']);
 
 echo json_encode(array("result" => $res["result"], "msg"=>$res["msg"]));
