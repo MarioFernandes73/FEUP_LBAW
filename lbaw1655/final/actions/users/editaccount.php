@@ -13,7 +13,7 @@ if (isset($_SESSION['iduser']))
     if ($pass != "" && $pass != $confirmPass) {
         $_SESSION['error_messages'][] = 'The passwords must match.';
         header('Location: ../../pages/authentication/homepage.php');
-        exit;
+        exit();
     }
 
     try {
@@ -33,7 +33,7 @@ if (isset($_SESSION['iduser']))
     } catch (PDOException $e) {
         $_SESSION['error_messages'][] = 'Could not change profile. Please, try again.';
         header('Location: ../../pages/authentication/homepage.php');
-        exit;
+        exit();
     }
 } else {
     $_SESSION['error_messages'] = "User must be authenticated to proceed.";

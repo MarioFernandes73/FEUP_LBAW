@@ -10,7 +10,6 @@ $(document).ready(function () {
         n = 2;
 
     initAuctionList(n);
-   // setInterval(reload, 10000);
 });
 
 function reload() {
@@ -35,7 +34,6 @@ function fillList(data, type,n) {
         var endingDate = startingDate.addHours(auction.durationhours);
         var mili = endingDate - new Date();
 
-        //alert(mili + " ; " + auction.durationhours + " ; " + endingDate);
         var d = Math.floor(mili / (24*60*60*1000));
         mili = mili - d*(24*60*60*1000);
         var h = Math.floor(mili / (60*60*1000));
@@ -50,29 +48,26 @@ function fillList(data, type,n) {
             timeleft = "0 days 00:00:00";
         }
 
-        //alert(timeleft);
-
         var id = Math.floor(i / n);
         if (i == 0) {
-            $('#' + type + ' .carousel-inner').append('<div id="' + id + '" class="item active"></div>');
+            $('#' + type + ' .carousel-inner').append('<div id="'+type + id + '" class="item active"></div>');
         }
         else if ((i % n) == 0) {
-            $('#' + type + ' .carousel-inner').append('<div id="' + id + '" class="item"></div>');
+            $('#' + type + ' .carousel-inner').append('<div id="'+type + id + '" class="item"></div>');
         }
 
         if(n == 1){
-            $('#' + type + ' .carousel-inner #' + id).append(
+            $('#' + type + ' .carousel-inner #'+type + id).append(
                 '<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">'+
                 '<div class="thumbnail" style="border: none">' +
-                '<div style="border: 1px" align="center">'+
+                '<div style="border: 1px" class="text-center">'+
                 '<img src="' + BASE_URL + auction['photo'] + '" class="img" alt="auction image">' +
                 '</div>'+
                 '<div class= "captiion" style="text-align: center; font-size: 3vmin">' +
                 '<a href="' + BASE_URL + 'pages/auctions/viewAuction.php?idauction=' + auction.idauction + '">' + auction.name + '<br></a>' +
-                '<label>' + auction.category + '' +
+                '<label>' + auction.category + '</label>' +
                 '<br><div class="timeleft">'+timeleft+'</div>' +
                 '<br>Last Price : ' + auction.currentprice/100 +
-                '</label>' +
                 '</div>' +
                 '</div>' +
                 '</div>'
@@ -80,18 +75,17 @@ function fillList(data, type,n) {
         }
         else if(n == 2)
         {
-            $('#' + type + ' .carousel-inner #' + id).append(
+            $('#' + type + ' .carousel-inner #'+type + id).append(
                 '<div class="col-lg-6 col-xs-6 col-md-6 col-sm-6">'+
                 '<div class="thumbnail" style="border: none">' +
-                '<div style="border: 1px" align="center">'+
+                '<div style="border: 1px" class="text-center">'+
                 '<img src="' + BASE_URL + auction['photo'] + '" class="img" alt="auction image">' +
                 '</div>'+
                 '<div class= "caption" style="text-align: center; font-size: 3vmin">' +
                 '<a href="' + BASE_URL + 'pages/auctions/viewAuction.php?idauction=' + auction.idauction + '">' + auction.name + '<br></a>' +
-                '<label>' + auction.category + '' +
+                '<label>' + auction.category + '</label>' +
                 '<br><div class="timeleft">'+timeleft+'</div>' +
                 '<br>Last Price : ' + auction.currentprice/100 +
-                '</label>' +
                 '</div>' +
                 '</div>' +
                 '</div>'
@@ -99,18 +93,17 @@ function fillList(data, type,n) {
         }
         else
         {
-            $('#' + type + ' .carousel-inner #' + id).append(
+            $('#' + type + ' .carousel-inner #'+type + id).append(
                 '<div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">'+
                 '<div class="thumbnail" style="border: none">' +
-                '<div style="border: 1px" align="center">'+
+                '<div style="border: 1px" class="text-center">'+
                 '<img src="' + BASE_URL + auction['photo'] + '" class="img" alt="auction image">' +
                 '</div>'+
                 '<div class= "caption" style="text-align: center; font-size: 3vmin">' +
                 '<a href="' + BASE_URL + 'pages/auctions/viewAuction.php?idauction=' + auction.idauction + '">' + auction.name + '<br></a>' +
-                '<label>' + auction.category + '' +
+                '<label>' + auction.category + '</label>' +
                 '<br><div class="timeleft">'+timeleft+'</div>' +
                 '<br>Last Price : ' + auction.currentprice/100 +
-                '</label>' +
                 '</div>' +
                 '</div>' +
                 '</div>'

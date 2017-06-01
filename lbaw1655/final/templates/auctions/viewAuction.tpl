@@ -3,7 +3,6 @@
 
 <script src="{$BASE_URL}javascript/timeleft.js"></script>
 <script src="{$BASE_URL}javascript/auction.js"></script>
-<script src="{$BASE_URL}javascript/files.js"></script>
 
 <input name="idauction" type="hidden" value="{$currentAuction.idauction}"/>
 <input name="currentprice" type="hidden" value="{$currentAuction.currentprice/100}"/>
@@ -220,37 +219,37 @@
         <!-- comment section -->
         <div class="col-sm-8">
             <div class="panel panel-primary ">
+                <!-- new comment -->
+                <div id="createComment" class="panel-footer" style="min-height: 120px">
+                    <form name="commentForm" method="POST" enctype="multipart/form-data">
+                        <input name="idauction" type="hidden" value="{$currentAuction.idauction}"/>
+                        <textarea title="comment message" name="message" required="required" class="col-sm-12" rows="3"
+                                  placeholder="Do you have some question?"></textarea>
+                        <button id="makeComment" type="button" name="commentAuction"
+                                class="btn btn-success pull-right"
+                                style="margin: 5px;">
+                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                        </button>
+                        <label class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
+                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                            <input title="upload file input" type="file" name="upload[]" style="display: none; "
+                                   multiple="multiple"
+                                   onchange="saveFiles(this)"/>
+                        </label>
+                    </form>
+                </div>
                 <div class="panel-body">
 
-                    <!-- new comment -->
-                    <div id="createComment" class="panel-footer" style="min-height: 120px">
-                        <form name="commentForm" method="POST" enctype="multipart/form-data">
-                            <input name="idauction" type="hidden" value="{$currentAuction.idauction}"/>
-                            <textarea title="comment message" name="message" required="required" class="col-sm-12"
-                                      rows="3"
-                                      placeholder="Do you have some question?"></textarea>
-                            <button id="makeComment" type="button" name="commentAuction"
-                                    class="btn btn-success pull-right"
-                                    style="margin: 5px;">
-                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                            </button>
-                            <label class="btn btn-default btn-file pull-right" style="margin-top: 5px;">
-                                <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                                <input title="upload file input" type="file" name="upload[]" style="display: none; "
-                                       multiple="multiple"
-                                       onchange="saveFiles(this)"/>
 
-                            </label>
-                        </form>
-                    </div>
 
+                    <!--comments-->
                     <div id="auctionMessages" class = "pre-scrollable" style="max-height: 600px">
                         {$countComment = count($currentAuctionComments)}
                         {for $i = 0; $i < $countComment; $i++}
                             {$comment = $currentAuctionComments[$i]}
 
                             {if $comment.idcomment != $idcomment}
-                                <form class="form-horizontal" method="POST" action="{$BASE_URL}pages/tickets/tickets.php">
+                                <form method="POST" action="{$BASE_URL}pages/tickets/tickets.php">
                                 <div class="panel panel-default">
                                 <div  class="panel-heading">
                                     <strong>Anonymous</strong>
@@ -260,15 +259,13 @@
                                     <input name="idauction" type="hidden" value="{$currentAuction.idauction}"/>
                                     <input name="msg" type="hidden" value="Report Comment"/>
 
-                                    <button style="margin-left: 5px;" type="submit"
-                                            class="btn btn-danger btn-xs pull-right">
+                                    <button type="submit" class="btn btn-danger btn-xs pull-right">
                                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     </button>
 
                                     <!-- Admin remove button -->
                                     {if $STATE == "Administrator"}
-                                        <button name="removecomment" type="button"
-                                                class="btn btn-warning btn-xs pull-right">
+                                        <button name="removecomment" type="button" class="btn btn-warning btn-xs pull-right">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
                                     {/if}
@@ -291,7 +288,6 @@
                             {/if}
                         {/for}
                     </div>
-
                 </div>
             </div>
         </div>

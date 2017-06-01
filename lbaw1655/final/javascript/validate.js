@@ -38,8 +38,6 @@ function validatePasswordEditAccount() {
         var password = document.forms["editaccount"].elements["password"].value;
         var confirmPassword = document.forms["editaccount"].elements["confirmPassword"].value;
 
-        console.log(password);
-        console.log(confirmPassword);
         if (!password) {//if o campo esta vazio
             if (!confirmPassword) {
                 $("#confirmation_invalid").remove();

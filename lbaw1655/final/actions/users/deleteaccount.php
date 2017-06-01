@@ -9,18 +9,15 @@ if (isset($_SESSION['iduser'])) {
         exit();
     }
     $confirmPass = trim(strip_tags($_POST["confirmPassword"]));
-    var_dump($_POST);
 
     try {
 
         if (validPass($_SESSION['username'], $confirmPass) == false) {
             throw new PDOException();
         }
-
         deleteAccount($_SESSION['iduser']);
 
         $_SESSION['success_messages'][] = 'Account deleted with success.';
-
         header('Location: ../../actions/authentication/logout.php');
 
     } catch (PDOException $e) {

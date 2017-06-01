@@ -3,25 +3,24 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/auctions.php');
 include_once($BASE_DIR . 'database/tickets.php');
 
-if (!isset($_POST["idauction"]) ){
+if (!isset($_POST["idauction"])) {
     $_SESSION['error_messages'][] = 'Error receiving comment.';
     header('Location: ../../index.php');
     die();
 }
 $idauction = trim(strip_tags($_POST['idauction']));
 
-if (isset($_POST["message"]) ){
+if (isset($_POST["message"])) {
     $message = trim(strip_tags($_POST['message']));
-}else{
+} else {
     $message = '';
 }
 $date = new DateTime();
 
-if (isset($_SESSION['iduser']))
-{
+if (isset($_SESSION['iduser'])) {
     try {
-        $msg=createComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
-        if($msg!="")
+        $msg = createComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
+        if ($msg != "")
             throw new PDOException($msg);
 
         $_SESSION['success_messages'] = 'Comment registered successfully';
@@ -36,7 +35,6 @@ if (isset($_SESSION['iduser']))
 
     $total = count($_FILES['upload']['name']);
     $totalSize = 0;
-    // var_dump($total);
 
     for ($i = 0; $i < $total; $i++) {
         $totalSize += $_FILES['upload']['size'][$i];
@@ -59,30 +57,35 @@ if (isset($_SESSION['iduser']))
                     header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
                     exit();
                 } else {
+                    try {
+                        $idcomment = getIdComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
+                        //Setup our new file path
+                        $pathimage = "images/auctions/comments/" . $idcomment . "_" . $i . '.' . $imageFileType;
+                        $newFilePath = $BASE_DIR . $pathimage;
 
-                    $idcomment = getIdComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
-                    //Setup our new file path
-                    $pathimage="images/auctions/comments/" . $idcomment . "_" . $i . '.' . $imageFileType;
-                    $newFilePath = $BASE_DIR .  $pathimage;
-                    
-                    //Upload the file into the temp dir
-                    if (move_uploaded_file($tmpFilePath, $newFilePath)) {
-                        $now = new DateTime();
-                        $photos[$i] = array($_FILES['upload']['name'][$i], $pathimage, $now->format('Y-m-d'));
+                        //Upload the file into the temp dir
+                        if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+                            $now = new DateTime();
+                            $photos[$i] = array($_FILES['upload']['name'][$i], $pathimage, $now->format('Y-m-d'));
 
-                        $msg = addPhotosComment($idcomment, $photos);
-                        if ($msg != "") {
-                            $_SESSION['error_messages'] = $msg;
+                            $msg = addPhotosComment($idcomment, $photos);
+                            if ($msg != "") {
+                                $_SESSION['error_messages'] = $msg;
+                                header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
+                            }
+
+                            $_SESSION['success_messages'] = "The file " . $_FILES['upload']['name'][$i] . " was uploaded with success.";
                             header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
+                            exit();
+                        } else {
+                            $_SESSION['error_messages'] = "Error uploading files. Please try again.";
+                            header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
+                            exit();
                         }
-
-                        $_SESSION['success_messages'] = "The file " . $_FILES['upload']['name'][$i] . " was uploaded with success.";
-                        header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
-                        exit();
-                    } else {
-                        $_SESSION['error_messages'] = "Error uploading files. Please try again.";
-                        header('Location:' . $BASE_URL . 'pages/auctions/viewAuction.php?idauction=' . $idauction);
-                        exit();
+                    } catch (PDOException $e) {
+                        $_SESSION['error_messages'][] = 'Try later';
+                        header('Location: ../../index.php');
+                        die();
                     }
                 }
 

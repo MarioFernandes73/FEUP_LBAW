@@ -128,7 +128,6 @@ function initTimeletft(auction)
     var endingDate = startingDate.addHours(auction.durationhours);
     var mili = endingDate - new Date();
 
-    //alert(mili + " ; " + auction.durationhours + " ; " + endingDate);
     var d = Math.floor(mili / (24*60*60*1000));
     mili = mili - d*(24*60*60*1000);
     var h = Math.floor(mili / (60*60*1000));

@@ -2,13 +2,24 @@
 include_once('../../database/tickets.php');
 include_once('../../database/users.php');
 
-$idticket = $_POST['idticket'];
-$message = $_POST['message'];
+if (!isset( $_POST['idticket'])) {
+    $_SESSION['error_messages'][] = 'Error receiving ticket.';
+    header('Location: ../../index.php');
+    die();
+}
+$idticket = trim(strip_tags($_POST['idticket']));
+
+if (!isset( $_POST['idticket'])) {
+    $message = "";
+}
+else{
+    $message = trim(strip_tags($_POST['message']));
+}
+
 $date = new DateTime();
 $iduser = $_SESSION['iduser'];
 $res = 0;
 $photos = array();
-
 
 try {
 

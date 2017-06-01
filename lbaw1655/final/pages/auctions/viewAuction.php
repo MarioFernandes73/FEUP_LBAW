@@ -18,7 +18,7 @@ else{
 
 $auction = getAuction($idauction);
 $idowner = $auction['idowner'];
-$comments = getComentPathAuction($auction['idauction']);
+$comments = getComentPathAuction($auction['idauction'],0);
 $bids = getAuctionBids($auction['idauction']);
 
 //order notifications

@@ -174,7 +174,7 @@ function solveTicket($idticket){
     return $stmt->fetchAll();
 }
 
-function getTicket($idticket){
+function getTicket($idticket, $offset){
     global $conn;
     $stmt = $conn->prepare("SELECT idticket,title,idticketcomment,message,path,date,username
                                     FROM \"Ticket\"
@@ -187,8 +187,9 @@ function getTicket($idticket){
                                     
                                     ) AS TMP
                                     JOIN \"User\" ON TMP.iduser = \"User\".iduser 
-                                    WHERE \"Ticket\".idticket=? ORDER BY date ASC");
-    $stmt->execute(array($idticket));
+                                    WHERE \"Ticket\".idticket=? ORDER BY date DESC
+                                    LIMIT 10 OFFSET ?");
+    $stmt->execute(array($idticket,$offset));
     return $stmt->fetchAll();
 }
 

@@ -5,6 +5,7 @@ window.onload = function () {
     prepareSidebar($("#myProfile-navigation > li"));                //prepare sidebar
     prepareSidebar($("#myAuctions-navigation > li"));                //prepare sidebar
     prepareSidebar($("#myTickets-navigation > li"));                //prepare sidebar
+    prepareStatistics();
 }
 
 function next(myoffset) {
@@ -317,6 +318,21 @@ function solveTicket(idticket) {
             ticketsAjax(4, "solvedTickets", true);
             ticketsAjax(5, "allTickets");
 
+        }
+    });
+}
+
+function prepareStatistics(){
+
+
+   $.ajax({
+        type: 'get',
+        url: '../../api/users/getStatistics.php',
+       data: {userid: $("#iduser")[0].innerHTML},
+        success: function (data) {
+            data = JSON.parse(data);
+            $("#totalBidsStats")[0].innerHTML = data.quantityBids;
+            $("#totalWonAuctionsStats")[0].innerHTML = data.quantityWonAuctions;
         }
     });
 }

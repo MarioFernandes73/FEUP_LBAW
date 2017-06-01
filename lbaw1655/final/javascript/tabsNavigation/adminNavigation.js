@@ -6,6 +6,7 @@ window.onload = function () {       //elementos mudam
     prepareSidebar($("#auctions-navigation > li"));                //prepare sidebar
     prepareSidebar($("#tickets-navigation > li"));                //prepare sidebar
     prepareTab("users-tab");
+    prepareStatistics();
 }
 
 function next(myoffset) {
@@ -320,6 +321,18 @@ function solveTicket(idTicket) {
         data: {"idticket": idTicket},
         success: function (data) {
             prepareTab("tickets-tab");
+        }
+    });
+}
+
+function prepareStatistics(){
+    $.ajax({
+        type: 'get',
+        url: '../../api/administrator/getStatistics.php',
+        success: function (data) {
+            data = JSON.parse(data);
+            $("#totalUsersStats")[0].innerHTML = data.quantityUsers;
+            $("#totalAuctionsStats")[0].innerHTML = data.quantityAuctions;
         }
     });
 }

@@ -8,4 +8,10 @@ if (!isset($_POST["id"]) ){
 }
 
 $idauction = trim(strip_tags($_POST['id']));
-echo advanceState($idauction);
+try {
+    echo advanceState($idauction);
+}catch (PDOException $e){
+    $_SESSION['error_messages'][] = 'Try later';
+    header('Location: ../../index.php');
+    die();
+}

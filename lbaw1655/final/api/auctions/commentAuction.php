@@ -2,7 +2,7 @@
 include_once('../../database/auctions.php');
 include_once('../../database/users.php');
 
-if (!isset($_POST["idauction"]) || !isset($_POST["message"]) ){
+if (!isset($_POST["idauction"]) || !isset($_POST["message"])) {
     $_SESSION['error_messages'][] = 'Error receiving comment auction.';
     header('Location: ../../index.php');
     die();
@@ -27,8 +27,8 @@ if (isset($_SESSION['iduser'])) {
             exit();
         }
 
-        if($message == "")
-            $message=" ";
+        if ($message == "")
+            $message = " ";
 
         $res = createComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
 
@@ -70,6 +70,7 @@ if (isset($_SESSION['iduser'])) {
                     echo json_encode(array("result" => $res));
                     exit();
                 } else {
+
                     $idcomment = getIdComment($idauction, $_SESSION['iduser'], $date->format('Y-m-d H:i:s'), $message);
 
                     //Setup our new file path
@@ -79,7 +80,9 @@ if (isset($_SESSION['iduser'])) {
                     //Upload the file into the temp dir
                     if (move_uploaded_file($tmppath, $newFilePath)) {
 
+
                         $msg = addPhotosComment($idcomment, $file['name'], $pathimage, $date->format('Y-m-d H:i:s'));
+
                         array_push($photos, array('name' => $file['name'], 'path' => $pathimage));
 
                         if ($msg != "") {

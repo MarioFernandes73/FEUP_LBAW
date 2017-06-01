@@ -93,7 +93,6 @@ if (isset($_SESSION['iduser']))
             $description ='';
 
         //Creates the Auction
-
         $now = new DateTime();
         $curr_time = $now->format('Y-m-dTH:i');    // MySQL datetime format
 

@@ -345,18 +345,19 @@ function removeComment($iduser, $idcomment)
 }
 
 
-function getComentPathAuction($idauction)
+function getComentPathAuction($idauction, $offset)
 {
 
     global $conn;
     $stmt = $conn->prepare("SELECT \"Comment\".idcomment,date, message, path
-FROM \"Comment\" LEFT JOIN \"FileComment\"
-ON \"Comment\".idcomment = \"FileComment\".idcomment
-LEFT JOIN \"File\"
-ON \"File\".idfile = \"FileComment\".idfile
-WHERE \"Comment\".idauction =? AND NOT(\"Comment\".message LIKE 'REMOVED%')
-ORDER BY date DESC;");
-    $stmt->execute(array($idauction));
+    FROM \"Comment\" LEFT JOIN \"FileComment\"
+    ON \"Comment\".idcomment = \"FileComment\".idcomment
+    LEFT JOIN \"File\"
+    ON \"File\".idfile = \"FileComment\".idfile
+    WHERE \"Comment\".idauction =? AND NOT(\"Comment\".message LIKE 'REMOVED%')
+    ORDER BY date DESC
+    LIMIT 10 OFFSET ?");
+    $stmt->execute(array($idauction, $offset));
 
     return $stmt->fetchAll();
 }
@@ -548,12 +549,6 @@ function followAuction($iduser, $idauction)
 
     }
 
-    /*if (isAuctionOwner($iduser, $idauction)) {
-        $conn->rollBack();
-        $res = array("result" => 1, "msg"=>"Can not follow a self-owned auction.");
-        return $res;
-    }*/
-
     $state = getUser($iduser)['state'];
 
     if (isValidUser($state)) {
@@ -595,8 +590,6 @@ function reportComment($iduser, $idcomment, $message)
 {
     global $conn;
     $conn->beginTransaction();
-
-    //TODO verificar se a auction esta aberta
 
     $msg = "";
     if (getIdReportComment($iduser, $idcomment)) {
@@ -753,4 +746,18 @@ LIMIT 10 OFFSET ".$offset*10;
     $stmt = $conn->prepare($statement);
     $stmt->execute(array($state));
     return $stmt->fetchAll();
+}
+
+function getQtAuctions(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM \"Auction\"");
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
+function getQtWonAuctions($iduser){
+    global $conn;
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM \"winningBid\" WHERE iduser=?");
+    $stmt->execute(array($iduser));
+    return $stmt->fetch();
 }

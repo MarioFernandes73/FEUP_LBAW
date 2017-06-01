@@ -1,4 +1,6 @@
 var files = [];
+var offset = 0;
+var reloadMore = true;
 
 $(document).ready(function () {
     initiationFollow();
@@ -10,8 +12,99 @@ $(document).ready(function () {
     bidBlindAuction()
     makeComment();
     removeComment();
+    updateMoreComments();
 });
 
+
+function updateMoreComments(){
+    $('#auctionMessages').scroll(function () {
+        if($(document.getElementById("auctionMessages")).scrollTop() + 700 > document.getElementById("auctionMessages").scrollHeight && reloadMore) {
+            reloadMore = false;
+
+            $idauction = $("input[name='idauction']").val();
+            offset += 10;
+
+            var info = new FormData();
+            info.append('idauction', $idauction);
+            info.append('offset', offset);
+
+            var scrolltop = $(document.getElementById("auctionMessages")).scrollTop();
+
+            $.ajax({
+                url: '../../api/auctions/reloadMoreComments.php?',
+                type: 'POST',
+                data: info,
+                cache: false,
+                processData: false, // Don't process the files
+                contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                success: function (data) {
+
+                    data = JSON.parse(data);
+
+                    var size = data.result.length;
+                    if(size < 10)
+                        reloadMore = false;
+                    else
+                        reloadMore = true;
+
+                    var content = "";
+
+                    for(var i = 0; i < size;i++){
+
+                        var comment = data.result[i];
+
+                         content +="<form class='form-horizontal' method='POST' action='../../pages/tickets/tickets.php'>" +
+                            "<div class='panel panel-default'>" +
+                            "<div class='panel-heading'>" +
+                            "<strong>Anonymous</strong>" +
+                            "<span class='text-muted'> Commented on " + comment.date +"</span>"+
+                            "<button style='margin-left: 5px;' type='submit' class='btn btn-danger btn-xs pull-right'>"+
+                            "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>"+
+                            "</button>";
+
+                        if (data.state == "Administrator") {
+                            content += "<button type='button' class='btn btn-warning btn-xs pull-right'>" +
+                                "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>" +
+                                "</button>";
+                        }
+
+                        content += "</div><div class='panel-body'>" + comment.message + "</div>";
+
+                        //first photo
+                        if (comment.path != null) {
+                            content += "<div class='thumbnail' style='border: none'>" +
+                                "<img src='../../" + comment.path + "' alt='comment image'>" +
+                                "</div>";
+                        }
+
+                        //more photos for the same comment
+                        while(i+1 < size){
+                            i++;
+                            if(comment.idcomment == data.result[i].idcomment && data.result[i].path != null){
+                                content += "<div class='thumbnail' style='border: none'>" +
+                                    "<img src='../../" + data.result[i].path + "' alt='comment image'>" +
+                                    "</div>";
+                            }
+                            else{
+                                break;
+                                i--
+                            }
+                        }
+
+
+                        content += "</div></form>";
+                    }
+
+                    $("#auctionMessages").append(content);
+
+
+                },
+            });
+            $(document.getElementById("auctionMessages")).scrollTop(scrolltop);
+            $(this).stopImmediatePropagation;
+        }
+    });
+}
 
 
 function saveFiles(event) {
@@ -42,9 +135,6 @@ function clickFollowAuction() {
                     newNotification('panel-success', data.msg);
                 }
             },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
         });
     });
 };
@@ -84,9 +174,6 @@ function removeComment() {
                     newNotification('panel-success', "Comment removed with success.");
                 $parent.parent().remove();
             },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
         });
     });
 };
@@ -104,9 +191,6 @@ function reportAuction() {
                 else if (data.result == 0)
                     newNotification('panel-success', "Auction reported with success.");
             },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
         });
     });
 };
@@ -126,9 +210,6 @@ function banAuction(id) {
                 newNotification('panel-success', data.msg);
             }
         },
-        error: function (request, status, error) {
-            alert(request.responseText);
-        }
     });
 }
 
@@ -150,9 +231,6 @@ function buyAuction() {
                 }
 
             },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
         });
     });
 };
@@ -177,9 +255,6 @@ function bidAuction() {
                     newNotification('panel-success', "Bidded auction with success.");
                 }
             },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
         });
     });
 };
@@ -202,9 +277,6 @@ function bidBlindAuction() {
                     newNotification('panel-success', "Bidded auction with success.");
                 }
             },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
         });
     });
 };
@@ -279,9 +351,6 @@ function makeComment() {
                     newNotification('panel-success', "Commented auction with success.");
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log('ERRORS: ' + textStatus);
-            }
         });
     });
 };
@@ -305,9 +374,6 @@ function alterPrice() {
                     newNotification('panel-success', "Success! Price has been altered.");
                 }
             },
-            error: function (request, status, error) {
-                alert(request.responseText);
-            }
         });
     });
 }
